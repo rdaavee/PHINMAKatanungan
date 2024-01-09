@@ -67,13 +67,18 @@
     #footer {
         background-color: rgba(0, 0, 0, 0.1);
         color: #0e0e0e;
-        padding: 3.3%;
+        padding: 2.7%;
         font-size: 12px;
     }
 
     .footer-img {
         width: 40px;
         margin-bottom: 10px;
+    }
+
+    .copyright {
+        margin-bottom: 0;
+        text-align: center;
     }
 </style>
 
@@ -136,22 +141,22 @@
             <h1>Features</h1>
             <div class="row text-center">
                 <div class="col-md-4 about">
-                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
-                    <h4>Unknown</h4>
+                    <img class="about-img" src="{{ url('storage/images/articles-img.png') }}" style="width: 83px;">
+                    <h4>Articles</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
                 </div>
                 <div class="col-md-4 about">
-                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
-                    <h4>Unknown</h4>
+                    <img class="about-img" src="{{ url('storage/images/searching-img.png') }}">
+                    <h4>Searching</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
                 </div>
                 <div class="col-md-4 about">
-                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
-                    <h4>Unknown</h4>
+                    <img class="about-img" src="{{ url('storage/images/sharing-img.png') }}">
+                    <h4>Sharing</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
                 </div>
             </div>
-            <button type="button" class="btn btn-success" style="font-weight: 500;">Join the community</button>
+            <button type="button" class="btn btn-success" style="font-weight: 500;">Explore the community</button>
         </div>
     </section>
     <section id="footer">
@@ -159,9 +164,27 @@
             <div class="row text-center">
                 <div class="col-md-4 footer-box">
                     <img class="footer-img" src="{{ url('storage/images/cite-logo.png') }}">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur modi dolorem odit corporis itaque vel similique esse, molestiae quasi! Explicabo, voluptatibus ipsam. Dignissimos dolore et nobis accusamus sed necessitatibus perferendis.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis totam excepturi qui facere architecto eligendi, quisquam commodi vero adipisci cumque, obcaecati, dolores quia perferendis reprehenderit hic! Ipsam, excepturi cum! Dignissimos et ut velit dolores autem hic exercitationem consequuntur corrupti, fuga, quos optio iure accusamus aliquid ducimus eveniet, doloribus ipsum voluptatem!</p>
+                </div>
+                <div class="col-md-4 footer-box">
+                    <p style="font-weight: 700;">INFORMATION</p>
+                    <p><i class="fa fa-map-marker"></i>Dagupan City, Pangasinan</p>
+                    <p><i class="fa fa-phone"></i>+63 9258 6475</p>
+                    <p><i class="fa fa-envelope"></i>phinmakatanungan@gmail.com</p>
+                    <p></i>CITE Students</p>
+                    <p>PHINMAKatanungan</p>
+                </div>
+                <div class="col-md-4 footer-box">
+                    <p style="font-weight: 700;">TEAM</p>
+                    <p>Custodio, Johann</p>
+                    <p>De Guzman, Danielle Marie</p>
+                    <p>Mondero, David Aldrin</p>
+                    <p>Collado, Jean</p>
+                    <p>Arcega, Ranier Dave</p>
                 </div>
             </div>
+            <hr>
+            <p class="copyright">Website created by D=MAC²</p>
         </div>
     </section>
 </body>
