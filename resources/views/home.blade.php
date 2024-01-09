@@ -42,6 +42,39 @@
         font-weight: 300;
         margin-top: 60px;
     }
+
+    /*========== ABOUT SECTION ==========*/
+    #about {
+        padding: 80px 0;
+    }
+
+    .about-img {
+        width: 100px;
+        margin-top: 20px;
+    }
+
+    .about {
+        padding: 20px;
+    }
+
+    .about h4 {
+        padding: 5px;
+        margin-top: 25px;
+        text-transform: uppercase;
+    }
+
+    /*========== FOOTER SECTION ==========*/
+    #footer {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #0e0e0e;
+        padding: 3.3%;
+        font-size: 12px;
+    }
+
+    .footer-img {
+        width: 40px;
+        margin-bottom: 10px;
+    }
 </style>
 
 <body>
@@ -63,15 +96,14 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle me-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Topics</a></li>
+                                <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="#">No idea</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="#">No idea</a></li>
                             </ul>
                         </li>
@@ -100,7 +132,37 @@
 
     <!--============= ABOUT SECTION =============-->
     <section id="about">
-
+        <div class="container text-center">
+            <h1>Features</h1>
+            <div class="row text-center">
+                <div class="col-md-4 about">
+                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
+                    <h4>Unknown</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
+                </div>
+                <div class="col-md-4 about">
+                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
+                    <h4>Unknown</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
+                </div>
+                <div class="col-md-4 about">
+                    <img class="about-img" src="{{ url('storage/images/cite-logo.png') }}">
+                    <h4>Unknown</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam reprehenderit eligendi unde quaerat sit laborum non, ipsum molestias officiis. Incidunt aliquid dolore hic neque quasi.</p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" style="font-weight: 500;">Join the community</button>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 footer-box">
+                    <img class="footer-img" src="{{ url('storage/images/cite-logo.png') }}">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur modi dolorem odit corporis itaque vel similique esse, molestiae quasi! Explicabo, voluptatibus ipsam. Dignissimos dolore et nobis accusamus sed necessitatibus perferendis.</p>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 
