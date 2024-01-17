@@ -18,10 +18,35 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'password',
+        'user_role',
+        'year_level',
+        'course_id',
+        'school_id',
+        'profile_picture',
+        'post_count'
     ];
+
+    protected $primaryKey = 'user_id';
+    public $incrementing = false;
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
