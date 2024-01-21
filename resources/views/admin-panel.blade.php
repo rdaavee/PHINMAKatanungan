@@ -24,7 +24,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <img src="{{ url('user.png') }}" style="width: 30px;">
+                        <a href="">
+                            <img src="{{ url('user.png') }}" style="width: 30px;">
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -59,7 +61,10 @@
                     <td>First</td>
                     <td>user@example.com</td>
                     <td>69420</td>
-                    <td></td>
+                    <td>
+                        <a href=""><img src="{{ url('editing.png') }}" style="width: 17px;"></a>
+                        <a href=""><img src="{{ url('delete.png') }}" style="width: 17px; margin-left: 20px;"></a>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">
@@ -74,7 +79,10 @@
                     <td>First</td>
                     <td>user@example.com</td>
                     <td>69420</td>
-                    <td></td>
+                    <td>
+                        <a href=""><img src="{{ url('editing.png') }}" style="width: 17px;"></a>
+                        <a href=""><img src="{{ url('delete.png') }}" style="width: 17px; margin-left: 20px;"></a>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">
@@ -89,7 +97,10 @@
                     <td>First</td>
                     <td>user@example.com</td>
                     <td>69420</td>
-                    <td></td>
+                    <td>
+                        <a href=""><img src="{{ url('editing.png') }}" style="width: 17px;"></a>
+                        <a href=""><img src="{{ url('delete.png') }}" style="width: 17px; margin-left: 20px;"></a>
+                    </td>
                 </tr>
             </tbody>
         </table>
