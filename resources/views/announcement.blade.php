@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}">
     <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
 
-    <title>Admin Dashboard | PHINMAKatanungan</title>
+    <title>Announcements</title>
 </head>
 
 <body>
@@ -184,58 +184,15 @@
             </div>
         </div>
 
+        <!-- MAIN CONTENT STARTS HERE -->
+
         <div class="dashboard-main">
             <div class="container">
                 <div class="row py-2 mt-1">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2>Dashboard</h2>
+                            <h2>Announcements</h2>
                             <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col-6 py-1">
-                                        <h5 class="card-title">Overview</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul class="chart-list-out">
-                                            <li><span class="circle-blue"></span>Teacher</li>
-                                            <li><span class="circle-green"></span>Student</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="apexcharts-area"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-12 col-lg-6">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col-6 py-1">
-                                        <h5 class="card-title">Number of Students</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul class="chart-list-out">
-                                            <li><span class="circle-blue"></span>Boys</li>
-                                            <li><span class="circle-green"></span>Girls</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="bar"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,11 +203,8 @@
 
 
 
-
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
-        <script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-        <script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script>
 
 
 </body>
