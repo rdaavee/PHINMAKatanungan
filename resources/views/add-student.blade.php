@@ -49,10 +49,10 @@
                 <a href="/admin-panel">
                     <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                     <a class="navbar-brand" href="/admin-panel">
-                        <span style="font-weight: 500; font-size: 10px; color: #000;">
+                        <span style="font-weight: 500; font-size: 13px; color: #000;">
                             PHINMA
                         </span>
-                        <span class="katanungan" style="font-weight: 200; font-size: 10px;">
+                        <span class="katanungan" style="font-weight: 200; font-size: 13px;">
                             Katanungan
                         </span>
                     </a>
@@ -64,28 +64,17 @@
 
             <div class="navbar-sb-list p-4">
                 <div class="navbar-sb-item mb-5">
-                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">student management</h5>
+                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">users management</h5>
                     <ul class="navbar-sb-links p-0 list-unstyled">
+
                         <li class="navbar-sb-link my-3">
                             <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
                                 <div class="text-light-blue d-flex align-items-center">
                                     <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-plus"></i>
+                                        <i class="fa fa-eye"></i>
                                     </span>
-                                    <a class="text-decoration-none" href="{{ url('/add-student') }}">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add student</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-pencil"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="{{ url('/edit-student') }}">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit student</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-teachers') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view teachers</span>
                                     </a>
                                 </div>
                             </a>
@@ -105,50 +94,9 @@
                     </ul>
                 </div>
 
-                <div class="navbar-sb-item mb-5">
-                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">teacher management</h5>
-                    <ul class="navbar-sb-links p-0 list-unstyled">
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-plus"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="{{ url('/add-teacher') }}">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add teacher</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-pencil"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="{{ url('/edit-teacher') }}">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit teacher</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-eye"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="{{ url('/view-teachers') }}">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view teachers</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
 
                 <div class="navbar-sb-item mb-5">
-                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin management</h5>
+                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin controls</h5>
                     <ul class="navbar-sb-links p-0 list-unstyled">
 
                         <li class="navbar-sb-link my-3">
@@ -192,6 +140,7 @@
                                 </div>
                             </a>
                         </li>
+
                     </ul>
                 </div>
             </div>
