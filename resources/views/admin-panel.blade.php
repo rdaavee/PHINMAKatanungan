@@ -71,7 +71,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student add</span>
+                                    <a class="text-decoration-none" href="{{ url('/add-student') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add student</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -81,7 +83,7 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student edit</span>
+                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit student</span>
                                 </div>
                             </a>
                         </li>
@@ -91,7 +93,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-students') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view students</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -107,7 +111,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher add</span>
+                                    <a class="text-decoration-none" href="/add-teacher">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -117,7 +123,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher edit</span>
+                                    <a class="text-decoration-none" href="{{ url('/edit-teacher') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -127,7 +135,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-teachers') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view teachers</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>

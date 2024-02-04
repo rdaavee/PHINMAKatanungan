@@ -11,7 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}">
     <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
 
-    <title>Announcements</title>
+    <title>Student List</title>
+
 </head>
 
 <body>
@@ -71,7 +72,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student add</span>
+                                    <a class="text-decoration-none" href="{{ url('/add-student') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add student</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -81,7 +84,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student edit</span>
+                                    <a class="text-decoration-none" href="{{ url('/edit-student') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit student</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -91,7 +96,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-students') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view students</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -107,7 +114,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher add</span>
+                                    <a class="text-decoration-none" href="{{ url('/add-teachers') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -117,7 +126,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher edit</span>
+                                    <a class="text-decoration-none" href="{{ url('/edit-teacher') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -127,7 +138,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-teachers') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view teachers</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -191,7 +204,7 @@
                 <div class="row py-2 mt-1">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2>Announcements</h2>
+                            <h2>Students</h2>
                             <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
@@ -200,9 +213,83 @@
         </div>
 
 
+        <section id="table-box" class="m-4 table-responsive-sm">
+            <table class="table text-center table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Student ID</th>
+                        <th scope="col">Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <img src="{{ url('user.png') }}" style="width: 30px;">
+                            </div>
+                        </th>
+                        <td>User</td>
+                        <td>User</td>
+                        <td>Student</td>
+                        <td>BSIT</td>
+                        <td>First</td>
+                        <td>user@example.com</td>
+                        <td>69420</td>
+                        <td>
+                            <a href=""><i class="fa fa-pencil"></i></a>
+                            <a href=""><i class="fa fa-trash ms-3"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <img src="{{ url('user.png') }}" style="width: 30px;">
+                            </div>
+                        </th>
+                        <td>User</td>
+                        <td>User</td>
+                        <td>Student</td>
+                        <td>BSIT</td>
+                        <td>First</td>
+                        <td>user@example.com</td>
+                        <td>69420</td>
+                        <td>
+                            <a href=""><i class="fa fa-pencil"></i></a>
+                            <a href=""><i class="fa fa-trash ms-3"></i></a>
+                        </td>
+                    </tr>
 
-
-
+                    <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <img src="{{ url('user.png') }}" style="width: 30px;">
+                            </div>
+                        </th>
+                        <td>User</td>
+                        <td>User</td>
+                        <td>Student</td>
+                        <td>BSIT</td>
+                        <td>First</td>
+                        <td>user@example.com</td>
+                        <td>69420</td>
+                        <td>
+                            <a href=""><i class="fa fa-pencil"></i></a>
+                            <a href=""><i class="fa fa-trash ms-3"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

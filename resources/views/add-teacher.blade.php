@@ -11,7 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}">
     <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
 
-    <title>Announcements</title>
+    <title>Add Student</title>
+
 </head>
 
 <body>
@@ -71,7 +72,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student add</span>
+                                    <a class="text-decoration-none" href="{{ url('/add-student') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add student</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -81,7 +84,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student edit</span>
+                                    <a class="text-decoration-none" href="{{ url('/edit-student') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit student</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -91,7 +96,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">student view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-students') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view students</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -107,7 +114,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-plus"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher add</span>
+                                    <a class="text-decoration-none" href="{{ url('/add-teacher') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">add teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -117,7 +126,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-pencil"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher edit</span>
+                                    <a class="text-decoration-none" href="{{ url('/edit-teacher') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">edit teacher</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -127,7 +138,9 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-eye"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">teacher view</span>
+                                    <a class="text-decoration-none" href="{{ url('/view-teachers') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">view teachers</span>
+                                    </a>
                                 </div>
                             </a>
                         </li>
@@ -191,7 +204,7 @@
                 <div class="row py-2 mt-1">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2>Announcements</h2>
+                            <h2>Add Teacher</h2>
                             <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
@@ -199,9 +212,53 @@
             </div>
         </div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (session('status'))
+                    <div class="alert alert-success">{{ session('status')}} </div>
+                    @endif
+
+                    <div class="card">
+
+                        <div class="card-header">
 
 
+                            <div class="card-body">
+                                <form action="{{ url('teachers/create') }}" method="POST">
+                                    @csrf
 
+                                    <div class="form-floating mt-5">
+                                        <input class="form-control mb-3" id="floatingInput" type="text" name="name" value="{{ old ('name') }}" />
+                                        <label class="form-label" for="floatingInput"> Name </label>
+                                        @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="floatingPassword" type="integer" name="age" value="{{ old ('age') }}" />
+                                        <label> Age </label>
+                                        @error('age') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="floatingPassword" type="text" name="address" value="{{ old ('address') }}" />
+                                        <label> Address </label>
+                                        @error('address') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="floatingPassword" type="text" name="department" value="{{ old ('department') }}" />
+                                        <label> Department </label>
+                                        @error('department') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-success float-end submit">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
