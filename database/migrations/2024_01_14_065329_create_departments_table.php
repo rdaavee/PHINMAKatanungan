@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->string('course_id')->primary();
+        Schema::create('departments', function (Blueprint $table) {
+            $table->string('department_id')->primary();
             $table->string('name');
-            $table->string('department_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('set null');
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('departments');
     }
 };
