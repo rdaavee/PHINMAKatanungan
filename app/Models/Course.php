@@ -9,5 +9,8 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code'];
+    protected $primaryKey = 'course_id'; 
+    public $incrementing = false; 
+
+    protected $fillable = ['name', 'course_id'];
 }

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class School extends Model
+class Department extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'school_id'; 
+    protected $primaryKey = 'department_id'; 
     public $incrementing = false; 
-    protected $fillable = ['name'];
 }
