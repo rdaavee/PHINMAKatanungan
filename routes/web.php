@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin-panel');
+    return view('login');
 });
 
-Route::get('/admin-panel', function () {
-    return view('admin-panel');
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::prefix('admin')->name('admin.')->group(function() {
+
+    Route::middleware(['guest:admin'])->group(function(){
+        Route::view('/login', 'login')->name('login');
+        Route::post('/login_handler', [AdminController::class, 'loginHandler'])->name('login_handler');
+    });
+
+    Route::middleware(['auth:admin'])->group(function(){
+        Route::view('/admin-panel', 'admin-panel')->name('admin-panel');
+        Route::post('/logout_handler', [AdminController::class, 'logoutHandler'])->name('logout_handler');
+    });
+
 });
 
 Route::get('/add-student', function () {
@@ -30,9 +45,13 @@ Route::get('/add-teacher', function () {
     return view('add-teacher');
 });
 
-Route::get('/view-students', function () {
-    return view('view-students');
-});
+// Route::get('/view-students', function () {
+//     return view('view-students');
+// });
+
+Route::get('/view-students', [StudentController::class, 'index']);
+Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
+Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
 
 Route::get('/view-teachers', function () {
     return view('view-teachers');
@@ -49,8 +68,8 @@ Route::get('/reports', function () {
 
 Route::get('/images/{filename}', 'ImageController@showImage');
 
-Route::get('/login', [AuthManager::class, 'login'])->name('login');
-Route::post('/login', [AuthManager::class, 'loginPost'])->name('login_post');
+// Route::get('/login', [AuthManager::class, 'login'])->name('login');
+// Route::post('/login', [AuthManager::class, 'loginPost'])->name('login_post');
 
 // Route::get('/signup', [AuthManager::class, 'signup'])->name('signup');
 // Route::post('/signup', [AuthManager::class, 'signupPost'])->name('signup_post');
@@ -62,3 +81,5 @@ Route::post('/login', [AuthManager::class, 'loginPost'])->name('login_post');
 // Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset_password_post');
 
 // Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
+
+

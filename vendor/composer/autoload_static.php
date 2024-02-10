@@ -354,8 +354,8 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -531,6 +531,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Api\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -542,6 +543,13 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
+        'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',
+        'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
+        'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
+        'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
+        'App\\Models\\School' => __DIR__ . '/../..' . '/app/Models/School.php',
+        'App\\Models\\Upvote' => __DIR__ . '/../..' . '/app/Models/Upvote.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
