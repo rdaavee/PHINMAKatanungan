@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@300;400&family=Jost:wght@200&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Condensed:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper {
@@ -17,9 +17,9 @@
 }
 
 .row {
-    width: 800px;
+    width: 900px;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #fefefe;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
@@ -37,18 +37,23 @@
     font-weight: 700;
 }
 
+header {
+    color: #1A8B93;
+}
+
 .katanungan {
     color: #D9BD2D;
 }
 
+.katanungan1 {
+    color: #1A8B93;
+}
+
 .side-image {
-    background: linear-gradient(to right, #3A4F24, #3A4F24);
     position: relative;
-    border-radius: 10px 0 0 10px;
 }
 
 img {
-    width: 35px;
     position: absolute;
     top: 30px;
 }
@@ -58,6 +63,21 @@ img {
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 9px;
+    margin-left: 5px;
+}
+
+.form-control {
+    width: 360px;
+    height: 45px;
+}
+
+input[type="text"] {
+    font-size: 12px;
 }
 
 .input-box {
@@ -75,77 +95,28 @@ img {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 0 10px 0 10px;
-}
-
-.input {
-    height: 45px;
-    width: 100%;
-    background: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #0e0e0e;
-    margin-bottom: 20px;
-    color: #40414a;
-}
-
-.input-box .input-field label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.input-field .input:focus ~ label {
-    top: -10px;
-    font-size: .8125rem;
-}
-
-.input-field .input:valid ~ label {
-    top: -10px;
-    font-size: .8125rem;
-    color: #5d5076;
-}
-
-.input-field .input:focus, 
-.input-field .input:valid {
-    border-bottom: 3px solid #3A4F24;
 }
 
 .submit {
     outline: none;
     border: none;
     height: 45px;
+    width: 330px;
     border-radius: 5px;
     transition: .5s;
+    font-size: 14px;
+    color: #fefefe;
+    background-color: #1a8b93a9;
 }
 
 .submit:hover {
-    background: #D9BD2D;
+    background: #1A8B93;
     color: #fefefe;
 }
 
-.signin {
-    text-align: center;
-    font-size: small;
-    margin-top: 25px;
-}
-
-.signin a {
-    text-decoration: none;
-    font-weight: 700;
-    color: #0e0e0e;
-    transition: .5s;
-}
-
-span a:hover {
-    text-decoration: underline;
-    color: #0e0e0e;
-}
-.forget {
-    text-align: center;
-    margin-bottom: 20px;
+.rememberforget {
+    font-size: 10px;
+    margin-bottom: 35px;
 }
 
 .forget a {
@@ -164,9 +135,11 @@ span a:hover {
     opacity: .8;
 }
 
+
 @media only screen and (max-width: 768px) {
     .side-image {
         border-radius: 10px 10px 0 0;
+        display: none;
     }
 
     .text {

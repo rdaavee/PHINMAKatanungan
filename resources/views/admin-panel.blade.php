@@ -135,9 +135,7 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-sign-out"></i>
                                     </span>
-                                    <a class="navbar-sb-text fs-14 fw-5 text-capitalize" 
-                                        href="{{ route('admin.logout_handler') }}"
-                                        onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();">
+                                    <a class="navbar-sb-text fs-14 fw-5 text-capitalize" href="{{ route('admin.logout_handler') }}" onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();">
                                         logout
                                     </a>
 
