@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('year_level', ['SHS', 'First', 'Second', 'Third', 'Fourth']); 
+            $table->enum('year_level', ['SHS', 'First', 'Second', 'Third', 'Fourth']);
             $table->string('course_id')->nullable();
             $table->string('school_id')->nullable();
             $table->text('profile_picture')->default(NULL);

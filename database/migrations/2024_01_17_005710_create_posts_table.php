@@ -13,15 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('user_id');
-            $table->enum('privacy', ['Public', 'Private']);
-            $table->integer('comments_count')->default(0);
-            $table->boolean('solved')->default(false);
             $table->timestamps();
-    
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 
