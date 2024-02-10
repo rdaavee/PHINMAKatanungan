@@ -23,18 +23,21 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::get('/admin-panel', function () {
+    return view('admin-panel');
+});
 
-    Route::middleware(['guest:admin'])->group(function(){
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::middleware(['guest:admin'])->group(function () {
         Route::view('/login', 'login')->name('login');
         Route::post('/login_handler', [AdminController::class, 'loginHandler'])->name('login_handler');
     });
 
-    Route::middleware(['auth:admin'])->group(function(){
+    Route::middleware(['auth:admin'])->group(function () {
         Route::view('/admin-panel', 'admin-panel')->name('admin-panel');
         Route::post('/logout_handler', [AdminController::class, 'logoutHandler'])->name('logout_handler');
     });
-
 });
 
 Route::get('/add-student', function () {
@@ -49,9 +52,9 @@ Route::get('/add-teacher', function () {
 //     return view('view-students');
 // });
 
-Route::get('/view-students', [StudentController::class, 'index']);
-Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
-Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
+// Route::get('/view-students', [StudentController::class, 'index']);
+// Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
+// Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
 
 Route::get('/view-teachers', function () {
     return view('view-teachers');
@@ -81,5 +84,3 @@ Route::get('/images/{filename}', 'ImageController@showImage');
 // Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset_password_post');
 
 // Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
-
-
