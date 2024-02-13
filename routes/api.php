@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('users', UserController::class);
 
 Route::put('/users/{user_id}', 'UserController@update');
+
+Route::apiResource('students', StudentController::class);
+
+// ADMIN
+Route::post('/admin/login', [AdminController::class, 'loginHandler']);
+Route::post('/admin/logout', [AdminController::class, 'logoutHandler']);
