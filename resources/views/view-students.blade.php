@@ -163,79 +163,54 @@
 
 
         <section id="table-box" class="m-4 table-responsive-sm">
+            {{-- <div id="status-alert-container">
+                @if (session('status'))
+                <div class="alert alert-success">{{ session('status')}} </div>
+                @endif
+            </div> --}}
             <table class="table text-center table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Profile Picture</th>
                         <th scope="col">Student ID</th>
-                        <th scope="col">Manage</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Middle Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Year Level</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">School</th>
+                        <th scope="col">Posts</th>
+                        <th scope="col">Following</th>
+                        <th scope="col">Followers</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($students as $item)
                     <tr>
-                        <th scope="row">
+                        <td>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <img src="{{ url('user.png') }}" style="width: 30px;">
                             </div>
-                        </th>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>Student</td>
-                        <td>BSIT</td>
-                        <td>First</td>
-                        <td>user@example.com</td>
-                        <td>69420</td>
+                            <img src="{{ asset($item->profile_picture) }}" width= '50' height='50' class="img img-responsive" />
+                        </td>
+                        <td>{{ $item->student_id}}</td>
+                        <td>{{ $item->first_name}}</td>
+                        <td>{{ $item->middle_name}}</td>
+                        <td>{{ $item->last_name}}</td>
+                        <td>{{ $item->email}}</td>
+                        <td>{{ $item->year_level}}</td>
+                        <td>{{ $item->course_id}}</td>
+                        <td>{{ $item->school_id}}</td>
+                        <td>{{ $item->post_count}}</td>
+                        <td>{{ $item->following_count}}</td>
+                        <td>{{ $item->followers_count}}</td>
                         <td>
-                            <a href=""><i class="fa fa-pencil"></i></a>
-                            <a href=""><i class="fa fa-trash ms-3"></i></a>
+                            <a href="{{ url('students/'.$item->student_id.'/edit') }}"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ url('students/'.$item->student_id.'/delete') }}"><i class="fa fa-trash ms-3"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <img src="{{ url('user.png') }}" style="width: 30px;">
-                            </div>
-                        </th>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>Student</td>
-                        <td>BSIT</td>
-                        <td>First</td>
-                        <td>user@example.com</td>
-                        <td>69420</td>
-                        <td>
-                            <a href=""><i class="fa fa-pencil"></i></a>
-                            <a href=""><i class="fa fa-trash ms-3"></i></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <img src="{{ url('user.png') }}" style="width: 30px;">
-                            </div>
-                        </th>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>Student</td>
-                        <td>BSIT</td>
-                        <td>First</td>
-                        <td>user@example.com</td>
-                        <td>69420</td>
-                        <td>
-                            <a href=""><i class="fa fa-pencil"></i></a>
-                            <a href=""><i class="fa fa-trash ms-3"></i></a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </section>
@@ -243,6 +218,19 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
+
+        {{-- <script>
+            $(document).ready(function () {
+                var statusAlertContainer = $('#status-alert-container');
+    
+                if (statusAlertContainer.length) {
+                    setTimeout(function () {
+                        statusAlertContainer.fadeOut(500, function () {
+                        });
+                    }, 3500);
+                }
+            });
+        </script> --}}
 
 
 </body>
