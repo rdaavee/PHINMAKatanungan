@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Middleware\PreventBackHistory;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +28,16 @@ Route::get('/admin-panel', function () {
     return view('admin-panel');
 });
 
+
+// ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::middleware(['guest:admin'])->group(function () {
+    Route::middleware(['guest:admin', 'PreventBackHistory'])->group(function () {
         Route::view('/login', 'login')->name('login');
         Route::post('/login_handler', [AdminController::class, 'loginHandler'])->name('login_handler');
     });
 
-    Route::middleware(['auth:admin'])->group(function () {
+    Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
         Route::view('/admin-panel', 'admin-panel')->name('admin-panel');
         Route::post('/logout_handler', [AdminController::class, 'logoutHandler'])->name('logout_handler');
     });
@@ -52,9 +55,11 @@ Route::get('/add-teacher', function () {
 //     return view('view-students');
 // });
 
-// Route::get('/view-students', [StudentController::class, 'index']);
-// Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
-// Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
+// STUDENTS
+Route::get('/view-students', [StudentController::class, 'index']);
+Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
+Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
+Route::get('students/{id}/delete',[StudentController::class, 'destroy']);
 
 Route::get('/view-teachers', function () {
     return view('view-teachers');
