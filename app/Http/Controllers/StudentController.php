@@ -45,7 +45,7 @@ class StudentController extends Controller
             'year_level' => 'required|max:255|string',
             'course_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:204800',
         ]);
 
         $requestData = [
