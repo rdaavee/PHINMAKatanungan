@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TeacherController;
+use App\Models\Teacher;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,8 @@ Route::apiResource('users', UserController::class);
 
 Route::put('/users/{user_id}', 'UserController@update');
 
-Route::apiResource('students', StudentController::class);
+// Route::apiResource('students', StudentController::class);
+Route::apiResource('teachers', TeacherController::class);
 
 // ADMIN
 Route::post('/admin/login', [AdminController::class, 'loginHandler']);

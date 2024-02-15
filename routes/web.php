@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Middleware\PreventBackHistory;
 
 /*
@@ -51,9 +52,9 @@ Route::get('/add-teacher', function () {
     return view('add-teacher');
 });
 
-// Route::get('/view-students', function () {
-//     return view('view-students');
-// });
+Route::get('/view-students', function () {
+    return view('view-students');
+});
 
 // STUDENTS
 Route::get('/view-students', [StudentController::class, 'index']);
@@ -61,9 +62,12 @@ Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
 Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
 Route::get('students/{id}/delete',[StudentController::class, 'destroy']);
 
-Route::get('/view-teachers', function () {
-    return view('view-teachers');
-});
+//TEACHERS
+Route::get('/view-teachers', [TeacherController::class, 'index']);
+Route::get('teachers/{teacher_id}/edit', [TeacherController::class, 'edit']);
+Route::put('teachers/{teacher_id}/edit', [TeacherController::class, 'update']);
+Route::get('teachers/{id}/delete',[TeacherController::class, 'destroy']);
+
 
 Route::get('/announcement', function () {
     return view('announcement');
