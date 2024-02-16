@@ -8,9 +8,8 @@
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}"> -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
-    <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/admin.css')}}">
+    <script type="text/javascript" src="{{ secure_asset('js/admin.js') }}"></script>
 
     <title>Admin Dashboard | PHINMAKatanungan</title>
 </head>
