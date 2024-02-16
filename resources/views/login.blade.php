@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/form.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -83,7 +83,7 @@
     <script src="jquery-3.7.1.min.js"></script>
     <script src="/src/components/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ secure_asset('js/script.js') }}"></script>
 </body>
 
 </html>
