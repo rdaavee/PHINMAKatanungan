@@ -27,7 +27,7 @@ Route::apiResource('users', UserController::class);
 
 Route::put('/users/{user_id}', 'UserController@update');
 
-// Route::apiResource('students', StudentController::class);
+Route::apiResource('students', StudentController::class);
 Route::apiResource('teachers', TeacherController::class);
 
 // ADMIN
