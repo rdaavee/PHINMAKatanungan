@@ -18,7 +18,7 @@ class CourseSeeder extends Seeder
         Course::create([
             'course_id' => 'BSIT',
             'name' => 'Bachelor of Science in Information Technology',
-            'department_id' => 'BSIT'
+            'department_id' => 'CITE'
         ]);
     }
 }
