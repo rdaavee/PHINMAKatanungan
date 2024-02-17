@@ -11,5 +11,12 @@ class School extends Model
 
     protected $primaryKey = 'school_id'; 
     public $incrementing = false; 
-    protected $fillable = ['name'];
+    protected $fillable = 
+    [
+        'school_id',
+        'name',
+        'address',
+        'about',
+        'logo'
+    ];
 }
