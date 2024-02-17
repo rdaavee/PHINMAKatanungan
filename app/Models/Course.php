@@ -12,5 +12,5 @@ class Course extends Model
     protected $primaryKey = 'course_id'; 
     public $incrementing = false; 
 
-    protected $fillable = ['name', 'course_id'];
+    protected $fillable = ['name', 'course_id', 'department_id'];
 }

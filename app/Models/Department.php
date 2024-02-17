@@ -11,4 +11,6 @@ class Department extends Model
 
     protected $primaryKey = 'department_id'; 
     public $incrementing = false; 
+
+    protected $fillable = ['name', 'department_id'];
 }
