@@ -7,7 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Api\ApiStudentController;
 use App\Http\Controllers\TeacherController;
-use App\Models\Teacher;
+use App\Http\Controllers\Api\ApiTeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +42,10 @@ Route::get('students/{student_id}', [ApiStudentController::class, 'show']);
 Route::post('students', [ApiStudentController::class, 'store']); 
 Route::put('students/{student_id}', [ApiStudentController::class, 'update']);
 Route::delete('students/{student_id}', [ApiStudentController::class, 'destroy']);
+
+//Teacher API
+Route::get('teachers', [ApiTeacherController::class, 'index']); 
+Route::get('teachers/{teacher_id}', [ApiTeacherController::class, 'show']); 
+Route::post('teachers', [ApiTeacherController::class, 'store']); 
+Route::put('teachers/{teacher_id}', [ApiTeacherController::class, 'update']);
+Route::delete('teachers/{teacher_id}', [ApiTeacherController::class, 'destroy']);
