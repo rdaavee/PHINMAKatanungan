@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('department_id')->nullable(); 
             $table->string('school_id')->nullable();
-            $table->text('profile_picture')->default(NULL);
+            $table->text('profile_picture')->nullable();
             $table->integer('post_count')->default(0);
             $table->integer('followers_count')->default(0);
             $table->integer('following_count')->default(0);

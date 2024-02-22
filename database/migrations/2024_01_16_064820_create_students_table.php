@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('year_level', ['SHS', 'First', 'Second', 'Third', 'Fourth']);
             $table->string('course_id')->nullable();
             $table->string('school_id')->nullable();
-            $table->text('profile_picture')->default(NULL);
+            $table->text('profile_picture')->nullable();
             $table->integer('post_count')->default(0);
             $table->integer('followers_count')->default(0);
             $table->integer('following_count')->default(0);
