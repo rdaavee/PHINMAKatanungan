@@ -15,7 +15,7 @@ class SchoolSeeder extends Seeder
     {
         $schools = [
             [
-                'school_id' => 'UPang',
+                'school_id' => '01',
                 'name' => 'University of Pangasinan',
                 'address' => 'ARELLANO STREET, DOWNTOWN DISTRICT, DAGUPAN, 2400 PANGASINAN',
                 'about' => 'PHINMA UPang continued to offer its brand of premier local education after its 
@@ -25,7 +25,7 @@ class SchoolSeeder extends Seeder
                 its Nursing, Civil Engineering, Criminology, and Information Technology courses.'
             ],
             [
-                'school_id' => 'AU',
+                'school_id' => '02',
                 'name' => 'Araullo University',
                 'address' => 'MAHARLIKA HIGHWAY, BRGY. BITAS, CABANATUAN CITY, 3100, NUEVA ECIJA',
                 'about' => 'PHINMA Ed acquired PHINMA AU in Cabanatuan City, Nueva Ecija as its first venture into 
@@ -35,7 +35,7 @@ class SchoolSeeder extends Seeder
                 Novo Ecijanos.'
             ],
             [
-                'school_id' => 'COC',
+                'school_id' => '03',
                 'name' => 'Cagayan De Oro College',
                 'address' => 'PUROK 6, CAGAYAN DE ORO, 9000 LALAWIGAN NG MISAMIS ORIENTAL',
                 'about' => 'PHINMA COC was acquired by PHINMA Ed in 2005 to make quality education 
@@ -45,7 +45,7 @@ class SchoolSeeder extends Seeder
                 Puerto in 2012.'
             ],
             [
-                'school_id' => 'UI',
+                'school_id' => '04',
                 'name' => 'UNIVERSITY OF ILOILO',
                 'address' => 'RIZAL ST, ILOILO CITY PROPER, ILOILO CITY, 5000 ILOILO',
                 'about' => 'The historic PHINMA UI was acquired by PHINMA Ed in 2008. 

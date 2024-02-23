@@ -34,8 +34,8 @@ Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMi
 
 
 
-Route::apiResource('admin/students', StudentController::class);
-Route::apiResource('admin/teachers', TeacherController::class);
+Route::apiResource('/students', StudentController::class);
+Route::apiResource('/teachers', TeacherController::class);
 
 Route::get('/test', function () {
     return response()->json(['message' => 'This is a test route']);

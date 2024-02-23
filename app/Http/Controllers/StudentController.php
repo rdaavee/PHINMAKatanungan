@@ -107,7 +107,6 @@ class StudentController extends Controller
             'middle_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i',
-            'password' => 'required|min:6|max:255|string',
             'year_level' => 'required|string|max:255',
             'course_id' => 'required|string|max:255',
             'school_id' => 'required|string|max:255',
@@ -119,13 +118,19 @@ class StudentController extends Controller
             'middle_name'=> $request->middle_name,
             'last_name'=> $request->last_name,
             'email'=> $request->email,
-            'password'=> $request->password,
             'year_level'=> $request->year_level,
             'course_id'=> $request->course_id,
             'school_id'=> $request->school_id,
         ]);
 
-        return redirect()->back()->with('status','Student Updated.');
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => "Student successfully updated."
+            ],200);
+        } else {
+            return redirect()->back()->with('status','Student Updated.');
+        }
+
     }
 
     /**
