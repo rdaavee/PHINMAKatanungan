@@ -26,8 +26,8 @@ Route::middleware('auth:teacher')->get('/teacher', function (Request $request) {
 });
 
 Route::put('/users/{user_id}', 'UserController@update');
-Route::post('/api/store', 'UserMobileController@store');
-Route::post('/api/createteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
+Route::post('/store', 'UserMobileController@store');
+Route::post('/createteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
 
 Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMiddleware('auth:sanctum');
 
