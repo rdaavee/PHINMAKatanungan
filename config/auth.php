@@ -95,11 +95,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        
-        'teacher' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Teacher::class,
-        ],
     ],
     /*
     |--------------------------------------------------------------------------
