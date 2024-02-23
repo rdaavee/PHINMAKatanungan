@@ -26,7 +26,6 @@ class Student extends Authenticatable
         'year_level',
         'course_id',
         'school_id',
-        'profile_picture'
     ];
 
     protected $primaryKey = 'student_id';

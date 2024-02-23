@@ -45,7 +45,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+    
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -54,7 +54,12 @@ return [
         'api_admin' => [
             'driver' => 'passport',
             'provider' => 'admins',
-        ]
+        ],
+    
+        'teachers' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
     ],
 
     
@@ -75,24 +80,27 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Student::class,
         ],
 
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ],
+    
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        
+        'teacher' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -111,7 +119,6 @@ return [
     | quickly generating a very large amount of password reset tokens.
     |
     */
-
     'passwords' => [
         'users' => [
             'provider' => 'users',
@@ -125,7 +132,6 @@ return [
             'model' => App\Models\Admin::class,
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
@@ -136,7 +142,6 @@ return [
     | confirmation screen. By default, the timeout lasts for three hours.
     |
     */
-
     'password_timeout' => 10800,
 
 ];

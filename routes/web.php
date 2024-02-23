@@ -60,6 +60,7 @@ Route::get('/view-students', function () {
 Route::get('/view-students', [StudentController::class, 'index']);
 Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
 Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
+Route::post('students/create', [StudentController::class, 'store']);
 Route::get('students/{id}/delete',[StudentController::class, 'destroy']);
 
 //TEACHERS
