@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -71,5 +72,21 @@ class AdminController extends Controller
         } else {
             return redirect()->route('admin.login')->with('success', 'Successfully logged out');
         }
+    }
+
+    public function announcement_page() {
+        return view('announcement');
+    }
+
+    public function add_announcement(Request $request) {
+        $announcement = new Announcement;
+
+        $announcement->title = $request->title;
+        $announcement->content = $request->content;
+        $announcement->status = 'active';
+        
+        $announcement->save();
+
+        return redirect()->back();
     }
 }

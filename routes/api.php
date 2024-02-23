@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentMobileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Api\ApiStudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserMobileController;
 /*
@@ -32,8 +33,9 @@ Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMi
 
 
 
-Route::apiResource('students', StudentController::class);
-Route::apiResource('teachers', TeacherController::class);
+
+Route::apiResource('admin/students', StudentController::class);
+Route::apiResource('admin/teachers', TeacherController::class);
 
 Route::get('/test', function () {
     return response()->json(['message' => 'This is a test route']);
@@ -42,3 +44,17 @@ Route::get('/test', function () {
 // ADMIN
 Route::post('/admin/login', [AdminController::class, 'loginHandler']);
 Route::post('/admin/logout', [AdminController::class, 'logoutHandler']);
+
+//STUDENT API
+// Route::get('students', [ApiStudentController::class, 'index']); 
+// Route::get('students/{student_id}', [ApiStudentController::class, 'show']); 
+// Route::post('students', [ApiStudentController::class, 'store']); 
+// Route::put('students/{student_id}', [ApiStudentController::class, 'update']);
+// Route::delete('students/{student_id}', [ApiStudentController::class, 'destroy']);
+
+// //Teacher API
+// Route::get('teachers', [ApiTeacherController::class, 'index']); 
+// Route::get('teachers/{teacher_id}', [ApiTeacherController::class, 'show']); 
+// Route::post('teachers', [ApiTeacherController::class, 'store']); 
+// Route::put('teachers/{teacher_id}', [ApiTeacherController::class, 'update']);
+// Route::delete('teachers/{teacher_id}', [ApiTeacherController::class, 'destroy']);

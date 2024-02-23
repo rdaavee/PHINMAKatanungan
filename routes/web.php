@@ -70,9 +70,12 @@ Route::put('teachers/{teacher_id}/edit', [TeacherController::class, 'update']);
 Route::get('teachers/{id}/delete',[TeacherController::class, 'destroy']);
 
 
-Route::get('/announcement', function () {
-    return view('announcement');
-});
+// Route::get('/announcement', function () {
+//     return view('announcement');
+// });
+
+Route::get('/announcement', [AdminController::class, 'announcement_page']);
+Route::post('/add_announcement', [AdminController::class, 'add_announcement']);
 
 
 Route::get('/reports', function () {

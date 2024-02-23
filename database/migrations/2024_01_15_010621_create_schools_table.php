@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('school_id')->primary();
             $table->string('name');
             $table->string('address');
-            $table->string('about');
-            $table->text('logo');
+            $table->longText('about');
+            $table->text('logo')->nullable();
             $table->timestamps();
         });
     }
