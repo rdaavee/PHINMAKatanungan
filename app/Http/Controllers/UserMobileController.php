@@ -78,7 +78,6 @@ class UserMobileController extends Controller
             'password' => 'required|min:6|string',
             'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:204800'
         ],[
             'student_id.unique' => 'The student ID has already been taken.',
             'email.unique' => 'The email has already been taken.',
