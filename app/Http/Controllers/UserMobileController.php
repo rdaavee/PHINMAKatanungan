@@ -79,14 +79,14 @@ class UserMobileController extends Controller
             'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
         ],[
-            'student_id.unique' => 'The student ID has already been taken.',
+            'teacher_id.unique' => 'The student ID has already been taken.',
             'email.unique' => 'The email has already been taken.',
         ]);
 
         if ($validator->fails()) {
             $errors = $validator->errors()->messages();
-            if (isset($errors['student_id'])) {
-                return response($errors['student_id'][0], 422);
+            if (isset($errors['teacher_id'])) {
+                return response($errors['teacher_id'][0], 422);
             }
             if (isset($errors['email'])) {
                 return response($errors['email'][0], 422);
