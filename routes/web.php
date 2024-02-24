@@ -77,6 +77,9 @@ Route::get('teachers/{id}/delete',[TeacherController::class, 'destroy']);
 Route::get('/announcement', [AdminController::class, 'announcement_page']);
 Route::post('/add_announcement', [AdminController::class, 'add_announcement']);
 
+// Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin-panel');
+// Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin.analytics');
+
 
 Route::get('/reports', function () {
     return view('reports');

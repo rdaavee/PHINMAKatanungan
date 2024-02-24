@@ -29,9 +29,12 @@ Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/createteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
 
+
 Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMiddleware('auth:sanctum');
 
 
+//ANALYTICS
+// Route::get('/analytics', [AdminController::class, 'analytics']);
 
 
 Route::apiResource('/students', StudentController::class);

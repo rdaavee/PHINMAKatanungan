@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -88,5 +90,20 @@ class AdminController extends Controller
         $announcement->save();
 
         return redirect()->back();
+    }
+    public function analytics() {
+        // Total student count
+        $userCounts = Student::count();
+        $teacherData = Teacher::pluck('teacher_id');
+        $studentData = Student::pluck('student_id');
+
+        // return response() -> json([
+        //     'teachers' => $teacherData,
+        //     'students' => $studentData,
+        // ]);
+    
+        return view('/admin-panel', [
+            'userCounts' => $userCounts,
+        ]);
     }
 }

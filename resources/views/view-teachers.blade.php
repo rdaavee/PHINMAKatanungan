@@ -8,8 +8,8 @@
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/admin.css')}}">
-    <script type="text/javascript" src="{{ secure_asset('js/admin.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ ('css/admin.css')}}">
+    <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
 
     <title>Teacher List</title>
 
@@ -28,15 +28,6 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
-                    </div>
-
-                    <div class="navigation-bar-right col-6 d-flex align-items-center justify-content-end">
-                        <a href="#" class="profile-btn bg-blue text-white btn-circle me-3">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <button type="button" class="notification-btn text-grey-blue">
-                            <i class="fa-regular fa-bell"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -150,10 +141,10 @@
 
         <div class="dashboard-main">
             <div class="container">
-                <div class="row py-2 mt-1">
+                <div class="row py-2 mt-4">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2>Teachers</h2>
+                            <h2 style="color: #D9BD2D; font-weight: 600;">Teachers</h2>
                             <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
@@ -162,56 +153,52 @@
         </div>
 
 
-        <section id="table-box" class="m4 table-responsive-sm">
-            <table class="table text-center table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Profile Picture</th>
-                        <th scope="col">Teacher ID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Middle Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">School</th>
-                        <th scope="col">Posts</th>
-                        <th scope="col">Following</th>
-                        <th scope="col">Followers</th>
-                    </tr>
-                </thead>
-                    <tbody>
-                            @foreach ($teachers as $item)
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" value="" id="flexCheckDefault">
-                                </div>
-                                <img src="{{ asset($item -> profile_picture) }}" width='50' height='50' class="img img-responsive">
-                            </td>
-                            <td>{{ $item -> teacher_id}}</td>
-                            <td>{{ $item -> first_name}}</td>
-                            <td>{{ $item -> middle_name}}</td>
-                            <td>{{ $item -> last_name}}</td>
-                            <td>{{ $item -> email}}</td>
-                            <td>{{ $item -> department_id}}</td>
-                            <td>{{ $item -> school_id}}</td>
-                            <td>{{ $item -> post_count}}</td>
-                            <td>{{ $item -> following_count}}</td>
-                            <td>{{ $item -> followers_count}}</td>
-                            <td>
-                                <a href="{{ url('teachers/'.$item->teacher_id.'/edit') }} "><i class="fa fa-pencil"></i></a>
-                                <a href="{{ url('teachers/'.$item->teacher_id.'/delete') }} "><i class="fa fa-trash ms-3"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-        </section>
+    <section id="table-box" class="m-4 table-responsive-sm">
+        <table class="table text-center table-striped">
+            <thead class="custom-thead">
+                <tr>
+                    <th scope="col">Teacher ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">School</th>
+                    <th scope="col">Posts</th>
+                    <th scope="col">Following</th>
+                    <th scope="col">Followers</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($teachers as $item)
+                <tr>
+                    <td class="align-middle">{{ $item->teacher_id }}</td>
+                    <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
+                    <td class="align-middle">{{ $item->email }}</td>
+                    <td class="align-middle">{{ $item->department_id }}</td>
+                    <td class="align-middle">{{ $item->school_id }}</td>
+                    <td class="align-middle">{{ $item->post_count }}</td>
+                    <td class="align-middle">{{ $item->following_count }}</td>
+                    <td class="align-middle">{{ $item->followers_count }}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ url('teachers/'.$item->teacher_id.'/edit') }}" class="btn alert-success btn-sm me-2">
+                                <i class="fa fa-pencil action-icon"></i>
+                            </a>
+                            <a href="{{ url('teachers/'.$item->teacher_id.'/delete') }}" class="btn alert-danger btn-sm">
+                                <i class="fa fa-ban action-icon"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </section>
+
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="{{ secure_asset('js/admin.js') }}"></script>
+        <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
 
 
 </body>

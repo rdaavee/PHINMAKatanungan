@@ -114,6 +114,80 @@ a{
     overflow-y: scroll;
 }
 
+.custom-thead {
+    background-color: #1A8B93;
+    color: #fff;
+}
+
+.custom-thead th {
+    font-size: 12px; 
+}
+
+.custom-thead td {
+    font-size: 10px; 
+}
+
+.table thead th {
+    font-size: 14px;
+}
+
+.table tbody td {
+    font-size: 13px;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #F5F8FF;
+}
+
+.table {
+    border-radius: 8px; /* You can adjust the value to control the border-radius */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+.table th,
+.table td {
+    padding: 15px; /* Add padding for better appearance */
+}
+
+.action-icon {
+    font-size: 11px; 
+}
+
+.alert-danger:hover {
+    background-color: #d7232337;
+}
+
+.alert-success:hover {
+    background-color: #4d9f3d3c;
+}
+
+.fa-pencil {
+    color: green;
+}
+
+.fa-ban {
+    color: red;
+}
+
+::-webkit-scrollbar {
+    width: .1875rem;
+    background-color: #f2f1ef;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1A8B93;
+    transition: 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #D9BD2D;
+}
+
 /* js related */
 .show-navigation-sidebar{
     transform: translateX(0)!important;
