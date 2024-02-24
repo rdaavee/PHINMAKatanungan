@@ -41,11 +41,11 @@ class TeacherController extends Controller
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
+            'gender' => 'required|max:255|string',
             'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:teachers,email',
             'password' => 'required|min:6|string',
             'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:204800'
         ]);
 
         $requestData = [
@@ -53,17 +53,12 @@ class TeacherController extends Controller
             'first_name' => $request -> first_name,
             'middle_name' => $request -> middle_name,
             'last_name' => $request -> last_name,
+            'gender'=> $request->gender,
             'email' => $request -> email,
             'password' => $request -> password,
             'department_id' => $request -> department_id,
             'school_id' => $request -> school_id,
         ];
-
-        if ($request->hasFile('profile_picture')) {
-            $fileName = time() . '.' . $request->file('profile_picture')->getClientOriginalExtension();
-            $path = $request->file('profile_picture')->storeAs('profile_pictures', $fileName, 'public');
-            $requestData["profile_picture"] = '/storage/' . $path;
-        }
 
         try {
             Log::info('Before creating teacher record');
@@ -97,11 +92,11 @@ class TeacherController extends Controller
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
+            'gender' => 'required|string|max:255',
             'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:teachers,email',
             'password' => 'required|min:6|string',
             'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         
         Teacher::findOrFail($teacher_id) -> update([
@@ -109,6 +104,7 @@ class TeacherController extends Controller
             'first_name' => $request -> first_name,
             'middle_name' => $request -> middle_name,
             'last_name' => $request -> last_name,
+            'gender'=> $request->gender,
             'email' => $request -> email,
             'password' => $request -> password,
             'department_id' => $request -> department_id,

@@ -22,11 +22,11 @@ class Teacher extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
+        'gender',
         'email',
         'password',
         'department_id',
-        'school_id',
-        'profile_picture'
+        'school_id'
     ];
 
     protected $primaryKey = 'teacher_id';
