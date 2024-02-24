@@ -18,12 +18,13 @@ class UserMobileController extends Controller
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
+            'gender' => 'required|max:255|string',
             'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:teachers,email',
             'password' => 'required|min:6|max:255|string',
             'year_level' => 'required|max:255|string',
             'course_id' => 'required|max:255|string',
+            'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:204800',
         ], [
             'student_id.unique' => 'The student ID has already been taken.',
             'email.unique' => 'The email has already been taken.',
@@ -45,18 +46,15 @@ class UserMobileController extends Controller
             'first_name'=> $request->first_name,
             'middle_name'=> $request->middle_name,
             'last_name'=> $request->last_name,
+            'gender'=> $request->gender,
             'email'=> $request->email,
             'password'=> $request->password,
             'year_level'=> $request->year_level,
             'course_id'=> $request->course_id,
+            'department_id'=> $request->department_id,
             'school_id'=> $request->school_id,
         ];
 
-        if ($request->hasFile('profile_picture')) {
-            $fileName = time() . '.' . $request->file('profile_picture')->getClientOriginalExtension();
-            $path = $request->file('profile_picture')->storeAs('profile_pictures', $fileName, 'public');
-            $requestData["profile_picture"] = '/storage/' . $path;
-        }
 
         try {
             $student = Student::create($requestData);
@@ -75,6 +73,7 @@ class UserMobileController extends Controller
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
+            'gender' => 'required|max:255|string',
             'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:teachers,email',
             'password' => 'required|min:6|string',
             'department_id' => 'required|max:255|string',
@@ -101,17 +100,12 @@ class UserMobileController extends Controller
             'first_name' => $request -> first_name,
             'middle_name' => $request -> middle_name,
             'last_name' => $request -> last_name,
+            'gender'=> $request->gender,
             'email' => $request -> email,
             'password' => $request -> password,
             'department_id' => $request -> department_id,
             'school_id' => $request -> school_id,
         ];
-
-        if ($request->hasFile('profile_picture')) {
-            $fileName = time() . '.' . $request->file('profile_picture')->getClientOriginalExtension();
-            $path = $request->file('profile_picture')->storeAs('profile_pictures', $fileName, 'public');
-            $requestData["profile_picture"] = '/storage/' . $path;
-        }
 
         try {
             $teacher = Teacher::create($requestData);
