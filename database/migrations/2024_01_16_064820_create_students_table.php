@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
+            $table->enum('gender', ['Male', 'Female']);
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('year_level', ['SHS', 'First', 'Second', 'Third', 'Fourth']);
             $table->string('course_id')->nullable();
+            $table->string('department_id')->nullable(); 
             $table->string('school_id')->nullable();
             $table->integer('post_count')->default(0);
             $table->integer('followers_count')->default(0);
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('set null');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('set null');
             $table->foreign('school_id')->references('school_id')->on('schools')->onDelete('set null');
         });

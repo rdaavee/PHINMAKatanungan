@@ -21,10 +21,12 @@ class Student extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
+        'gender',
         'email',
         'password',
         'year_level',
         'course_id',
+        'department_id',
         'school_id',
     ];
 
