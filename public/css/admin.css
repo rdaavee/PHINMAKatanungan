@@ -173,6 +173,16 @@ a{
     color: red;
 }
 
+.btn-proceed {
+    background-color: #1A8B93;
+    color: #fff;
+}
+
+.btn-proceed:hover {
+    background-color: #156f75;
+    color: #fff;
+}
+
 ::-webkit-scrollbar {
     width: .1875rem;
     background-color: #f2f1ef;

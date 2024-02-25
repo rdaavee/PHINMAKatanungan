@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ ('css/admin.css')}}">
     <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
@@ -184,16 +185,40 @@
                             <a href="{{ url('teachers/'.$item->teacher_id.'/edit') }}" class="btn alert-success btn-sm me-2">
                                 <i class="fa fa-pencil action-icon"></i>
                             </a>
-                            <a href="{{ url('teachers/'.$item->teacher_id.'/delete') }}" class="btn alert-danger btn-sm">
+                            <a href="{{ url('teachers/'.$item->teacher_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
                                 <i class="fa fa-ban action-icon"></i>
                             </a>
                         </div>
                     </td>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-style">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Do you want ban this account?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-proceed" data-teacher-id="{{ $item -> teacher_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            {{ $teachers->links() }}
+        </div>
     </section>
+
+    <script>
+            function confirmDeletion(button) {
+                var studentId = button.getAttribute('data-teacher-id');
+                window.location.href = "{{ url('teachers') }}/" + studentId + "/delete";
+            }
+        </script>
 
 
 

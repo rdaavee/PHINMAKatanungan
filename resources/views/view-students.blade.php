@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ ('css/admin.css')}}">
     <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
@@ -25,7 +26,7 @@
                         <button type="button" class="navbar-open-btn text-grey-blue me-3">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <div class="navbar-logo">
+                        <div class="navbar-logo mb-2">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
                     </div>
@@ -128,7 +129,7 @@
 
         <div class="dashboard-main">
             <div class="container">
-                <div class="row py-2 mt-4">
+                <div class="row py-2 mt-2">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
                             <h2 style="color: #D9BD2D; font-weight: 600;">Students</h2>
@@ -140,56 +141,78 @@
         </div>
 
 
-    <section id="table-box" class="m-4 table-responsive-sm">
-        {{-- <div id="status-alert-container">
-            @if (session('status'))
-                <div class="alert alert-success">{{ session('status')}} </div>
-            @endif
-        </div> --}}
-        <table class="table text-center table-striped">
-            <thead class="custom-thead">
-                <tr>
-                    <th scope="col">Student ID</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Year Level</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">School</th>
-                    <th scope="col">Posts</th>
-                    <th scope="col">Following</th>
-                    <th scope="col">Followers</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($students as $item)
-                <tr>
-                    <td class="align-middle">{{ $item->student_id }}</td>
-                    <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
-                    <td class="align-middle">{{ $item->email }}</td>
-                    <td class="align-middle">{{ $item->year_level }}</td>
-                    <td class="align-middle">{{ $item->course_id }}</td>
-                    <td class="align-middle">{{ $item->school_id }}</td>
-                    <td class="align-middle">{{ $item->post_count }}</td>
-                    <td class="align-middle">{{ $item->following_count }}</td>
-                    <td class="align-middle">{{ $item->followers_count }}</td>
-                    <td>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ url('students/'.$item->student_id.'/edit') }}" class="btn alert-success btn-sm me-2">
-                                <i class="fa fa-pencil action-icon"></i>
-                            </a>
-                            <a href="{{ url('students/'.$item->student_id.'/delete') }}" class="btn alert-danger btn-sm">
-                                <i class="fa fa-ban action-icon"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </section>
+        <section id="table-box" class="m-5 table-responsive-sm">
+                {{-- <div id="status-alert-container">
+                    @if (session('status'))
+                        <div class="alert alert-success">{{ session('status')}} </div>
+                    @endif
+                </div> --}}
+            <table class="table text-center table-striped">
+                <thead class="custom-thead">
+                    <tr>
+                        <th scope="col">Student ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Year Level</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">School</th>
+                        <th scope="col">Posts</th>
+                        <th scope="col">Following</th>
+                        <th scope="col">Followers</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        @foreach ($students as $item)
+                        <tr>
+                            <td class="align-middle">{{ $item->student_id }}</td>
+                            <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
+                            <td class="align-middle">{{ $item->email }}</td>
+                            <td class="align-middle">{{ $item->year_level }}</td>
+                            <td class="align-middle">{{ $item->course_id }}</td>
+                            <td class="align-middle">{{ $item->school_id }}</td>
+                            <td class="align-middle">{{ $item->post_count }}</td>
+                            <td class="align-middle">{{ $item->following_count }}</td>
+                            <td class="align-middle">{{ $item->followers_count }}</td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{ url('students/'.$item->student_id.'/edit') }}" class="btn alert-success btn-sm me-2">
+                                        <i class="fa fa-pencil action-icon"></i>
+                                    </a>
+                                    <a href="{{ url('students/'.$item->student_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
+                                        <i class="fa fa-ban action-icon"></i>
+                                    </a>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-style">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Do you want ban this account?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                        @endforeach
+                    </tbody>
+            </table>   
+            <div class="d-flex justify-content-end">
+                {{ $students->links() }}
+            </div>
+        </section>
 
-
+        <script>
+            function confirmDeletion(button) {
+                var studentId = button.getAttribute('data-student-id');
+                window.location.href = "{{ url('students') }}/" + studentId + "/delete";
+            }
+        </script>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
