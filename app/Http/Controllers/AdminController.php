@@ -77,7 +77,8 @@ class AdminController extends Controller
     }
 
     public function announcement_page() {
-        return view('announcement');
+        $announcements = Announcement::get();
+        return view('announcement', ['announcements' => $announcements]);
     }
 
     public function add_announcement(Request $request) {
@@ -85,12 +86,27 @@ class AdminController extends Controller
 
         $announcement->title = $request->title;
         $announcement->content = $request->content;
-        $announcement->status = 'active';
+        $announcement->status = $request->status ?? 'Active';
         
         $announcement->save();
 
         return redirect()->back();
     }
+
+    public function viewEditAnnouncement($id)
+    {
+        $announcement = Announcement::findOrFail($id);
+        return view('edit-announcement', ['announcement' => $announcement]);
+    }
+
+    public function updateAnnouncement(Request $request, $id)
+    {
+        $announcement = Announcement::findOrFail($id);
+        $announcement->update($request->all());
+
+        return redirect()->back()->with('status','Student Updated.');
+    }
+
     public function analytics() {
         // Total student count
         $userCounts = Student::count();

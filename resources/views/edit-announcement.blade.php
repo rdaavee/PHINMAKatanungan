@@ -8,15 +8,16 @@
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}">
-    <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ ('css/admin.css')}}">
+    <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
 
-    <title>Announcements</title>
+    <title>Student List</title>
+
 </head>
 
 <body>
 
-    <div class="dashboard-pg text-grey-blue">
+    <div class="dashboard-pg">
         <nav class="navigation-bar d-flex align-items-center">
             <div class="container">
                 <div class="row align-items-center">
@@ -27,15 +28,6 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
-                    </div>
-
-                    <div class="navigation-bar-right col-6 d-flex align-items-center justify-content-end">
-                        <a href="#" class="profile-btn bg-blue text-white btn-circle me-3">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <button type="button" class="notification-btn text-grey-blue">
-                            <i class="fa-regular fa-bell"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -110,19 +102,6 @@
                                 </div>
                             </a>
                         </li>
-
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-flag"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="/reports">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">reports</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -147,77 +126,60 @@
 
         <!-- MAIN CONTENT STARTS HERE -->
 
-        <div class="dashboard-main">
-            <div class="container">
-                <div class="row py-2 mt-1">
-                    <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text">
-                            <h2>Announcements</h2>
-                            <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                    <form action="{{url('add_announcement')}}" method="POST" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                <h4>Edit Announcement
+                    <a href="{{ url('announcement')}}" class="btn btn-primary float-end"> Back </a>
+                </h4>
+                
+                <div class="card-body">
+                    <form action = "{{ url('announcements/'.$announcement->id.'/edit') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                          <label for="title">Title</label>
-                          <input type="text" class="form-control" id="title" name="title" placeholder="">
+                        @method('PUT')
+
+                        <div class="mb-3">
+                            <label> Title </label>
+                            <input type="text" name="title" value="{{ $announcement->title }}" />
+                            {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
                         </div>
-                        <div class="form-group">
-                          <label for="content">Content</label>
-                          <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                        <div class="mb-3">
+                            <label> Content </label>
+                            <textarea id="content" name="content" rows="4" cols="50">{{ $announcement->content }}</textarea>
+                            {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
                         </div>
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                        <div class="mb-3">
+                            <label> Status </label>
+                            <select name="status">
+                                <option value="Active" {{ $announcement->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                <option value="Inactive" {{ $announcement->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                            </select>
+                            {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
-
-                    <tr>
-                        <th></th>
-                    </tr>
                 </div>
             </div>
         </div>
 
 
 
-        <section id="table-box" class="m-4 table-responsive-sm">
-            {{-- <div id="status-alert-container">
-                @if (session('status'))
-                    <div class="alert alert-success">{{ session('status')}} </div>
-                @endif
-            </div> --}}
-            <table class="table text-center table-striped">
-                <thead class="custom-thead">
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Content</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($announcements as $item)
-                    <tr>
-                        <td class="align-middle">{{ $item->title }}</td>
-                        <td class="align-middle">{{ $item->content }}</td>
-                        <td class="align-middle">{{ $item->status }}</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a href="{{ url('announcements/'.$item->id.'/edit') }}" class="btn alert-success btn-sm me-2">
-                                    <i class="fa fa-pencil action-icon"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </section>
-
-
-
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
+        <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
+
+        {{-- <script>
+            $(document).ready(function () {
+                var statusAlertContainer = $('#status-alert-container');
+    
+                if (statusAlertContainer.length) {
+                    setTimeout(function () {
+                        statusAlertContainer.fadeOut(500, function () {
+                        });
+                    }, 3500);
+                }
+            });
+        </script> --}}
 
 
 </body>
