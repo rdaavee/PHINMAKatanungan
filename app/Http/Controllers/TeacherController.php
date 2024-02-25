@@ -90,31 +90,16 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $teacher_id)
     {
-        $request -> validate([
-            'teacher_id' => 'required|max:255|string',
-            'first_name' => 'required|max:255|string',
-            'middle_name' => 'required|max:255|string',
-            'last_name' => 'required|max:255|string',
-            'gender' => 'required|string|max:255',
-            'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:teachers,email',
-            'password' => 'required|min:6|string',
-            'department_id' => 'required|max:255|string',
-            'school_id' => 'required|max:255|string',
-        ]);
+        $teacher = Teacher::findOrFail($teacher_id);
+        $teacher->update($request->all());
         
-        Teacher::findOrFail($teacher_id) -> update([
-            'teacher_id' => $request -> teacher_id,
-            'first_name' => $request -> first_name,
-            'middle_name' => $request -> middle_name,
-            'last_name' => $request -> last_name,
-            'gender'=> $request->gender,
-            'email' => $request -> email,
-            'password' => $request -> password,
-            'department_id' => $request -> department_id,
-            'school_id' => $request -> school_id,
-        ]);
-
-        return redirect() -> back() -> with('status', 'Teacher Updated');
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => "Teacher successfully updated."
+            ],200);
+        } else {
+            return redirect()->back()->with('status','Teacher Updated.');
+        }
     }
 
     /**
