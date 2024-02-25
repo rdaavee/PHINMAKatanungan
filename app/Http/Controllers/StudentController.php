@@ -14,6 +14,9 @@ class StudentController extends Controller
     public function index() //WORKING
     {
         $students = Student::get();
+        
+        $students = Student::paginate(5);
+        return view('view-students', compact('students'));
 
         if (request()->expectsJson()) {
             return response()->json(['students' => $students]);

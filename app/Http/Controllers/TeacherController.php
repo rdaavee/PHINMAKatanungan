@@ -16,6 +16,9 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::get();
 
+        $teachers = Teacher::paginate(5);
+        return view('view-teachers', compact('teachers'));
+
         if (request() -> expectsJson()) {
             return response() -> json(['teachers' => $teachers]);
         }
