@@ -120,7 +120,7 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher_id)
+    public function destroy($teacher_id)
     {
         $teacher = Teacher::findOrFail($teacher_id);
         $teacher -> delete();
