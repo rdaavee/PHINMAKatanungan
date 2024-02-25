@@ -69,11 +69,9 @@ Route::get('teachers/{teacher_id}/edit', [TeacherController::class, 'edit']);
 Route::put('teachers/{teacher_id}/edit', [TeacherController::class, 'update']);
 Route::get('teachers/{id}/delete',[TeacherController::class, 'destroy']);
 
-
-// Route::get('/announcement', function () {
-//     return view('announcement');
-// });
-
+//ANNOUNCEMENTS
+Route::get('announcements/{id}/edit', [AdminController::class, 'viewEditAnnouncement']);
+Route::put('announcements/{id}/edit', [AdminController::class, 'updateAnnouncement']);
 Route::get('/announcement', [AdminController::class, 'announcement_page']);
 Route::post('/add_announcement', [AdminController::class, 'add_announcement']);
 

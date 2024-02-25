@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory(20)->create();
         \App\Models\Teacher::factory(20)->create();
+        \App\Models\Announcement::factory(15)->create();
     }
 }
