@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Student;
 
@@ -64,6 +63,39 @@ class StudentSeeder extends Seeder
                 'middle_name' => 'Muyon',
                 'last_name' => 'Collado',
                 'email' => 'jemu.collado.up@phinmaed.com',
+                'password' => '12345678',
+                'year_level' => 'Second',
+                'course_id' => 'BSIT',
+                'school_id' => '01',
+            ],
+            [
+                'student_id' => '03-2122-876542',
+                'first_name' => 'dsfads',
+                'middle_name' => 'ds',
+                'last_name' => 'Colladassao',
+                'email' => 'jemu.collzado.up@phinmaed.com',
+                'password' => '12345678',
+                'year_level' => 'Second',
+                'course_id' => 'BSIT',
+                'school_id' => '01',
+            ],
+            [
+                'student_id' => '03-2122-754634',
+                'first_name' => 'Jeadn',
+                'middle_name' => 'Muyson',
+                'last_name' => 'Colflado',
+                'email' => 'jemu.collaxdo.up@phinmaed.com',
+                'password' => '12345678',
+                'year_level' => 'Second',
+                'course_id' => 'BSIT',
+                'school_id' => '01',
+            ],
+            [
+                'student_id' => '03-2122-512352',
+                'first_name' => 'Jeadsan',
+                'middle_name' => 'Mufsayon',
+                'last_name' => 'Collxzado',
+                'email' => 'jemu.collcxado.up@phinmaed.com',
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
