@@ -104,7 +104,7 @@ class AdminController extends Controller
         $announcement = Announcement::findOrFail($id);
         $announcement->update($request->all());
 
-        return redirect()->back()->with('status','Student Updated.');
+        return redirect()->back()->with('status','Post Updated.');
     }
 
     public function analytics() {

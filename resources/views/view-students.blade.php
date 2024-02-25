@@ -152,9 +152,11 @@
                     <tr>
                         <th scope="col">Student ID</th>
                         <th scope="col">Full Name</th>
+                        <th scope="col">Gender</th>
                         <th scope="col">Email</th>
                         <th scope="col">Year Level</th>
                         <th scope="col">Course</th>
+                        <th scope="col">Department</th>
                         <th scope="col">School</th>
                         <th scope="col">Posts</th>
                         <th scope="col">Following</th>
@@ -167,9 +169,11 @@
                         <tr>
                             <td class="align-middle">{{ $item->student_id }}</td>
                             <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
+                            <td class="align-middle">{{ $item->gender }}</td>
                             <td class="align-middle">{{ $item->email }}</td>
                             <td class="align-middle">{{ $item->year_level }}</td>
                             <td class="align-middle">{{ $item->course_id }}</td>
+                            <td class="align-middle">{{ $item->department_id }}</td>
                             <td class="align-middle">{{ $item->school_id }}</td>
                             <td class="align-middle">{{ $item->post_count }}</td>
                             <td class="align-middle">{{ $item->following_count }}</td>

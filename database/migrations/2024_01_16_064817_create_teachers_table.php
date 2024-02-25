@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->string('teacher_id')->primary(); //primary key for students table
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable(); 
             $table->string('last_name');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('email')->unique();
