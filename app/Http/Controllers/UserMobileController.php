@@ -125,24 +125,30 @@ class UserMobileController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        // Check if the provided email exists in the User table
         $student = Student::where('email', $credentials['email'])->first();
+
         if ($student) {
-            // Attempt authentication with User model
+
             if (Auth::attempt($credentials)) {
                 $tokenResult = $student->createToken('Personal Access Token');
                 $accessToken = $tokenResult->plainTextToken;
+
+                $student->update(['api_token' => $accessToken]);
+
                 return response()->json(['message' => 'Student Login Successful', 'accessToken' => $accessToken], 200);
             }
         }
 
-        // Check if the provided email exists in the Teacher table
+
         $teacher = Teacher::where('email', $credentials['email'])->first();
         if ($teacher) {
-            // Attempt authentication with Teacher model
-            if (Auth::guard('teachers')->attempt($credentials)) {
+
+            if (Auth::attempt($credentials)) {
                 $tokenResult = $teacher->createToken('Personal Access Token');
                 $accessToken = $tokenResult->plainTextToken;
+
+                $teacher->update(['api_token' => $accessToken]);
+
                 return response()->json(['message' => 'Teacher Login Successful', 'accessToken' => $accessToken], 200);
             }
         }

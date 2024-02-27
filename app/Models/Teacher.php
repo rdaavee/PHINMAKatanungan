@@ -26,7 +26,8 @@ class Teacher extends Authenticatable
         'email',
         'password',
         'department_id',
-        'school_id'
+        'school_id',
+        'api_token',
     ];
 
     protected $primaryKey = 'teacher_id';

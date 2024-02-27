@@ -28,6 +28,7 @@ class Student extends Authenticatable
         'course_id',
         'department_id',
         'school_id',
+        'api_token',
     ];
 
     protected $primaryKey = 'student_id';

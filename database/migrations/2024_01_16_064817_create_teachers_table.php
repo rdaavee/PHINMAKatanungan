@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('post_count')->default(0);
             $table->integer('followers_count')->default(0);
             $table->integer('following_count')->default(0);
-            $table->rememberToken();
+            $table->string('api_token')->nullable();
             $table->timestamps();
 
             $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('set null');
