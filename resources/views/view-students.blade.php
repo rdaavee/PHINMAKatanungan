@@ -197,7 +197,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                            <button type="button" class="btn btn-proceed" data-student-id="{{ $item->student_id }}" onclick="confirmDeletion(this)">Confirm</button>
                                         </div>
                                     </div>
                                 </div>
@@ -213,52 +213,54 @@
                                     <div class="modal-body">
                                         <!-- Your edit form goes here -->
                                         <div class="row g-3">
-                                            <form>
+                                            <form action="{{ url('students/'.$item->student_id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="first_name" value="{{ $item->first_name }}" >
                                                 </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">Middle Name</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="middle_name" value="{{ $item->middle_name }}" />
                                                 </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="last_name" value="{{ $item->last_name }}" />
                                                 </div>
                                                 <div class="col-md-10 mb-2">
                                                     <label for="" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="email" value="{{ $item->email }}" />
                                                 </div>
                                                 <div class="col-md-2 mb-2 "> 
                                                     <label for="gender" class="form-label">Gender</label>
                                                     <select name="gender" id="gender" class="form-select">
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
+                                                        <option value="Male" {{ $item->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                                        <option value="Female" {{ $item->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Year Level</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="year_level" value="{{ $item->year_level }}" />
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Course</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="course_id" value="{{ $item->course_id }}" />
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Department</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="department_id" value="{{ $item->department_id }}" />
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">School</label>
-                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                    <input type="text" class="form-control" name="school_id" value="{{ $item->school_id }}" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-proceed">Save Changes</button>
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id}}" onclick="submitEditForm()">Save Changes</button>
                                     </div>
                                 </div>
                             </div>

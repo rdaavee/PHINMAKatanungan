@@ -162,13 +162,13 @@
                         <td class="align-middle">{{ $item->status }}</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('announcements/'.$item->id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item -> announcements }}" data-bs-toggle="modal">
+                                <a href="{{ url('announcements/'.$item->id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item->id }}" data-bs-toggle="modal">
                                     <i class="fa fa-pencil action-icon"></i>
                                 </a>
                             </div>
                         </td>
                 </tr>
-                <div class="modal fade" id="editModal{{ $item->student_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->student_id }}" aria-hidden="true">
+                <div class="modal fade" id="editModal{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->student_id }}" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -177,21 +177,31 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row g-3">
-                                            <form>
+                                            <form action="{{ url('announcements/'.$item->id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
                                                 <div class="form-group mb-2">
                                                     <label for="" class="form-label">Title</label>
-                                                    <input type="text" class="form-control" id="title" name="title" required>
+                                                    <input type="text" class="form-control" id="title" name="title" value="{{ $item->title }}"required>
                                                 </div>
                                                 <div class="form-group custom-textarea">
                                                     <label for="" class="form-label">Enter an announcement body</label>
-                                                    <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                                                    <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label> Status </label>
+                                                    <select name="status" class="form-control">
+                                                        <option value="Active" {{ $item->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                        <option value="Inactive" {{ $item->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                                    </select>
+                                                    {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-proceed">Save Changes</button>
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id}}" onclick="submitEditForm()">Save Changes</button>
                                     </div>
                                 </div>
                             </div>
