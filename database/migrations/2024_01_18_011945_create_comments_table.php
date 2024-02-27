@@ -16,9 +16,14 @@ return new class extends Migration
             $table->text('content');
             $table->unsignedBigInteger('post_id');
             $table->integer('upvotes_count')->default(0);
+            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->string('user_type');
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('teacher_id')->references('teacher_id')->on('teachers')->onDelete('cascade');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
         });
     }
 
