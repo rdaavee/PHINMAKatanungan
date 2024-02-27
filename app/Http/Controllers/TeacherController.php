@@ -14,9 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::get();
-
-        $teachers = Teacher::paginate(5);
+        $teachers = Teacher::orderBy('created_at', 'desc')->paginate(5);
         return view('view-teachers', compact('teachers'));
 
         if (request() -> expectsJson()) {
