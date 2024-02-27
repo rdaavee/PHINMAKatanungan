@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('content');
             $table->enum('privacy', ['public', 'private'])->default('public');
-            $table->unsignedBigInteger('teacher_id')->nullable();
-            $table->unsignedBigInteger('student_id')->nullable();
+            $table->string('teacher_id')->nullable();
+            $table->string('student_id')->nullable();
             $table->string('user_type');
             $table->timestamps();
 
