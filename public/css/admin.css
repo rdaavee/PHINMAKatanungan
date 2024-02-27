@@ -264,7 +264,7 @@ a{
 }
 
 .custom-textarea .form-control {
-    height: 250px;
+    height: 240px;
     padding: 15px;
 }
 
@@ -283,16 +283,34 @@ a{
     font-weight: 600;
 }
 
-.form-control
-[type=text],
-[type=email],
-[name=gender] {
-    font-size: 12px;
-    height: 45px;
-}
 
 .form-select option {
     font-size: 12px;
+}
+
+.txt-announcement {
+    font-size: 10px;
+    padding: 5px;
+}
+
+.btn-announcement {
+    height: 35px;
+    margin-right: 10px;
+}
+
+/* Default styles for larger screens */
+.btn-announcement .icon-placeholder {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .btn-announcement .icon-placeholder {
+        display: inline-block;
+    }
+
+    .btn-announcement .txt-announcement {
+        display: none;
+    }
 }
 
 ::-webkit-scrollbar {

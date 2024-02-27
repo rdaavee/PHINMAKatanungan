@@ -180,21 +180,21 @@
                                             <form action="{{ url('announcements/'.$item->id.'/edit') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
-                                                <div class="form-group mb-2">
+                                                <div class="form-group col-md-9">
                                                     <label for="" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="title" name="title" value="{{ $item->title }}"required>
                                                 </div>
-                                                <div class="form-group custom-textarea">
-                                                    <label for="" class="form-label">Enter an announcement body</label>
-                                                    <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label> Status </label>
+                                                <div class="col-md-3">
+                                                    <label class="form-label"> Status </label>
                                                     <select name="status" class="form-control">
                                                         <option value="Active" {{ $item->status == 'Active' ? 'selected' : '' }}>Active</option>
                                                         <option value="Inactive" {{ $item->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                                     </select>
                                                     {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                                                </div>
+                                                <div class="form-group custom-textarea">
+                                                    <label for="" class="form-label">Enter an announcement body</label>
+                                                    <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

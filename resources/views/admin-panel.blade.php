@@ -139,8 +139,8 @@
                 </div>
 
                 <div class="position-absolute top-0 end-0 p-4 me-4">
-                    <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none" data-bs-toggle="modal" data-bs-target="#announcementModal">
-                        Create Announcement
+                    <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none btn-announcement" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                        <span class="icon-placeholder fa fa-plus"></span><h5 class="txt-announcement">Create Announcement</h5>
                     </button>
                 </div>
 
