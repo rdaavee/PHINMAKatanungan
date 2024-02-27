@@ -92,7 +92,7 @@ class StudentController extends Controller
     public function edit($student_id)
     {
         $student = Student::findOrFail($student_id);
-        return view('edit-student', ['student' => $student]);
+        return view('view-students', ['student' => $student]);
     }
 
     /**
