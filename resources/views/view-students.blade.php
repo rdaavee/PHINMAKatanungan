@@ -180,15 +180,15 @@
                             <td class="align-middle">{{ $item->followers_count }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{ url('students/'.$item->student_id.'/edit') }}" class="btn alert-success btn-sm me-2">
+                                    <a href="{{ url('students/'.$item->student_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item -> student_id }}" data-bs-toggle="modal">
                                         <i class="fa fa-pencil action-icon"></i>
                                     </a>
-                                    <a href="{{ url('students/'.$item->student_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
+                                    <a href="{{ url('students/'.$item->student_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#deleteModal{{ $item -> student_id }}" data-bs-toggle="modal">
                                         <i class="fa fa-ban action-icon"></i>
                                     </a>
                                 </div>
                             </td>
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteModal{{ $item->student_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModal{{ $item->student_id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-style">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -203,6 +203,66 @@
                                 </div>
                             </div>
                         </tr>
+                        <div class="modal fade" id="editModal{{ $item->student_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->student_id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Student</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Your edit form goes here -->
+                                        <div class="row g-3">
+                                            <form>
+                                                <div class="col-md-4 mb-2">
+                                                    <label for="" class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-4 mb-2">
+                                                    <label for="" class="form-label">Middle Name</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-4 mb-2">
+                                                    <label for="" class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-10 mb-2">
+                                                    <label for="" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-2 mb-2 "> 
+                                                    <label for="gender" class="form-label">Gender</label>
+                                                    <select name="gender" id="gender" class="form-select">
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="" class="form-label">Year Level</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="" class="form-label">Course</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="" class="form-label">Department</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="" class="form-label">School</label>
+                                                    <input type="text" class="form-control" id="" autocomplete="off">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id}}" onclick="submitEditForm()">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
             </table>   
@@ -216,9 +276,16 @@
                 var studentId = button.getAttribute('data-student-id');
                 window.location.href = "{{ url('students') }}/" + studentId + "/delete";
             }
+
+            function submitEditForm(button) {
+                var studentId = button.getAttribute('data-student-id');
+                window.location.href = "{{ url('students') }}/" + studentId + "/edit";
+            }
+
         </script>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
 
         {{-- <script>

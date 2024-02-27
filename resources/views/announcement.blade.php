@@ -28,15 +28,6 @@
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
                     </div>
-
-                    <div class="navigation-bar-right col-6 d-flex align-items-center justify-content-end">
-                        <a href="#" class="profile-btn bg-blue text-white btn-circle me-3">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <button type="button" class="notification-btn text-grey-blue">
-                            <i class="fa-regular fa-bell"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -110,19 +101,6 @@
                                 </div>
                             </a>
                         </li>
-
-                        <li class="navbar-sb-link my-3">
-                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class="text-light-blue d-flex align-items-center">
-                                    <span class="navbar-sb-icon me-3">
-                                        <i class="fa fa-flag"></i>
-                                    </span>
-                                    <a class="text-decoration-none" href="/reports">
-                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">reports</span>
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -149,74 +127,86 @@
 
         <div class="dashboard-main">
             <div class="container">
-                <div class="row py-2 mt-1">
+                <div class="row py-2 mt-2">
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text">
-                            <h2>Announcements</h2>
-                            <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <div class="dashboard-title-text mb-3">
+                            <h2 style="color: #D9BD2D; font-weight: 600;">Announcements</h2>
+                            <p class="text-grey" style="font-size: 10px;">Fill in the title and body of the announcement and press send. Students will receive a notification on their accounts.</p>
                         </div>
                     </div>
-                    <form action="{{url('add_announcement')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                          <label for="title">Title</label>
-                          <input type="text" class="form-control" id="title" name="title" placeholder="">
-                        </div>
-                        <div class="form-group">
-                          <label for="content">Content</label>
-                          <textarea class="form-control" id="content" name="content" rows="3"></textarea>
-                        </div>
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-
-                    <tr>
-                        <th></th>
-                    </tr>
                 </div>
             </div>
         </div>
 
-
-
+        
         <section id="table-box" class="m-4 table-responsive-sm">
             {{-- <div id="status-alert-container">
                 @if (session('status'))
-                    <div class="alert alert-success">{{ session('status')}} </div>
+                <div class="alert alert-success">{{ session('status')}} </div>
                 @endif
             </div> --}}
             <table class="table text-center table-striped">
                 <thead class="custom-thead">
-                    <tr>
+                <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
-                    </tr>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach ($announcements as $item)
-                    <tr>
+                @foreach ($announcements as $item)
+                <tr>
                         <td class="align-middle">{{ $item->title }}</td>
                         <td class="align-middle">{{ $item->content }}</td>
                         <td class="align-middle">{{ $item->status }}</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('announcements/'.$item->id.'/edit') }}" class="btn alert-success btn-sm me-2">
+                                <a href="{{ url('announcements/'.$item->id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item -> announcements }}" data-bs-toggle="modal">
                                     <i class="fa fa-pencil action-icon"></i>
                                 </a>
                             </div>
                         </td>
-                    </tr>
-                    @endforeach
+                </tr>
+                <div class="modal fade" id="editModal{{ $item->student_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->student_id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Announcement</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <form>
+                                                <div class="form-group mb-2">
+                                                    <label for="" class="form-label">Title</label>
+                                                    <input type="text" class="form-control" id="title" name="title" required>
+                                                </div>
+                                                <div class="form-group custom-textarea">
+                                                    <label for="" class="form-label">Enter an announcement body</label>
+                                                    <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-proceed" data-student-id="{{ $item -> student_id}}" onclick="submitEditForm()">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end">
+                {{ $announcements->links() }}
+            </div>
         </section>
 
 
-
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
 
 

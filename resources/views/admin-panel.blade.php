@@ -138,6 +138,42 @@
                     </div>
                 </div>
 
+                <div class="position-absolute top-0 end-0 p-4 me-4">
+                    <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                        Create Announcement
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="announcementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="announcementModalLabel">Create Announcement</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Your announcement form goes here -->
+                                <form action="{{url('add_announcement')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group mb-2">
+                                        <label for="" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" required>
+                                    </div>
+                                    <div class="form-group custom-textarea">
+                                        <label for="" class="form-label">Enter an announcement body</label>
+                                        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-proceed">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
@@ -191,7 +227,7 @@
             </div>
         </div>
 
-        <div>
+        <!-- <div>
             <div class="card">
                 <ul>
                     @isset($userCountsByRole)
@@ -210,12 +246,13 @@
                     <p>Total Users: @isset($userCounts){{ $userCounts }}@endisset</p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
         <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script>
