@@ -191,6 +191,8 @@
                 const maleChartData = data.maleChartData;
                 const femaleChartData = data.femaleChartData;
 
+                const teachersChartData = data.teachersChartData;
+
                 const ctx = document.getElementById('myChart').getContext('2d');
                 
                 new Chart(ctx, {
@@ -211,6 +213,13 @@
                                 data: femaleChartData.map(data => data.value),
                                 backgroundColor: 'rgba(217, 189, 45, .5)',
                                 borderColor: 'rgba(217, 189, 45, .5)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Teachers',
+                                data: teachersChartData.map(data => data.value),
+                                backgroundColor: 'rgba(66, 138, 51, .5)',
+                                borderColor: 'rgba(66, 138, 51, .5)',
                                 borderWidth: 1
                             }
                         ]

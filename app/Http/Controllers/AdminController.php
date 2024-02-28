@@ -110,6 +110,29 @@ class AdminController extends Controller
 
     public function chartData()
         {
+            // TEACHERS
+            $teacherSHS = Teacher::where('department_id', 'SHS')
+                            ->count();
+
+            $teacherCITE = Teacher::where('department_id', 'CITE')
+                            ->count();
+
+            $teacherCEA = Teacher::where('department_id', 'CEA')
+                            ->count();
+
+            $teacherCAHS = Teacher::where('department_id', 'CAHS')
+                            ->count();
+
+            $teacherCCJE = Teacher::where('department_id', 'CCJE')
+                            ->count();
+
+            $teacherCELA = Teacher::where('department_id', 'CELA')
+                            ->count();
+
+            $teacherCMA = Teacher::where('department_id', 'CMA')
+                            ->count();
+
+            // STUDENTS
             $shsMale = Student::where('department_id', 'SHS')
                             ->where('gender', 'Male')
                             ->count();
@@ -221,9 +244,41 @@ class AdminController extends Controller
                 ],
             ];
 
+            $teachersChartData = [
+                [
+                    'label' => 'SHS',
+                    'value' => $teacherSHS,
+                ],
+                [
+                    'label' => 'CITE',
+                    'value' => $teacherCITE,
+                ],
+                [
+                    'label' => 'CEA',
+                    'value' => $teacherCEA,
+                ],
+                [
+                    'label' => 'CAHS',
+                    'value' => $teacherCAHS,
+                ],
+                [
+                    'label' => 'CCJE',
+                    'value' => $teacherCCJE,
+                ],
+                [
+                    'label' => 'CELA',
+                    'value' => $teacherCELA,
+                ],
+                [
+                    'label' => 'CMA',
+                    'value' => $teacherCMA,
+                ],
+            ];
+
             return response()->json([
                 'maleChartData' => $maleChartData,
                 'femaleChartData' => $femaleChartData,
+                'teachersChartData' => $teachersChartData,
             ]);
         }
 
