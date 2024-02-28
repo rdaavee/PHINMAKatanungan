@@ -22,6 +22,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -33,6 +34,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -44,6 +46,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -55,6 +58,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -62,10 +66,12 @@ class StudentSeeder extends Seeder
                 'first_name' => 'Jean',
                 'middle_name' => 'Muyon',
                 'last_name' => 'Collado',
+                'gender' => 'Female',
                 'email' => 'jemu.collado.up@phinmaed.com',
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -77,6 +83,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -88,6 +95,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
             [
@@ -99,6 +107,7 @@ class StudentSeeder extends Seeder
                 'password' => '12345678',
                 'year_level' => 'Second',
                 'course_id' => 'BSIT',
+                'department_id' => 'CITE',
                 'school_id' => '01',
             ],
         ];
