@@ -77,6 +77,7 @@ Route::post('/add_announcement', [AdminController::class, 'add_announcement']);
 
 // Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin-panel');
 // Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin.analytics');
+Route::get('/chart-data', [AdminController::class, 'chartData']);
 
 
 Route::get('/reports', function () {

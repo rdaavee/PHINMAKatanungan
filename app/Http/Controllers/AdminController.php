@@ -108,19 +108,125 @@ class AdminController extends Controller
         return redirect()->back()->with('status','Post Updated.');
     }
 
-    public function analytics() {
-        // Total student count
-        $userCounts = Student::count();
-        $teacherData = Teacher::pluck('teacher_id');
-        $studentData = Student::pluck('student_id');
+    public function chartData()
+    {
+        $teacherData = Teacher::pluck('teacher_id')->toArray();
+        $studentData = Student::pluck('student_id')->toArray();
 
-        // return response() -> json([
-        //     'teachers' => $teacherData,
-        //     'students' => $studentData,
-        // ]);
-    
-        return view('/admin-panel', [
-            'userCounts' => $userCounts,
-        ]);
+        $shsMale = Student::where('department_id', 'SHS')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $shsFemale = Student::where('department_id', 'SHS')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $citeMale = Student::where('department_id', 'CITE')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $citeFemale = Student::where('department_id', 'CITE')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $ceaMale = Student::where('department_id', 'CEA')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $ceaFemale = Student::where('department_id', 'CEA')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $cahsMale = Student::where('department_id', 'CAHS')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $cahsFemale = Student::where('department_id', 'CAHS')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $ccjeMale = Student::where('department_id', 'CCJE')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $ccjeFemale = Student::where('department_id', 'CCJE')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $celaMale = Student::where('department_id', 'CELA')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $celaFemale = Student::where('department_id', 'CELA')
+                        ->where('gender', 'Female')
+                        ->count();
+                        
+        $cmaMale = Student::where('department_id', 'CMA')
+                        ->where('gender', 'Male')
+                        ->count();
+
+        $cmaFemale = Student::where('department_id', 'CMA')
+                        ->where('gender', 'Female')
+                        ->count();
+
+        $chartData = [
+            [
+                'label' => 'SHS Male',
+                'value' => $shsMale,
+            ],
+            [
+                'label' => 'SHS Female',
+                'value' => $shsFemale,
+            ],
+            [
+                'label' => 'CITE Male',
+                'value' => $citeMale,
+            ],
+            [
+                'label' => 'CITE Female',
+                'value' => $citeFemale,
+            ],
+            [
+                'label' => 'CEA Male',
+                'value' => $ceaMale,
+            ],
+            [
+                'label' => 'CEA Female',
+                'value' => $ceaFemale,
+            ],
+            [
+                'label' => 'CAHS Male',
+                'value' => $cahsMale,
+            ],
+            [
+                'label' => 'CAHS Female',
+                'value' => $cahsFemale,
+            ],
+            [
+                'label' => 'CCJE Male',
+                'value' => $ccjeMale,
+            ],
+            [
+                'label' => 'CCJE Female',
+                'value' => $ccjeFemale,
+            ],
+            [
+                'label' => 'CELA Male',
+                'value' => $celaMale,
+            ],
+            [
+                'label' => 'CELA Female',
+                'value' => $celaFemale,
+            ],
+            [
+                'label' => 'CMA Male',
+                'value' => $cmaMale,
+            ],
+            [
+                'label' => 'CMA Female',
+                'value' => $cmaFemale,
+            ],
+        ];
+        return response()->json($chartData);
     }
 }

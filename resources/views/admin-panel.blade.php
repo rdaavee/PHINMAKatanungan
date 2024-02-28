@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 
     <title>Admin Dashboard | PHINMAKatanungan</title>
@@ -174,88 +175,51 @@
                     </div>
                 </div>
 
+                <canvas class="custom-chart" id="myChart" width="200" height="50"></canvas>
 
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col-6 py-1">
-                                        <h5 class="card-title">Overview</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul class="chart-list-out">
-                                            <li><span class="circle-blue"></span>Teacher</li>
-                                            <li><span class="circle-green"></span>Student</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="apexcharts-area"></div>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="col-md-12 col-lg-6 mb-5">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                <div class="col-6 py-1">
-                                        <h5 class="card-title">Overview</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul class="chart-list-out">
-                                            <li><span class="circle-blue"></span>Male</li>
-                                            <li><span class="circle-green"></span>Female</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-6">
-                                    </div>
-                                    <div class="col-6">
-                                        <ul class="chart-list-out">
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="bar"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <script>
+            async function fetchData() {
+                const response = await fetch('/chart-data');
+                const data = await response.json();
+                return data;
+            }
 
-        <!-- <div>
-            <div class="card">
-                <ul>
-                    @isset($userCountsByRole)
-                        @foreach ($userCountsByRole as $student_id => $count)
-                            <li>{{ $student_id }} : {{ $count }}</li>
-                        @endforeach
-                    @endisset
-                </ul>
-            </div>
-        </div>
+            document.addEventListener('DOMContentLoaded', async function() {
+                const chartData = await fetchData();
+                const chartData1 = await fetchData();
 
-        <div>
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Active Users</h4>
-                    <p>Total Users: @isset($userCounts){{ $userCounts }}@endisset</p>
-                </div>
-            </div>
-        </div> -->
+                const ctx = document.getElementById('myChart').getContext('2d');
 
-        
-
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: chartData.map(data => data.label),
+                        labels: chartData1.map(data => data.label),
+                        datasets: [
+                            {
+                                label: 'Male',
+                                data: chartData.map(data => data.value),
+                                backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                                borderColor: 'rgba(0, 255, 0, 1)',
+                                borderWidth: 0.2
+                            },
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
-        <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}"></script>
 
 
 </body>
