@@ -14,6 +14,31 @@ class StudentSeeder extends Seeder
     {
         $students = [
             [
+                'student_id' => '03-2223-043502',
+                'first_name' => 'Ranny',
+                'middle_name' => 'Tanny',
+                'last_name' => 'Arci',
+                'email' => 'rata.arci.up@phinmaed.com',
+                'password' => '12345678',
+                'year_level' => 'Second',
+                'course_id' => 'STEM',
+                'department_id' => 'SHS',
+                'school_id' => '01',
+            ],
+            [
+                'student_id' => '03-2223-044203',
+                'first_name' => 'Ranny1',
+                'middle_name' => 'Tanny3',
+                'last_name' => 'Arci2',
+                'gender' => 'Female',
+                'email' => 'rata.arci2.up@phinmaed.com',
+                'password' => '12345678',
+                'year_level' => 'Second',
+                'course_id' => 'STEM',
+                'department_id' => 'SHS',
+                'school_id' => '01',
+            ],
+            [
                 'student_id' => '03-2223-044501',
                 'first_name' => 'Ranier',
                 'middle_name' => 'Tan',

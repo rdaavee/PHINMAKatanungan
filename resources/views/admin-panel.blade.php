@@ -186,24 +186,33 @@
             }
 
             document.addEventListener('DOMContentLoaded', async function() {
-                const chartData = await fetchData();
-                const chartData1 = await fetchData();
+                const response = await fetch('/chart-data');
+                const data = await response.json();
+                const maleChartData = data.maleChartData;
+                const femaleChartData = data.femaleChartData;
 
                 const ctx = document.getElementById('myChart').getContext('2d');
-
+                
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: chartData.map(data => data.label),
-                        labels: chartData1.map(data => data.label),
+                        labels: maleChartData.map(data => data.label),
+                        labels: femaleChartData.map(data => data.label),
                         datasets: [
                             {
                                 label: 'Male',
-                                data: chartData.map(data => data.value),
-                                backgroundColor: 'rgba(0, 255, 0, 0.2)',
-                                borderColor: 'rgba(0, 255, 0, 1)',
-                                borderWidth: 0.2
+                                data: maleChartData.map(data => data.value),
+                                backgroundColor: 'rgba(26, 139, 147, .5)',
+                                borderColor: 'rgba(26, 139, 147, .5)',
+                                borderWidth: 1
                             },
+                            {
+                                label: 'Female',
+                                data: femaleChartData.map(data => data.value),
+                                backgroundColor: 'rgba(217, 189, 45, .5)',
+                                borderColor: 'rgba(217, 189, 45, .5)',
+                                borderWidth: 1
+                            }
                         ]
                     },
                     options: {
@@ -214,7 +223,9 @@
                         }
                     }
                 });
+
             });
+
         </script>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
