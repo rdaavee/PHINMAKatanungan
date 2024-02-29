@@ -7,8 +7,8 @@ body{
 }
 
 :root{
-    --blue-color: #495E57;
-    --cyan-color: #F4CE14;
+    --blue-color: #1A8B93;
+    --cyan-color: #D9BD2D;
     --grey-blue-color: #334962;
     --grey-color: #9ea4ac;
     --light-blue-color: #7b92ad;
@@ -153,7 +153,7 @@ a{
 }
 
 .navigation-bar{
-    height: 80px;
+    height: 60px;
     border-bottom: 1.5px solid rgba(158, 164, 172, 0.3);
 }
 
@@ -186,8 +186,8 @@ a{
     color: #fff;
 }
 
-.custom-thead th {
-    font-size: 12px; 
+.custom-th {
+    font-size: 10px;
 }
 
 .custom-thead td {
@@ -195,11 +195,11 @@ a{
 }
 
 .table thead th {
-    font-size: 14px;
+    font-size: 9px;
 }
 
 .table tbody td {
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .table-striped tbody tr:nth-child(odd) {
@@ -289,8 +289,8 @@ a{
 }
 
 .txt-announcement {
-    font-size: 10px;
-    padding: 5px;
+    font-size: 12px;
+    padding: 4px;
 }
 
 .btn-announcement {
@@ -311,6 +311,30 @@ a{
     .btn-announcement .txt-announcement {
         display: none;
     }
+}
+
+.pagination .page-item {
+    margin: 0 2px;
+}
+
+.pagination .page-item:hover {
+    color: #fff;
+}
+
+.pagination .page-link {
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #1A8B93;
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #1A8B93;
+    border-color: #1A8B93;
+    color: #fff;
 }
 
 ::-webkit-scrollbar {

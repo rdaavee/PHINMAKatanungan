@@ -132,8 +132,8 @@
                 <div class="row py-2 mt-2">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600;">Students</h2>
-                            <p class="text-grey">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Students Table</h2>
+                            <p class="text-grey" style="font-size: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
         </div>
 
 
-        <section id="table-box" class="m-5 table-responsive-sm">
+        <section id="table-box" class="m-4 table-responsive-sm">
                 {{-- <div id="status-alert-container">
                     @if (session('status'))
                         <div class="alert alert-success">{{ session('status')}} </div>
@@ -283,6 +283,7 @@
                 var studentId = button.getAttribute('data-student-id');
                 window.location.href = "{{ url('students') }}/" + studentId + "/edit";
             }
+            
 
         </script>
 

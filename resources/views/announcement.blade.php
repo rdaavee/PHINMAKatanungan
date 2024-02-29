@@ -86,7 +86,7 @@
 
 
                 <div class="navbar-sb-item mb-5">
-                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin controls</h5>
+                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin control</h5>
                     <ul class="navbar-sb-links p-0 list-unstyled">
 
                         <li class="navbar-sb-link my-3">
@@ -129,8 +129,8 @@
             <div class="container">
                 <div class="row py-2 mt-2">
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text mb-3">
-                            <h2 style="color: #D9BD2D; font-weight: 600;">Announcements</h2>
+                        <div class="dashboard-title-text">
+                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Announcements Table</h2>
                             <p class="text-grey" style="font-size: 10px;">Fill in the title and body of the announcement and press send. Students will receive a notification on their accounts.</p>
                         </div>
                     </div>
