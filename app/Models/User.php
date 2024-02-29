@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -19,15 +16,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'user_id',
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'gender',
         'email',
         'password',
         'user_role',
-        'year_level',
-        'course_id',
-        'school_id',
-        'profile_picture',
-        'post_count'
+        'year_level', //nullable
+        'course_id', //nullable
+        'department_id',
+        'school_id',        
     ];
 
     protected $primaryKey = 'user_id';
@@ -36,6 +35,11 @@ class User extends Authenticatable
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 
     public function posts()
@@ -67,6 +71,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-
 }

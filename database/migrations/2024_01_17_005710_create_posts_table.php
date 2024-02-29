@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
             $table->unsignedBigInteger('likes_count')->default(0);
             $table->string('title')->nullable();
             $table->longText('content');
             $table->enum('privacy', ['public', 'private'])->default('public');
-            $table->string('teacher_id')->nullable();
-            $table->string('student_id')->nullable();
-            $table->string('user_type');
             $table->timestamps();
 
-            $table->foreign('teacher_id')->references('teacher_id')->on('teachers')->onDelete('cascade');
-            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 

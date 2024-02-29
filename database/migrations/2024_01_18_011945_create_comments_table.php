@@ -13,17 +13,15 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
             $table->text('content');
             $table->unsignedBigInteger('post_id');
             $table->integer('upvotes_count')->default(0);
-            $table->string('teacher_id')->nullable();
-            $table->string('student_id')->nullable();
             $table->string('user_type');
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('teacher_id')->references('teacher_id')->on('teachers')->onDelete('cascade');
-            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 
