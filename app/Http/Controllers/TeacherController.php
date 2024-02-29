@@ -14,14 +14,16 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = User::where('user_role', 'Teacher')->paginate(5);
-        return view('view-teachers', compact('teachers'));
+        $teachers = User::where('user_role', 'Teacher')
+                    ->where('account_status', 'Active')
+                    ->paginate(5);
 
-        if (request() -> expectsJson()) {
-            return response() -> json(['teachers' => $teachers]);
+
+        if (request()->expectsJson()) {
+            return response()->json(['students' => $teachers]);
         }
 
-        return view('view-teachers', ['teachers' => $teachers]);
+        return view('view-teachers', compact('teachers'));
     }
 
     /**

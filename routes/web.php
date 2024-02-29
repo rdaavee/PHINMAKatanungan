@@ -56,6 +56,10 @@ Route::get('/view-students', function () {
     return view('view-students');
 });
 
+//BAN
+Route::get('users/{user_id}/ban', [StudentController::class, 'banUser']);
+Route::get('/view-banned-users', [StudentController::class, 'indexBannedUsers']);
+
 // STUDENTS
 Route::get('/view-students', [StudentController::class, 'index']);
 Route::get('students/{user_id}/edit', [StudentController::class, 'edit']);

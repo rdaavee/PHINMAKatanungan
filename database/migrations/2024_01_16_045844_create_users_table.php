@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->string('user_id')->primary(); //primary key for users table
+            $table->enum('account_status', ['Active', 'Banned'])->default('Active');
             $table->enum('user_role', ['Teacher', 'Student']);
             $table->string('first_name');
             $table->string('middle_name')->nullable();

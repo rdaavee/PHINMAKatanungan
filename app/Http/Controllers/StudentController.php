@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -13,14 +14,30 @@ class StudentController extends Controller
      */
     public function index() //WORKING
     {
-        $students = User::where('user_role', 'Student')->paginate(5);
-        return view('view-students', compact('students'));
+        $students = User::where('user_role', 'Student')
+                    ->where('account_status', 'Active')
+                    ->paginate(5);
+
 
         if (request()->expectsJson()) {
             return response()->json(['students' => $students]);
         }
 
-        return view('view-students', ['students' => $students]);
+        return view('view-students', compact('students'));
+
+    }
+
+    public function indexBannedUsers()
+    {
+        $bannedUsers = User::where('account_status', 'Banned')->paginate(5);
+
+
+        if (request()->expectsJson()) {
+            return response()->json(['bannedUsers' => $bannedUsers]);
+        }
+
+        return view('banned-users', compact('bannedUsers'));
+
     }
 
     /**
@@ -110,6 +127,15 @@ class StudentController extends Controller
             return redirect()->back()->with('status','Student Updated.');
         }
 
+    }
+
+    public function banUser($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $user->account_status = 'Banned';
+        $user->save();
+
+        return redirect()->back()->with('success', 'Student has been banned successfully.');
     }
 
     /**

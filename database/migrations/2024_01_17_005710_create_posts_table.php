@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->unsignedBigInteger('likes_count')->default(0);
+            $table->unsignedBigInteger('comments_count')->default(0);
             $table->string('title')->nullable();
             $table->longText('content');
             $table->enum('privacy', ['public', 'private'])->default('public');

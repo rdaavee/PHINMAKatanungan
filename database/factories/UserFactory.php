@@ -19,6 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'user_id' => $this->faker->unique()->uuid,
+            'account_status' => $this->faker->randomElement(['Active', 'Banned']),
             'user_role' => $this->faker->randomElement(['Teacher', 'Student']),
             'first_name' => $this->faker->firstName,
             'middle_name' => $this->faker->firstName,
