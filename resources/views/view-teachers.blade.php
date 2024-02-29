@@ -146,6 +146,7 @@
             <thead class="custom-thead">
                 <tr>
                     <th scope="col">Teacher ID</th>
+                    <th scope="col">Account Status</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Email</th>
@@ -161,6 +162,7 @@
                 @foreach ($teachers as $item)
                 <tr>
                     <td class="align-middle">{{ $item->user_id }}</td>
+                    <td class="align-middle">{{ $item->account_status }}</td>
                     <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
                     <td class="align-middle">{{ $item->gender }}</td>
                     <td class="align-middle">{{ $item->email }}</td>

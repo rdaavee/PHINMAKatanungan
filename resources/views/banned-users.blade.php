@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="{{ ('css/admin.css')}}">
     <script type="text/javascript" src="{{ ('js/admin.js') }}"></script>
 
-    <title>Student List</title>
+    <title>Banned List</title>
 
 </head>
 
 <body>
 
-    <div class="dashboard-pg">
+    <div class="dashboard-pg text-grey-blue">
         <nav class="navigation-bar d-flex align-items-center">
             <div class="container">
                 <div class="row align-items-center">
@@ -26,7 +26,7 @@
                         <button type="button" class="navbar-open-btn text-grey-blue me-3">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <div class="navbar-logo mb-2">
+                        <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
                     </div>
@@ -83,12 +83,24 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="navbar-sb-link my-3">
+                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
+                                <div class="text-light-blue d-flex align-items-center">
+                                    <span class="navbar-sb-icon me-3">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                    <a class="text-decoration-none" href="{{ url('/view-banned-users') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">banned users</span>
+                                    </a>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
 
                 <div class="navbar-sb-item mb-5">
-                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin controls</h5>
+                    <h5 class="text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">admin control</h5>
                     <ul class="navbar-sb-links p-0 list-unstyled">
 
                         <li class="navbar-sb-link my-3">
@@ -115,7 +127,11 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-sign-out"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">logout</span>
+                                    <a class="navbar-sb-text fs-14 fw-5 text-capitalize text-decoration-none" href="{{ route('admin.logout_handler') }}" onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();">
+                                        logout
+                                    </a>
+
+                                    <form action="{{ route('admin.logout_handler') }}" id="adminLogoutForm" method="POST">@csrf</form>
                                 </div>
                             </a>
                         </li>
@@ -124,7 +140,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- MAIN CONTENT STARTS HERE -->
 
         <div class="dashboard-main">
@@ -132,7 +148,7 @@
                 <div class="row py-2 mt-2">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Students Table</h2>
+                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Banned Users</h2>
                             <p class="text-grey" style="font-size: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
@@ -150,8 +166,9 @@
             <table class="table text-center table-striped">
                 <thead class="custom-thead">
                     <tr>
-                        <th scope="col">Student ID</th>
+                        <th scope="col">User ID</th>
                         <th scope="col">Account Status</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Gender</th>
                         <th scope="col">Email</th>
@@ -166,10 +183,11 @@
                     </tr>
                 </thead>
                     <tbody>
-                        @foreach ($students as $item)
+                        @foreach ($bannedUsers as $item)
                         <tr>
                             <td class="align-middle">{{ $item->user_id }}</td>
                             <td class="align-middle">{{ $item->account_status }}</td>
+                            <td class="align-middle">{{ $item->user_role }}</td>
                             <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
                             <td class="align-middle">{{ $item->gender }}</td>
                             <td class="align-middle">{{ $item->email }}</td>
@@ -278,7 +296,7 @@
                     </tbody>
             </table>   
             <div class="d-flex justify-content-end">
-                {{ $students->links() }}
+                {{ $bannedUsers->links() }}
             </div>
         </section>
 

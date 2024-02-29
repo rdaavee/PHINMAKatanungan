@@ -82,6 +82,18 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="navbar-sb-link my-3">
+                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
+                                <div class="text-light-blue d-flex align-items-center">
+                                    <span class="navbar-sb-icon me-3">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                    <a class="text-decoration-none" href="{{ url('/view-banned-users') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">banned users</span>
+                                    </a>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
