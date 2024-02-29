@@ -58,16 +58,16 @@ Route::get('/view-students', function () {
 
 // STUDENTS
 Route::get('/view-students', [StudentController::class, 'index']);
-Route::get('students/{student_id}/edit', [StudentController::class, 'edit']);
-Route::put('students/{student_id}/edit', [StudentController::class, 'update']);
+Route::get('students/{user_id}/edit', [StudentController::class, 'edit']);
+Route::put('students/{user_id}/edit', [StudentController::class, 'update']);
 Route::post('students/create', [StudentController::class, 'store']);
-Route::get('students/{id}/delete',[StudentController::class, 'destroy']);
+Route::get('students/{user_id}/delete',[StudentController::class, 'destroy']);
 
 //TEACHERS
 Route::get('/view-teachers', [TeacherController::class, 'index']);
-Route::get('teachers/{teacher_id}/edit', [TeacherController::class, 'edit']);
-Route::put('teachers/{teacher_id}/edit', [TeacherController::class, 'update']);
-Route::get('teachers/{id}/delete',[TeacherController::class, 'destroy']);
+Route::get('teachers/{user_id}/edit', [TeacherController::class, 'edit']);
+Route::put('teachers/{user_id}/edit', [TeacherController::class, 'update']);
+Route::get('teachers/{user_id}/delete',[TeacherController::class, 'destroy']);
 
 //ANNOUNCEMENTS
 Route::get('announcements/{id}/edit', [AdminController::class, 'viewEditAnnouncement']);

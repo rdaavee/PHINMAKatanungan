@@ -160,7 +160,7 @@
             <tbody>
                 @foreach ($teachers as $item)
                 <tr>
-                    <td class="align-middle">{{ $item->teacher_id }}</td>
+                    <td class="align-middle">{{ $item->user_id }}</td>
                     <td class="align-middle">{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</td>
                     <td class="align-middle">{{ $item->gender }}</td>
                     <td class="align-middle">{{ $item->email }}</td>
@@ -171,10 +171,10 @@
                     <td class="align-middle">{{ $item->followers_count }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
-                            <a href="{{ url('teachers/'.$item->teacher_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item -> teacher_id }}" data-bs-toggle="modal">
+                            <a href="{{ url('teachers/'.$item->user_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item->user_id }}" data-bs-toggle="modal">
                                 <i class="fa fa-pencil action-icon"></i>
                             </a>
-                            <a href="{{ url('teachers/'.$item->teacher_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
+                            <a href="{{ url('teachers/'.$item->user_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
                                 <i class="fa fa-ban action-icon"></i>
                             </a>
                         </div>
@@ -188,13 +188,13 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-proceed" data-teacher-id="{{ $item->teacher_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                    <button type="button" class="btn btn-proceed" data-teacher-id="{{ $item->user_id }}" onclick="confirmDeletion(this)">Confirm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </tr>
-                <div class="modal fade" id="editModal{{ $item->teacher_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->teacher_id }}" aria-hidden="true">
+                <div class="modal fade" id="editModal{{ $item->user_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->user_id }}" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -204,7 +204,7 @@
                             <div class="modal-body">
                                 <!-- Your edit form goes here -->
                                 <div class="row g-3">
-                                    <form action="{{ url('teachers/'.$item->teacher_id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ url('teachers/'.$item->user_id.'/edit') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="col-md-4 mb-2">

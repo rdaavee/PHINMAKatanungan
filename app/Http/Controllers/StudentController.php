@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -13,7 +13,7 @@ class StudentController extends Controller
      */
     public function index() //WORKING
     {
-        $students = Student::orderBy('created_at', 'desc')->paginate(5);
+        $students = User::where('user_role', 'Student')->paginate(5);
         return view('view-students', compact('students'));
 
         if (request()->expectsJson()) {
@@ -37,7 +37,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_id' => 'required|max:255|string',
+            'user_id' => 'required|max:255|string',
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
@@ -51,7 +51,7 @@ class StudentController extends Controller
         ]);
 
         $requestData = [
-            'student_id'=> $request->student_id,
+            'user_id'=> $request->user_id,
             'first_name'=> $request->first_name,
             'middle_name'=> $request->middle_name,
             'last_name'=> $request->last_name,
@@ -66,7 +66,7 @@ class StudentController extends Controller
 
         try {
             Log::info('Before creating student record');
-            $student = Student::create($requestData);
+            $student = User::create($requestData);
             Log::info('After creating student record');
     
         } catch (\Exception $e) {
@@ -79,7 +79,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show(User $user)
     {
         //
     }
@@ -87,19 +87,19 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($student_id)
+    public function edit($user_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = User::findOrFail($user_id);
         return view('view-students', ['student' => $student]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $student_id)
+    public function update(Request $request, $user_id)
     {
 
-        $student = Student::findOrFail($student_id);
+        $student = User::findOrFail($user_id);
         $student->update($request->all());
         
         if (request()->expectsJson()) {
@@ -115,9 +115,9 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $student_id) //WORKING
+    public function destroy(string $user_id) //WORKING
     {
-        $student = Student::findOrFail($student_id);
+        $student = User::findOrFail($user_id);
         $student->delete();
 
         return redirect('view-students')->with('status','Student Deleted.');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::orderBy('created_at', 'desc')->paginate(5);
+        $teachers = User::where('user_role', 'Teacher')->paginate(5);
         return view('view-teachers', compact('teachers'));
 
         if (request() -> expectsJson()) {
@@ -38,7 +38,7 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'teacher_id' => 'required|max:255|string',
+            'user_id' => 'required|max:255|string',
             'first_name' => 'required|max:255|string',
             'middle_name' => 'required|max:255|string',
             'last_name' => 'required|max:255|string',
@@ -50,7 +50,7 @@ class TeacherController extends Controller
         ]);
 
         $requestData = [
-            'teacher_id' => $request -> teacher_id,
+            'user_id' => $request -> user_id,
             'first_name' => $request -> first_name,
             'middle_name' => $request -> middle_name,
             'last_name' => $request -> last_name,
@@ -63,7 +63,7 @@ class TeacherController extends Controller
 
         try {
             Log::info('Before creating teacher record');
-            $teacher = Teacher::create($requestData);
+            $teacher = User::create($requestData);
             Log::info('After creating teacher record');
 
         } catch (Exception $e) {
@@ -77,18 +77,18 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($teacher_id)
+    public function edit($user_id)
     {
-        $teacher = Teacher::findOrFail($teacher_id);
+        $teacher = User::findOrFail($user_id);
         return view('edit-teacher', ['teacher' => $teacher]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $teacher_id)
+    public function update(Request $request, $user_id)
     {
-        $teacher = Teacher::findOrFail($teacher_id);
+        $teacher = User::findOrFail($user_id);
         $teacher->update($request->all());
         
         if (request()->expectsJson()) {
@@ -103,9 +103,9 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($teacher_id)
+    public function destroy($user_id)
     {
-        $teacher = Teacher::findOrFail($teacher_id);
+        $teacher = User::findOrFail($user_id);
         $teacher -> delete();
 
         return redirect('view-teachers') -> with('status', 'Teacher Deleted');
