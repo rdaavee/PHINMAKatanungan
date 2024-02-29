@@ -22,6 +22,10 @@ return [
         'driver' => 'eloquent',
         'model' => App\Models\Admin::class,
     ],
+    'api' => [
+        'driver' => 'sanctum',
+        'provider' => 'users',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +59,9 @@ return [
             'driver' => 'passport',
             'provider' => 'admins',
         ],
-    
-        'teachers' => [
-            'driver' => 'session',
-            'provider' => 'teachers',
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'users',
         ],
     ],
 
@@ -83,13 +86,9 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Student::class,
+            'model' => App\Models\User::class,
         ],
 
-        'teachers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Teacher::class,
-        ],
     
         'admins' => [
             'driver' => 'eloquent',

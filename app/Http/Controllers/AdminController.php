@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -111,82 +112,103 @@ class AdminController extends Controller
     public function chartData()
         {
             // TEACHERS
-            $teacherSHS = Teacher::where('department_id', 'SHS')
+            $teacherSHS = User::where('department_id', 'SHS')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCITE = Teacher::where('department_id', 'CITE')
+            $teacherCITE = User::where('department_id', 'CITE')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCEA = Teacher::where('department_id', 'CEA')
+            $teacherCEA = User::where('department_id', 'CEA')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCAHS = Teacher::where('department_id', 'CAHS')
+            $teacherCAHS = User::where('department_id', 'CAHS')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCCJE = Teacher::where('department_id', 'CCJE')
+            $teacherCCJE = User::where('department_id', 'CCJE')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCELA = Teacher::where('department_id', 'CELA')
+            $teacherCELA = User::where('department_id', 'CELA')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
-            $teacherCMA = Teacher::where('department_id', 'CMA')
+            $teacherCMA = User::where('department_id', 'CMA')
+                            ->where('user_role', 'Teacher')
                             ->count();
 
             // STUDENTS
-            $shsMale = Student::where('department_id', 'SHS')
+            $shsMale = User::where('department_id', 'SHS')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $shsFemale = Student::where('department_id', 'SHS')
+            $shsFemale = User::where('department_id', 'SHS')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $citeMale = Student::where('department_id', 'CITE')
+            $citeMale = User::where('department_id', 'CITE')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $citeFemale = Student::where('department_id', 'CITE')
+            $citeFemale = User::where('department_id', 'CITE')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $ceaMale = Student::where('department_id', 'CEA')
+            $ceaMale = User::where('department_id', 'CEA')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $ceaFemale = Student::where('department_id', 'CEA')
+            $ceaFemale = User::where('department_id', 'CEA')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $cahsMale = Student::where('department_id', 'CAHS')
+            $cahsMale = User::where('department_id', 'CAHS')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $cahsFemale = Student::where('department_id', 'CAHS')
+            $cahsFemale = User::where('department_id', 'CAHS')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $ccjeMale = Student::where('department_id', 'CCJE')
+            $ccjeMale = User::where('department_id', 'CCJE')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $ccjeFemale = Student::where('department_id', 'CCJE')
+            $ccjeFemale = User::where('department_id', 'CCJE')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $celaMale = Student::where('department_id', 'CELA')
+            $celaMale = User::where('department_id', 'CELA')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $celaFemale = Student::where('department_id', 'CELA')
+            $celaFemale = User::where('department_id', 'CELA')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
                             
-            $cmaMale = Student::where('department_id', 'CMA')
+            $cmaMale = User::where('department_id', 'CMA')
                             ->where('gender', 'Male')
+                            ->where('user_role', 'Student')
                             ->count();
 
-            $cmaFemale = Student::where('department_id', 'CMA')
+            $cmaFemale = User::where('department_id', 'CMA')
                             ->where('gender', 'Female')
+                            ->where('user_role', 'Student')
                             ->count();
 
             $maleChartData = [

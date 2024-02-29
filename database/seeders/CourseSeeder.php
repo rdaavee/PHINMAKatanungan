@@ -17,6 +17,10 @@ class CourseSeeder extends Seeder
     {
         $courses = [
             [
+                'course_id' => 'NONE',
+                'name' => 'The user is a teacher',
+            ],
+            [
                 'course_id' => 'BSIT',
                 'name' => 'Bachelor of Science in Information Technology',
                 'department_id' => 'CITE'

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->enum('gender', ['Male', 'Female']);
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('year_level', ['SHS', 'First', 'Second', 'Third', 'Fourth'])->nullable();
-            $table->string('course_id')->nullable();
+            $table->enum('year_level', ['NONE','SHS', 'First', 'Second', 'Third', 'Fourth'])->nullable();
+            $table->string('course_id')->default(null)->nullable();
             $table->string('department_id')->nullable(); 
             $table->string('school_id')->nullable();
             $table->integer('post_count')->default(0);
