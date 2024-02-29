@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentMobileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Api\ApiStudentController;
+use App\Http\Controllers\PostsMobileController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserMobileController;
 /*
@@ -31,6 +32,7 @@ Route::middleware('auth:api')->get('/profile', function (Request $request) {
 Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/storeteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
+Route::post('/post', [PostsMobileController::class, 'storePost']);
 
 
 Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMiddleware('auth:sanctum');
