@@ -13,4 +13,8 @@ class Department extends Model
     public $incrementing = false; 
 
     protected $fillable = ['name', 'department_id'];
+
+    public function posts() {
+        return $this->belongsToMany(Post::class);
+    }
 }

@@ -14,7 +14,7 @@ class Post extends Model
         'title', 
         'content', 
         'privacy', 
-    ]; //add solved
+    ];
 
     public function student()
     {
@@ -29,5 +29,9 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function departments() {
+        return $this->belongsToMany(Department::class);
     }
 }
