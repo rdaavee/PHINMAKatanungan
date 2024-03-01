@@ -144,10 +144,10 @@
             <div class="container">
                 <div class="row py-2 mt-4">
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text">
+                        <!-- <div class="dashboard-title-text">
                             <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Dashboard</h2>
                             <p class="text-grey" style="font-size: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -187,7 +187,14 @@
                     </div>
                 </div>
 
-                <canvas class="custom-chart" id="myChart" width="200" height="65"></canvas>
+                <div class="charts">
+                    <div class="chart">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                    <div class="chart" id="pie-chart">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
 
 
         <script>
@@ -200,43 +207,49 @@
             document.addEventListener('DOMContentLoaded', async function() {
                 const response = await fetch('/chart-data');
                 const data = await response.json();
-                const maleChartData = data.maleChartData;
-                const femaleChartData = data.femaleChartData;
-
+                const studentsChartData = data.studentsChartData;
                 const teachersChartData = data.teachersChartData;
+                const activeChartData = data.activeChartData;
+                const bannedChartData = data.bannedChartData;
 
-                const ctx = document.getElementById('myChart').getContext('2d');
+                const ctx = document.getElementById('lineChart').getContext('2d');
                 
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: maleChartData.map(data => data.label),
-                        labels: femaleChartData.map(data => data.label),
-                        datasets: [
-                            {
-                                label: 'Male',
-                                data: maleChartData.map(data => data.value),
-                                backgroundColor: 'rgba(26, 139, 147, .5)',
-                                borderColor: 'rgba(26, 139, 147, .5)',
-                                borderWidth: 1
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: studentsChartData.map(data => data.label),
+                                labels: teachersChartData.map(data => data.label),
+                                datasets: [
+                                    {
+                                        label: 'Students',
+                                        data: studentsChartData.map(data => data.value),
+                                        backgroundColor: 'rgba(26, 139, 147, .8)',
+                                        borderColor: 'rgba(26, 139, 147, .8)',
+                                    },
+                                    {
+                                        label: 'Teachers',
+                                        data: teachersChartData.map(data => data.value),
+                                        backgroundColor: 'rgba(217, 189, 45, .8)',
+                                        borderColor: 'rgba(217, 189, 45, .8)',
+                                    },
+
+                                ]
                             },
-                            {
-                                label: 'Female',
-                                data: femaleChartData.map(data => data.value),
-                                backgroundColor: 'rgba(217, 189, 45, .5)',
-                                borderColor: 'rgba(217, 189, 45, .5)',
-                                borderWidth: 1
+                            options: {
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
                             },
-                            {
-                                label: 'Teachers',
-                                data: teachersChartData.map(data => data.value),
-                                backgroundColor: 'rgba(66, 138, 51, .5)',
-                                borderColor: 'rgba(66, 138, 51, .5)',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
+                            title: {
+                                display: true,
+                                text: 'Registered Users',
+                            },
+                        },
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        width: 10,
+                        height: 65,
                         scales: {
                             y: {
                                 beginAtZero: true
@@ -245,6 +258,43 @@
                     }
                 });
 
+                const ctx2 = document.getElementById('pieChart').getContext('2d');
+                        
+                        new Chart(ctx2, {
+                            type: 'pie',
+                            data: {
+                                labels: activeChartData.map(data => data.label),
+                                datasets: [
+                                    {
+                                        data: activeChartData.map(data => data.value),
+                                        backgroundColor: [
+                                        'rgba(78, 159, 61, .8)',
+                                        'rgba(25, 26, 25, .8)',
+                                        'rgba(215, 35, 35, .8)',
+                                        'rgba(251, 161, 183, .8)',
+                                        'rgba(124, 147, 195, .8)',
+                                        'rgba(29, 36, 202, .8)',
+                                        'rgba(244, 206, 20, .8)',
+                                        'rgba(199, 200, 204, .8)',
+                                        ],
+                                    },
+                                ]
+                            },
+                            options: {
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Active Users',
+                            },
+                        },
+                        maintainAspectRatio: true,
+                        responsive: true,
+                    }
+                });
             });
 
         </script>

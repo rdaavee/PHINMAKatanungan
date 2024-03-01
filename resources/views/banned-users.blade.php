@@ -157,7 +157,7 @@
         </div>
 
 
-        <section id="table-box" class="m-4 table-responsive-sm">
+        <section id="table-box" class="m-3 table-responsive-sm">
                 {{-- <div id="status-alert-container">
                     @if (session('status'))
                         <div class="alert alert-success">{{ session('status')}} </div>
@@ -212,7 +212,7 @@
                                 <div class="modal-dialog modal-style">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Do you want ban this account?</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">Do you want unban this account?</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-footer">
@@ -231,18 +231,10 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <!-- Your edit form goes here -->
                                         <div class="row g-3">
                                             <form action="{{ url('students/'.$item->user_id.'/edit') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
-                                                <div class="col-md-2 mb-2 "> 
-                                                    <label for="account_status" class="form-label">Gender</label>
-                                                    <select name="account_status" id="account_status" class="form-select">
-                                                        <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
-                                                        <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>
-                                                    </select>
-                                                </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">First Name</label>
                                                     <input type="text" class="form-control" name="first_name" value="{{ $item->first_name }}" >
@@ -255,9 +247,16 @@
                                                     <label for="" class="form-label">Last Name</label>
                                                     <input type="text" class="form-control" name="last_name" value="{{ $item->last_name }}" />
                                                 </div>
-                                                <div class="col-md-10 mb-2">
+                                                <div class="col-md-8 mb-2">
                                                     <label for="" class="form-label">Email</label>
                                                     <input type="text" class="form-control" name="email" value="{{ $item->email }}" />
+                                                </div>
+                                                <div class="col-md-2 mb-2"> 
+                                                    <label for="account_status" class="form-label">Gender</label>
+                                                    <select name="account_status" id="account_status" class="form-select">
+                                                        <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                        <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-2 mb-2 "> 
                                                     <label for="gender" class="form-label">Gender</label>

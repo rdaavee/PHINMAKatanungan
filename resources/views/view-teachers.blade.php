@@ -83,6 +83,18 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="navbar-sb-link my-3">
+                            <a href="#" class="text-decoration-none d-flex align-items-center justify-content-between">
+                                <div class="text-light-blue d-flex align-items-center">
+                                    <span class="navbar-sb-icon me-3">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                    <a class="text-decoration-none" href="{{ url('/view-banned-users') }}">
+                                        <span class="navbar-sb-text fs-14 fw-5 text-capitalize">banned users</span>
+                                    </a>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -141,7 +153,7 @@
         </div>
 
 
-    <section id="table-box" class="m-4 table-responsive-sm">
+    <section id="table-box" class="m-3 table-responsive-sm">
         <table class="table text-center table-striped">
             <thead class="custom-thead">
                 <tr>
@@ -200,7 +212,6 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <!-- Your edit form goes here -->
                                 <div class="row g-3">
                                     <form action="{{ url('teachers/'.$item->user_id.'/edit') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -217,10 +228,17 @@
                                             <label for="" class="form-label">Last Name</label>
                                             <input type="text" class="form-control" name="last_name" value="{{ $item->last_name }}" id="" autocomplete="off">
                                         </div>
-                                        <div class="col-md-10 mb-2">
+                                        <div class="col-md-8 mb-2">
                                             <label for="" class="form-label">Email</label>
                                             <input type="email" class="form-control" name="email" value="{{ $item->email }}" id="" autocomplete="off">
                                         </div>
+                                        <div class="col-md-2 mb-2 "> 
+                                                    <label for="account_status" class="form-label">Status</label>
+                                                    <select name="account_status" id="account_status" class="form-select">
+                                                        <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                        <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>
+                                                    </select>
+                                                </div>
                                         <div class="col-md-2 mb-2">
                                             <label for="gender" class="form-label">Gender</label>
                                             <select name="gender" id="gender" class="form-select">

@@ -207,11 +207,11 @@ a{
 }
 
 .table-striped tbody tr:nth-child(even) {
-    background-color: #F5F8FF;
+    background-color: #1a8b9313;
 }
 
 .table {
-    border-radius: 8px;
+    border-radius: 2px;
     overflow: hidden; 
 }
 
@@ -264,7 +264,7 @@ a{
 }
 
 .custom-textarea .form-control {
-    height: 240px;
+    height: 220px;
     padding: 15px;
 }
 
@@ -298,10 +298,27 @@ a{
     margin-right: 10px;
 }
 
-/* Default styles for larger screens */
 .btn-announcement .icon-placeholder {
     display: none;
 }
+
+/* CHARTS */
+.charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.chart {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
 
 @media (max-width: 767px) {
     .btn-announcement .icon-placeholder {
