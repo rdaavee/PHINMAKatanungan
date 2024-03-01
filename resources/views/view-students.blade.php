@@ -219,7 +219,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="col-md-2 mb-2 "> 
-                                                    <label for="account_status" class="form-label">Gender</label>
+                                                    <label for="account_status" class="form-label">Account Status</label>
                                                     <select name="account_status" id="account_status" class="form-select">
                                                         <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
                                                         <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>

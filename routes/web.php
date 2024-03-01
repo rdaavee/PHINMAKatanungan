@@ -89,17 +89,3 @@ Route::get('/reports', function () {
 });
 
 Route::get('/images/{filename}', 'ImageController@showImage');
-
-// Route::get('/login', [AuthManager::class, 'login'])->name('login');
-// Route::post('/login', [AuthManager::class, 'loginPost'])->name('login_post');
-
-// Route::get('/signup', [AuthManager::class, 'signup'])->name('signup');
-// Route::post('/signup', [AuthManager::class, 'signupPost'])->name('signup_post');
-
-// Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget_password');
-// Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name('forget_password_post');
-
-// Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'resetPassword'])->name('reset_password');
-// Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset_password_post');
-
-// Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
