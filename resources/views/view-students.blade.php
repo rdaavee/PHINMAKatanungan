@@ -160,8 +160,6 @@
                         <th scope="col">Department</th>
                         <th scope="col">School</th>
                         <th scope="col">Posts</th>
-                        <th scope="col">Following</th>
-                        <th scope="col">Followers</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -178,8 +176,6 @@
                             <td class="align-middle">{{ $item->department_id }}</td>
                             <td class="align-middle">{{ $item->school_id }}</td>
                             <td class="align-middle">{{ $item->post_count }}</td>
-                            <td class="align-middle">{{ $item->following_count }}</td>
-                            <td class="align-middle">{{ $item->followers_count }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="{{ url('students/'.$item->user_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item->user_id}}" data-bs-toggle="modal">

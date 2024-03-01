@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('comments_count')->default(0);
             $table->string('title')->nullable();
             $table->longText('content');
-            $table->enum('privacy', ['public', 'private'])->default('public');
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');

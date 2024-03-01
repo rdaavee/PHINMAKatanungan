@@ -26,8 +26,6 @@ return new class extends Migration
             $table->string('department_id')->nullable(); 
             $table->string('school_id')->nullable();
             $table->integer('post_count')->default(0);
-            $table->integer('followers_count')->default(0);
-            $table->integer('following_count')->default(0);
             $table->string('api_token')->nullable();
             $table->timestamps();
 
