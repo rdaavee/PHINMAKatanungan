@@ -141,21 +141,12 @@
         </div>
 
         <div class="dashboard-main">
-            <div class="container">
-                <div class="row py-2 mt-4">
-                    <div class="col-12 d-flex justify-content-between align-items-center">
-                        <!-- <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Dashboard</h2>
-                            <p class="text-grey" style="font-size: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div> -->
-                    </div>
-                </div>
-
-                <div class="position-absolute top-0 end-0 p-3 me-4">
-                    <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none btn-announcement" data-bs-toggle="modal" data-bs-target="#announcementModal">
-                        <span class="icon-placeholder fa fa-plus"></span><h5 class="txt-announcement">Create Announcement</h5>
-                    </button>
-                </div>
+            
+            <div class="position-absolute top-0 end-0 p-3 me-4">
+                <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none btn-announcement" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                    <span class="icon-placeholder fa fa-plus"></span><h5 class="txt-announcement">Create Announcement</h5>
+                </button>
+            </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="announcementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
@@ -186,13 +177,74 @@
                         </div>
                     </div>
                 </div>
+                
+ 
 
-                <div class="charts">
-                    <div class="chart">
-                        <canvas id="lineChart"></canvas>
+
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="charts">
+                            <div class="chart">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                            <div class="chart" id="pie-chart">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <div class="chart" id="pie-chart">
-                        <canvas id="pieChart"></canvas>
+                </section>
+
+
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="cards">
+                            <div class="card card-registered">
+                                <div class="card-content">
+                                    <div class="icon-box">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="text-content">
+                                        <div>
+                                            <div class="number">10</div>
+                                        </div>
+                                        <div class="card-name">Registered Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-active">
+                                <div class="card-content">
+                                    <div class="icon-box">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="text-content">
+                                        <div class="number">1217</div>
+                                        <div class="card-name">Active Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-comment">
+                                <div class="card-content">
+                                    <div class="icon-box">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="text-content">
+                                        <div class="number">1217</div>
+                                        <div class="card-name">Comments</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-post">
+                                <div class="card-content">
+                                    <div class="icon-box">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="text-content">
+                                        <div class="number">1217</div>
+                                        <div class="card-name">Posts</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -223,14 +275,14 @@
                                     {
                                         label: 'Students',
                                         data: studentsChartData.map(data => data.value),
-                                        backgroundColor: 'rgba(26, 139, 147, .8)',
-                                        borderColor: 'rgba(26, 139, 147, .8)',
+                                        backgroundColor: 'rgba(26, 139, 147, .9)',
+                                        borderColor: 'rgba(26, 139, 147, 1)',
                                     },
                                     {
                                         label: 'Teachers',
                                         data: teachersChartData.map(data => data.value),
-                                        backgroundColor: 'rgba(217, 189, 45, .8)',
-                                        borderColor: 'rgba(217, 189, 45, .8)',
+                                        backgroundColor: 'rgba(217, 189, 45, .9)',
+                                        borderColor: 'rgba(217, 189, 45, 1)',
                                     },
 
                                 ]
@@ -268,15 +320,16 @@
                                     {
                                         data: activeChartData.map(data => data.value),
                                         backgroundColor: [
-                                        'rgba(78, 159, 61, .8)',
-                                        'rgba(25, 26, 25, .8)',
-                                        'rgba(215, 35, 35, .8)',
-                                        'rgba(251, 161, 183, .8)',
-                                        'rgba(124, 147, 195, .8)',
-                                        'rgba(29, 36, 202, .8)',
-                                        'rgba(244, 206, 20, .8)',
-                                        'rgba(199, 200, 204, .8)',
+                                        '#09921E',
+                                        '#000000',
+                                        '#7C0505',
+                                        'rgba(251, 161, 183, 1)',
+                                        'rgba(124, 147, 195, 1)',
+                                        '#00A3FF',
+                                        'rgba(244, 206, 20, 1)',
+                                        'rgba(199, 200, 204, 1)',
                                         ],
+                                        borderColor: 'rgba(255, 255, 255, .4)',
                                     },
                                 ]
                             },

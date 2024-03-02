@@ -237,22 +237,22 @@
                                                 @method('PUT')
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" name="first_name" value="{{ $item->first_name }}" >
+                                                    <input type="text" class="form-control" name="first_name" value="{{ $item->first_name }}" disabled>
                                                 </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">Middle Name</label>
-                                                    <input type="text" class="form-control" name="middle_name" value="{{ $item->middle_name }}" />
+                                                    <input type="text" class="form-control" name="middle_name" value="{{ $item->middle_name }}" disabled/>
                                                 </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" name="last_name" value="{{ $item->last_name }}" />
+                                                    <input type="text" class="form-control" name="last_name" value="{{ $item->last_name }}" disabled/>
                                                 </div>
                                                 <div class="col-md-8 mb-2">
                                                     <label for="" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" name="email" value="{{ $item->email }}" />
+                                                    <input type="text" class="form-control" name="email" value="{{ $item->email }}" disabled/>
                                                 </div>
                                                 <div class="col-md-2 mb-2"> 
-                                                    <label for="account_status" class="form-label">Gender</label>
+                                                    <label for="account_status" class="form-label">Status</label>
                                                     <select name="account_status" id="account_status" class="form-select">
                                                         <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
                                                         <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>
@@ -260,7 +260,7 @@
                                                 </div>
                                                 <div class="col-md-2 mb-2 "> 
                                                     <label for="gender" class="form-label">Gender</label>
-                                                    <select name="gender" id="gender" class="form-select">
+                                                    <select name="gender" id="gender" class="form-select" disabled>
                                                         <option value="Male" {{ $item->gender == 'Male' ? 'selected' : '' }}>Male</option>
                                                         <option value="Female" {{ $item->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                                     </select>

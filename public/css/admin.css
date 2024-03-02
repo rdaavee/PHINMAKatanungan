@@ -288,6 +288,11 @@ a{
     font-size: 12px;
 }
 
+input[disabled]:hover,
+select[disabled]:hover {
+    cursor: not-allowed;
+}
+
 .txt-announcement {
     font-size: 12px;
     padding: 4px;
@@ -302,27 +307,139 @@ a{
     display: none;
 }
 
+.main {
+    position: relative;
+    top: 30px;
+    width: calc(100% - 260px);
+    left: 140px;
+    background-color: #fff;
+}
+
+.cards {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cards .card {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 1px solid #cfcfcfda;
+}
+
+.card-registered {
+    background: #9da5b123;
+    transition: var(--trans);
+}
+
+.card-active {
+    background: #9da5b123;
+    transition: var(--trans);
+}
+
+.card-comment {
+    background: #9da5b123;
+    transition: var(--trans);
+}
+
+.card-post {
+    background: #9da5b123;
+    transition: var(--trans);
+}
+
+.card:hover {
+    background: #9da5b150;
+    transition: var(--trans) ease-in-out;
+}
+
+.number {
+    font-size: 30px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+}
+
+.card-name {
+    color: #000;
+    font-weight: 200;
+    text-align: center;
+}
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box i {
+    font-size: 25px;
+    color: #000;
+}
+
+
 /* CHARTS */
 .charts {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 30px;
     width: 100%;
-    padding: 10px;
+    margin-top: 35px;
 }
 
 .chart {
-    background: #fff;
-    padding: 10px;
+    background: #9da5b123;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #cfcfcfda;
     width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .charts {
+        grid-template-columns: 1fr;
+    }
+
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .charts {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 
 @media (max-width: 767px) {
+    .btn-announcement {
+        height: auto;
+        padding: 8px 15px;
+    }
+
     .btn-announcement .icon-placeholder {
         display: inline-block;
+        margin-right: 5px;
     }
 
     .btn-announcement .txt-announcement {
@@ -469,7 +586,7 @@ a{
     border-color: var(--white-color);
 }
 
-.chart-list-out {
+/* .chart-list-out {
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;-webkit-box-align:center;-ms-flex-align:center;
@@ -514,4 +631,4 @@ a{
 
 .chart-list-out.student-ellips {
     margin-left:auto
-}
+} */
