@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -48,5 +49,10 @@ class PostsMobileController extends Controller
 
         return response()->json(['posts' => $posts], 200);
     }
-    
+    public function getAnnouncements()
+    {
+        $announcement = Announcement::get();
+
+        return response()->json(['announcements' => $announcement], 200);
+    }
 }
