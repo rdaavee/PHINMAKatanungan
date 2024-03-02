@@ -11,11 +11,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'user_id',
         'account_status',
@@ -26,10 +21,10 @@ class User extends Authenticatable
         'gender',
         'email',
         'password',
-        'year_level', 
-        'course_id', 
+        'year_level',
+        'course_id',
         'department_id',
-        'school_id',        
+        'school_id',
     ];
 
     protected $primaryKey = 'user_id';
@@ -47,7 +42,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'user_id', 'user_id');
     }
 
     public function school()
@@ -55,21 +50,11 @@ class User extends Authenticatable
         return $this->belongsTo(School::class);
     }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
