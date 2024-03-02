@@ -13,8 +13,8 @@ class Post extends Model
         'user_id', 
         'title', 
         'content', 
-        'privacy', 
     ];
+
 
     public function student()
     {
@@ -24,6 +24,11 @@ class Post extends Model
     public function teacher()
     {
         return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id','user_id');
     }
 
     public function comments()
