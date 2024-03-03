@@ -12,6 +12,7 @@ body{
     --grey-blue-color: #334962;
     --grey-color: #9ea4ac;
     --light-blue-color: #7b92ad;
+    --light-grey-bgcolor: #E9EBF0;
     --light-grey-color: #f4f6fa;
     --white-color: #fff;
     --trans: all 300ms ease-in-out;
@@ -37,6 +38,10 @@ a{
 
 .bg-light-grey {
     background-color: var(--light-grey-color);
+}
+
+.bgcolor-light-grey {
+    background-color: var(--light-grey-bgcolor);
 }
 
 
@@ -157,28 +162,21 @@ a{
     border-bottom: 1.5px solid rgba(158, 164, 172, 0.3);
 }
 
-.notification-btn{
-    font-size: 19px;
-}
-
-.info-icon{
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    transition: var(--trans);
-}
-
 .navigation-sidebar{
     z-index: 999;
     position: fixed;
     left: 0;
     top: 0;
-    width: 280px;
+    width: 350px;
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     transform: translateX(-100%);
     transition: all 200ms ease-in-out;
-    overflow-y: scroll;
+}
+
+.search-bar {
+    width: 300px;
+    margin-bottom: 10px;
 }
 
 .custom-thead {
@@ -278,6 +276,14 @@ a{
     color: #fff;
 }
 
+.btn-create {
+    background-color: #F5F5F5;
+}
+
+.btn-create:hover {
+    background-color: #e0e0e0;
+}
+
 .form-label {
     font-size: 12px;
     font-weight: 600;
@@ -307,9 +313,12 @@ select[disabled]:hover {
     display: none;
 }
 
+.dashboard-main {
+    padding: 40px;
+}
+
 .main {
     position: relative;
-    top: 30px;
     width: calc(100% - 260px);
     left: 140px;
     background-color: #fff;
@@ -324,61 +333,44 @@ select[disabled]:hover {
 }
 
 .cards .card {
-    padding: 25px;
+    padding: 19px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 10px;
-    border: 1px solid #cfcfcfda;
+    border-radius: 30px;
+    border: none;
 }
 
-.card-registered {
-    background: #9da5b123;
-    transition: var(--trans);
+.box {
+    width: 100%;
+    height: 130px;
+    background-color: #f5f5f548;
+    border-radius: 30px;
+    padding: 20px;
 }
 
-.card-active {
-    background: #9da5b123;
-    transition: var(--trans);
+.box p {
+    font-size: 35px;
+    color: #1A8B93;
+    font-weight: 800;
+    line-height: 35px;
+    padding-left: 10px;
+    margin-top: 10px;
+    display: inline-block;
 }
 
-.card-comment {
-    background: #9da5b123;
-    transition: var(--trans);
+.box p span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #888888a1;
 }
 
-.card-post {
-    background: #9da5b123;
-    transition: var(--trans);
-}
-
-.card:hover {
-    background: #9da5b150;
-    transition: var(--trans) ease-in-out;
-}
-
-.number {
-    font-size: 30px;
-    font-weight: 400;
-    color: #000;
-    text-align: center;
-}
-
-.card-name {
-    color: #000;
-    font-weight: 200;
-    text-align: center;
-}
-
-.icon-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon-box i {
-    font-size: 25px;
-    color: #000;
+.box-icon {
+    color: #888888a1;
+    font-size: 30px!important;
+    margin-top: 18px!important;
+    padding: 10px;
+    float: right;
 }
 
 
@@ -388,18 +380,16 @@ select[disabled]:hover {
     grid-template-columns: 2fr 1fr;
     grid-gap: 30px;
     width: 100%;
-    margin-top: 35px;
 }
 
 .chart {
-    background: #9da5b123;
     padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #cfcfcfda;
+    background-color: #f5f5f548;
+    border-radius: 30px;
     width: 100%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .main {
         width: 100%;
         left: 0;
@@ -408,30 +398,16 @@ select[disabled]:hover {
     .cards {
         grid-template-columns: 1fr;
     }
-
+    
     .charts {
         grid-template-columns: 1fr;
     }
 
-
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-    .main {
-        width: 100%;
-        left: 0;
+    .box-icon {
+        font-size: 20px!important;
+        margin-top: 25px!important;
     }
 
-    .cards {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .charts {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
     .btn-announcement {
         height: auto;
         padding: 8px 15px;
@@ -446,6 +422,38 @@ select[disabled]:hover {
         display: none;
     }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1268px) {
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .charts {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .box p {
+        font-size: 20px!important;
+    }
+
+    .box p span {
+        font-size: 10px;
+    }
+
+    .box-icon {
+        font-size: 20px!important;
+    }
+
+    .txt-announcement h5 {
+        font-size: 10px;
+    }
+}
+
 
 .pagination .page-item {
     margin: 0 2px;

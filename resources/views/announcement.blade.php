@@ -18,7 +18,7 @@
 
     <div class="dashboard-pg text-grey-blue">
         <nav class="navigation-bar d-flex align-items-center">
-            <div class="container">
+            <div class="ms-5">
                 <div class="row align-items-center">
                     <div class="navigation-bar-left col-6 d-flex align-items-center">
                         <button type="button" class="navbar-open-btn text-grey-blue me-3">
@@ -138,11 +138,11 @@
         <!-- MAIN CONTENT STARTS HERE -->
 
         <div class="dashboard-main">
-            <div class="container">
-                <div class="row py-2 mt-2">
+            <div class="">
+                <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 18px;">Announcements Table</h2>
+                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 33px;">Announcements Table</h2>
                             <p class="text-grey" style="font-size: 10px;">Fill in the title and body of the announcement and press send. Students will receive a notification on their accounts.</p>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
         </div>
 
         
-        <section id="table-box" class="m-3 table-responsive-sm">
+        <section id="table-box" class="m-4 table-responsive-sm">
             {{-- <div id="status-alert-container">
                 @if (session('status'))
                 <div class="alert alert-success">{{ session('status')}} </div>

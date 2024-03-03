@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -15,11 +15,11 @@
     <title>Admin Dashboard | PHINMAKatanungan</title>
 </head>
 
-<body>
+<body class="bg-white">
 
-    <div class="dashboard-pg text-grey-blue">
+    <div class="dashboard-pg text-grey-blue bg-white">
         <nav class="navigation-bar d-flex align-items-center">
-            <div class="container">
+            <div class="ms-5">
                 <div class="row align-items-center">
                     <div class="navigation-bar-left col-6 d-flex align-items-center">
                         <button type="button" class="navbar-open-btn text-grey-blue me-3">
@@ -31,7 +31,13 @@
                     </div>
                 </div>
             </div>
+            <div class="ms-auto p-3 me-3">
+                <button type="button" class="btn btn-create navbar-sb-text fs-15 fw-5 text-decoration-none btn-announcement" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                    <span class="icon-placeholder fa fa-plus"></span><h5 class="txt-announcement">Create Announcement</h5>
+                </button>
+            </div>
         </nav>
+    </div>
 
         <div class="navigation-overlay position-fixed"></div>
 
@@ -141,12 +147,6 @@
         </div>
 
         <div class="dashboard-main">
-            
-            <div class="position-absolute top-0 end-0 p-3 me-4">
-                <button type="button" class="btn btn-proceed navbar-sb-text fs-15 fw-5 text-decoration-none btn-announcement" data-bs-toggle="modal" data-bs-target="#announcementModal">
-                    <span class="icon-placeholder fa fa-plus"></span><h5 class="txt-announcement">Create Announcement</h5>
-                </button>
-            </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="announcementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
@@ -181,72 +181,51 @@
  
 
 
-                <section class="container mt-5">
-                    <div class="row">
-                        <div class="charts">
-                            <div class="chart">
-                                <canvas id="lineChart"></canvas>
-                            </div>
-                            <div class="chart" id="pie-chart">
-                                <canvas id="pieChart"></canvas>
-                            </div>
+            <section>
+                <div class="row">
+                    <div class="charts">
+                        <div class="chart">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                        <div class="chart" id="pie-chart">
+                            <canvas id="pieChart"></canvas>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
 
-                <div class="container mt-3">
-                    <div class="row">
-                        <div class="cards">
-                            <div class="card card-registered">
-                                <div class="card-content">
-                                    <div class="icon-box">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="text-content">
-                                        <div>
-                                            <div class="number">10</div>
-                                        </div>
-                                        <div class="card-name">Registered Users</div>
-                                    </div>
-                                </div>
+            <div class="mt-3">
+                <div class="row">
+                    <div class="cards">
+                        <div class="col-div-3">
+                            <div class="box">
+                                <p>0 <br/><span>Registered Users</span></p>
+                                <i class="fa fa-users box-icon"></i>
                             </div>
-                            <div class="card card-active">
-                                <div class="card-content">
-                                    <div class="icon-box">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="text-content">
-                                        <div class="number">1217</div>
-                                        <div class="card-name">Active Users</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-div-3">
+                            <div class="box">
+                                <p>0 <br/><span>Active Users</span></p>
+                                <i class="fa fa-user-check box-icon"></i>
                             </div>
-                            <div class="card card-comment">
-                                <div class="card-content">
-                                    <div class="icon-box">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="text-content">
-                                        <div class="number">1217</div>
-                                        <div class="card-name">Comments</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-div-3">
+                            <div class="box">
+                                <p>0 <br/><span>Comments</span></p>
+                                <i class="fa fa-comments box-icon"></i>
                             </div>
-                            <div class="card card-post">
-                                <div class="card-content">
-                                    <div class="icon-box">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="text-content">
-                                        <div class="number">1217</div>
-                                        <div class="card-name">Posts</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-div-3">
+                            <div class="box">
+                                <p>0 <br/><span>Posts</span></p>
+                                <i class="fa fa-newspaper box-icon"></i>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
 
         <script>
