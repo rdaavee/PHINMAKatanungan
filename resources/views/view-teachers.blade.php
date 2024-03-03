@@ -29,6 +29,14 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
+                        <a class="navbar-brand ms-3" href="/admin-panel">
+                            <span style="font-weight: 500; font-size: 15px; color: #000;">
+                                PHINMA
+                            </span>
+                            <span class="katanungan" style="font-weight: 500; font-size: 15px;">
+                                Katanungan
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -139,14 +147,16 @@
 
         <!-- MAIN CONTENT STARTS HERE -->
 
-        <div class="dashboard-main">
-            <div class="">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 33px;">Teachers Table</h2>
-                            <p class="text-grey" style="font-size: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
+        <div class="main-content">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <span>View</span>
+                    <p>Teachers Table</p>
+                </div>
+                <div class="search-bar">
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search">
                     </div>
                 </div>
             </div>
@@ -281,6 +291,37 @@
             function submitEditForm(button) {
                 var teacherId = button.getAttribute('data-teacher-id');
                 window.location.href = "{{ url('teachers') }}/" + teacherId + "/edit";
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var searchInput = document.getElementById('searchInput');
+                // var pagination = document.getElementById('paginationId');
+
+                searchInput.addEventListener('input', function () {
+                    var searchTerm = this.value.toLowerCase();
+                    filterTableRows(searchTerm);
+
+                    // if (searchTerm.trim() !== '') {
+                    //     pagination.style.display = 'none';
+                    // } else {
+                    //     pagination.style.display = '';
+                    // }
+
+                });
+            });
+
+            function filterTableRows(searchTerm) {
+                var tableRows = document.querySelectorAll('.table-striped tbody tr');
+
+                tableRows.forEach(function (row) {
+                    var rowData = row.textContent.toLowerCase();
+
+                    if (rowData.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
             }
         </script>
 

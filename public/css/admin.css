@@ -174,48 +174,85 @@ a{
     transition: all 200ms ease-in-out;
 }
 
-.search-bar {
-    width: 300px;
-    margin-bottom: 10px;
+.main-content {
+    position: relative;
+    width: 100%;
+    padding: 25px;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: #FCFCFC;
+    padding: 35px;
+}
+
+.header-title {
+    color: #1A8B93;
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.header-title span {
+    color: #1A8B93;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.search-box {
+    background-color: rgba(237, 237, 237, 0.7);
+    border-radius: 15px;
+    color: #1A8B93;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 4px 12px;
+    margin-top: 15px;
+}
+
+.search-box input {
+    background: transparent;
+    padding: 10px;
+    border: none;
+}
+
+.search-box input:focus {
+    outline: none;
+    border: none;
 }
 
 .custom-thead {
+    font-size: 13px;
     background-color: #1A8B93;
     color: #fff;
 }
 
-.custom-th {
-    font-size: 10px;
-}
-
 .custom-thead td {
-    font-size: 10px; 
+    font-size: 13px; 
 }
 
 .table thead th {
-    font-size: 9px;
+    font-size: 14px;
 }
 
 .table tbody td {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .table-striped tbody tr:nth-child(odd) {
     background-color: #ffffff;
 }
 
-.table-striped tbody tr:nth-child(even) {
-    background-color: #1a8b9313;
-}
-
 .table {
-    border-radius: 2px;
-    overflow: hidden; 
+    border-radius: 10px;
+    background-color: #FCFCFC;
 }
 
 .table th,
 .table td {
-    padding: 15px;
+    padding: 27px;
 }
 
 .action-icon {

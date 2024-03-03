@@ -27,6 +27,14 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
+                        <a class="navbar-brand ms-3" href="/admin-panel">
+                            <span style="font-weight: 500; font-size: 15px; color: #000;">
+                                PHINMA
+                            </span>
+                            <span class="katanungan" style="font-weight: 500; font-size: 15px;">
+                                Katanungan
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -137,15 +145,11 @@
 
         <!-- MAIN CONTENT STARTS HERE -->
 
-        <div class="dashboard-main">
-            <div class="">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="dashboard-title-text">
-                            <h2 style="color: #D9BD2D; font-weight: 600; font-size: 33px;">Announcements Table</h2>
-                            <p class="text-grey" style="font-size: 10px;">Fill in the title and body of the announcement and press send. Students will receive a notification on their accounts.</p>
-                        </div>
-                    </div>
+        <div class="main-content">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <span>View</span>
+                    <p>Announcements Table</p>
                 </div>
             </div>
         </div>

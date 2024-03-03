@@ -28,6 +28,14 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
+                        <a class="navbar-brand ms-3" href="/admin-panel">
+                            <span style="font-weight: 500; font-size: 15px; color: #000;">
+                                PHINMA
+                            </span>
+                            <span class="katanungan" style="font-weight: 500; font-size: 15px;">
+                                Katanungan
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
