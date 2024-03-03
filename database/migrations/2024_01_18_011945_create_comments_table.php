@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('content');
             $table->unsignedBigInteger('post_id');
             $table->integer('upvotes_count')->default(0);
-            $table->string('user_type');
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
