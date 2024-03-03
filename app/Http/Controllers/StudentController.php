@@ -16,7 +16,7 @@ class StudentController extends Controller
     {
         $students = User::where('user_role', 'Student')
                     ->where('account_status', 'Active')
-                    ->paginate(5);
+                    ->paginate(8);
 
 
         if (request()->expectsJson()) {
@@ -29,7 +29,7 @@ class StudentController extends Controller
 
     public function indexBannedUsers()
     {
-        $bannedUsers = User::where('account_status', 'Banned')->paginate(5);
+        $bannedUsers = User::where('account_status', 'Banned')->paginate(8);
 
 
         if (request()->expectsJson()) {

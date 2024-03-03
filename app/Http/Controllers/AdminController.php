@@ -78,7 +78,7 @@ class AdminController extends Controller
     }
 
     public function announcement_page() {
-        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(5);
+        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(8);
         return view('announcement', ['announcements' => $announcements]);
 
     }
@@ -109,192 +109,191 @@ class AdminController extends Controller
         return redirect()->back()->with('status','Post Updated.');
     }
 
-    public function chartData()
-        {
-            // TEACHERS
-            $teacherSHS = User::where('department_id', 'SHS')
-                            ->where('user_role', 'Teacher')
-                            ->count();
+    public function chartData() {
 
-            $teacherCITE = User::where('department_id', 'CITE')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            $teacherCEA = User::where('department_id', 'CEA')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            $teacherCAHS = User::where('department_id', 'CAHS')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            $teacherCCJE = User::where('department_id', 'CCJE')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            $teacherCELA = User::where('department_id', 'CELA')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            $teacherCMA = User::where('department_id', 'CMA')
-                            ->where('user_role', 'Teacher')
-                            ->count();
-
-            // STUDENTS
-            $studentSHS = User::where('department_id', 'SHS')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCITE = User::where('department_id', 'CITE')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCEA = User::where('department_id', 'CEA')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCAHS = User::where('department_id', 'CAHS')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCCJE = User::where('department_id', 'CCJE')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCELA = User::where('department_id', 'CELA')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $studentCMA = User::where('department_id', 'CMA')
-                            ->where('user_role', 'Student')
-                            ->count();
-
-            $teachersChartData = [
-                [
-                    'label' => 'SHS',
-                    'value' => $teacherSHS,
-                ],
-                [
-                    'label' => 'CITE',
-                    'value' => $teacherCITE,
-                ],
-                [
-                    'label' => 'CEA',
-                    'value' => $teacherCEA,
-                ],
-                [
-                    'label' => 'CAHS',
-                    'value' => $teacherCAHS,
-                ],
-                [
-                    'label' => 'CCJE',
-                    'value' => $teacherCCJE,
-                ],
-                [
-                    'label' => 'CELA',
-                    'value' => $teacherCELA,
-                ],
-                [
-                    'label' => 'CMA',
-                    'value' => $teacherCMA,
-                ],
-            ];
-
-            $studentsChartData = [
-                [
-                    'label' => 'SHS',
-                    'value' => $studentSHS,
-                ],
-                [
-                    'label' => 'CITE',
-                    'value' => $studentCITE,
-                ],
-                [
-                    'label' => 'CEA',
-                    'value' => $studentCEA,
-                ],
-                [
-                    'label' => 'CAHS',
-                    'value' => $studentCAHS,
-                ],
-                [
-                    'label' => 'CCJE',
-                    'value' => $studentCCJE,
-                ],
-                [
-                    'label' => 'CELA',
-                    'value' => $studentCELA,
-                ],
-                [
-                    'label' => 'CMA',
-                    'value' => $studentCMA,
-                ],
-            ];
-
-            $SHS = User::where('account_status', 'Active')
-                        ->where('year_level', 'SHS')
-                        ->count();
-            $CITE = User::where('account_status', 'Active')
-                        ->where('department_id', 'CITE')
-                        ->count();
-            $CEA = User::where('account_status', 'Active')
-                        ->where('department_id', 'CEA')
-                        ->count();
-            $CAHS = User::where('account_status', 'Active')
-                        ->where('department_id', 'CAHS')
-                        ->count();
-            $CCJE = User::where('account_status', 'Active')
-                        ->where('department_id', 'CCJE')
-                        ->count();
-            $CELA = User::where('account_status', 'Active')
-                        ->where('department_id', 'CELA')
-                        ->count();
-            $CMA = User::where('account_status', 'Active')
-                        ->where('department_id', 'CMA')
+        // TEACHERS
+        $teacherSHS = User::where('year_level', 'SHS')
+                        ->where('user_role', 'Teacher')
                         ->count();
 
-            $banned = User::where('account_status', 'Banned')
+        $teacherCITE = User::where('department_id', 'CITE')
+                        ->where('user_role', 'Teacher')
                         ->count();
 
-            $activeChartData = [
-                [
-                    'label' => 'SHS',
-                    'value' => $SHS,
-                ],
-                [
-                    'label' => 'CITE',
-                    'value' => $CITE,
-                ],
-                [
-                    'label' => 'CEA',
-                    'value' => $CEA,
-                ],
-                [
-                    'label' => 'CAHS',
-                    'value' => $CAHS,
-                ],
-                [
-                    'label' => 'CCJE',
-                    'value' => $CCJE,
-                ],
-                [
-                    'label' => 'CELA',
-                    'value' => $CELA,
-                ],
-                [
-                    'label' => 'CMA',
-                    'value' => $CMA,
-                ],
-                [
-                    'label' => 'Banned',
-                    'value' => $banned,
-                ],
-            ];
+        $teacherCEA = User::where('department_id', 'CEA')
+                        ->where('user_role', 'Teacher')
+                        ->count();
 
-            return response()->json([
-                'teachersChartData' => $teachersChartData,
-                'studentsChartData' => $studentsChartData,
-                'activeChartData' => $activeChartData,
-            ]);
-        }
+        $teacherCAHS = User::where('department_id', 'CAHS')
+                        ->where('user_role', 'Teacher')
+                        ->count();
+
+        $teacherCCJE = User::where('department_id', 'CCJE')
+                        ->where('user_role', 'Teacher')
+                        ->count();
+
+        $teacherCELA = User::where('department_id', 'CELA')
+                        ->where('user_role', 'Teacher')
+                        ->count();
+
+        $teacherCMA = User::where('department_id', 'CMA')
+                        ->where('user_role', 'Teacher')
+                        ->count();
+
+        // STUDENTS
+        $studentSHS = User::where('department_id', 'SHS')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCITE = User::where('department_id', 'CITE')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCEA = User::where('department_id', 'CEA')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCAHS = User::where('department_id', 'CAHS')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCCJE = User::where('department_id', 'CCJE')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCELA = User::where('department_id', 'CELA')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $studentCMA = User::where('department_id', 'CMA')
+                        ->where('user_role', 'Student')
+                        ->count();
+
+        $teachersChartData = [
+            [
+                'label' => 'SHS',
+                'value' => $teacherSHS,
+            ],
+            [
+                'label' => 'CITE',
+                'value' => $teacherCITE,
+            ],
+            [
+                'label' => 'CEA',
+                'value' => $teacherCEA,
+            ],
+            [
+                'label' => 'CAHS',
+                'value' => $teacherCAHS,
+            ],
+            [
+                'label' => 'CCJE',
+                'value' => $teacherCCJE,
+            ],
+            [
+                'label' => 'CELA',
+                'value' => $teacherCELA,
+            ],
+            [
+                'label' => 'CMA',
+                'value' => $teacherCMA,
+            ],
+        ];
+
+        $studentsChartData = [
+            [
+                'label' => 'SHS',
+                'value' => $studentSHS,
+            ],
+            [
+                'label' => 'CITE',
+                'value' => $studentCITE,
+            ],
+            [
+                'label' => 'CEA',
+                'value' => $studentCEA,
+            ],
+            [
+                'label' => 'CAHS',
+                'value' => $studentCAHS,
+            ],
+            [
+                'label' => 'CCJE',
+                'value' => $studentCCJE,
+            ],
+            [
+                'label' => 'CELA',
+                'value' => $studentCELA,
+            ],
+            [
+                'label' => 'CMA',
+                'value' => $studentCMA,
+            ],
+        ];
+
+        $SHS = User::where('account_status', 'Active')
+                    ->where('year_level', 'SHS')
+                    ->count();
+        $CITE = User::where('account_status', 'Active')
+                    ->where('department_id', 'CITE')
+                    ->count();
+        $CEA = User::where('account_status', 'Active')
+                    ->where('department_id', 'CEA')
+                    ->count();
+        $CAHS = User::where('account_status', 'Active')
+                    ->where('department_id', 'CAHS')
+                    ->count();
+        $CCJE = User::where('account_status', 'Active')
+                    ->where('department_id', 'CCJE')
+                    ->count();
+        $CELA = User::where('account_status', 'Active')
+                    ->where('department_id', 'CELA')
+                    ->count();
+        $CMA = User::where('account_status', 'Active')
+                    ->where('department_id', 'CMA')
+                    ->count();
+
+        $banned = User::where('account_status', 'Banned')
+                    ->count();
+
+        $activeChartData = [
+            [
+                'label' => 'SHS',
+                'value' => $SHS,
+            ],
+            [
+                'label' => 'CITE',
+                'value' => $CITE,
+            ],
+            [
+                'label' => 'CEA',
+                'value' => $CEA,
+            ],
+            [
+                'label' => 'CAHS',
+                'value' => $CAHS,
+            ],
+            [
+                'label' => 'CCJE',
+                'value' => $CCJE,
+            ],
+            [
+                'label' => 'CELA',
+                'value' => $CELA,
+            ],
+            [
+                'label' => 'CMA',
+                'value' => $CMA,
+            ],
+            [
+                'label' => 'Banned',
+                'value' => $banned,
+            ],
+        ];
+        return response()->json([
+            'teachersChartData' => $teachersChartData,
+            'studentsChartData' => $studentsChartData,
+            'activeChartData' => $activeChartData,
+        ]);
+    }
 }
