@@ -16,7 +16,7 @@ class TeacherController extends Controller
     {
         $teachers = User::where('user_role', 'Teacher')
                     ->where('account_status', 'Active')
-                    ->paginate(8);
+                    ->paginate(5);
 
 
         if (request()->expectsJson()) {

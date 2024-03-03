@@ -78,7 +78,7 @@ class AdminController extends Controller
     }
 
     public function announcement_page() {
-        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(8);
+        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(5);
         return view('announcement', ['announcements' => $announcements]);
 
     }
