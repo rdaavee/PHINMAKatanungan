@@ -28,7 +28,7 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
-                        <a class="navbar-brand ms-3" href="/admin-panel">
+                        <a class="navbar-brand ms-3" href="/admin/admin-panel">
                             <span style="font-weight: 500; font-size: 15px; color: #000;">
                                 PHINMA
                             </span>
@@ -51,9 +51,9 @@
 
         <div class="navigation-sidebar bg-light-grey">
             <div class="navbar-sb-head d-flex justify-content-between align-items-center px-4">
-                <a href="/admin-panel">
+                <a href="/admin/admin-panel">
                     <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
-                    <a class="navbar-brand" href="/admin-panel">
+                    <a class="navbar-brand" href="/admin/admin-panel">
                         <span style="font-weight: 500; font-size: 13px; color: #000;">
                             PHINMA
                         </span>
@@ -208,25 +208,25 @@
                     <div class="cards">
                         <div class="col-div-3">
                             <div class="box">
-                                <p>0 <br/><span>Registered Users</span></p>
+                                <p>{{ $registeredUsersCount }} <br/><span>Registered Users</span></p>
                                 <i class="fa fa-users box-icon"></i>
                             </div>
                         </div>
                         <div class="col-div-3">
                             <div class="box">
-                                <p>0 <br/><span>Active Users</span></p>
+                                <p>{{ $activeUsersCount }} <br/><span>Active Users</span></p>
                                 <i class="fa fa-user-check box-icon"></i>
                             </div>
                         </div>
                         <div class="col-div-3">
                             <div class="box">
-                                <p>0 <br/><span>Comments</span></p>
+                                <p>{{ $commentsCount }} <br/><span>Comments</span></p>
                                 <i class="fa fa-comments box-icon"></i>
                             </div>
                         </div>
                         <div class="col-div-3">
                             <div class="box">
-                                <p>0 <br/><span>Posts</span></p>
+                                <p>{{ $postsCount }} <br/><span>Posts</span></p>
                                 <i class="fa fa-newspaper box-icon"></i>
                             </div>
                         </div>

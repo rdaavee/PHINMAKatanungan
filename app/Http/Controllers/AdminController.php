@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
-use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -109,6 +109,9 @@ class AdminController extends Controller
         return redirect()->back()->with('status','Post Updated.');
     }
 
+
+    //CHARTS 
+    
     public function chartData() {
 
         // TEACHERS
@@ -294,6 +297,21 @@ class AdminController extends Controller
             'teachersChartData' => $teachersChartData,
             'studentsChartData' => $studentsChartData,
             'activeChartData' => $activeChartData,
+        ]);
+    }
+
+    //DATA
+    public function numericData() {
+        $registeredUsersCount = User::count();
+        $activeUsersCount = User::where('account_status', 'Active')->count();
+        $postsCount = Post::count();
+        $commentsCount = Comment::count();
+        
+        return view('admin-panel', [
+            'registeredUsersCount' => $registeredUsersCount,
+            'activeUsersCount' => $activeUsersCount,
+            'postsCount' => $postsCount,
+            'commentsCount' => $commentsCount
         ]);
     }
 }
