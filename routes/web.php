@@ -25,9 +25,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/admin-panel', function () {
-    return view('admin-panel');
-});
+
 
 
 // ADMIN ROUTES
@@ -39,7 +37,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
-        Route::view('/admin-panel', 'admin-panel')->name('admin-panel');
+        Route::get('/admin-panel', [AdminController::class, 'numericData'])->name('admin-panel');
         Route::post('/logout_handler', [AdminController::class, 'logoutHandler'])->name('logout_handler');
     });
 });

@@ -27,7 +27,7 @@
                         <div class="navbar-logo">
                             <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
                         </div>
-                        <a class="navbar-brand ms-3" href="/admin-panel">
+                        <a class="navbar-brand ms-3" href="/admin/admin-panel">
                             <span style="font-weight: 500; font-size: 15px; color: #000;">
                                 PHINMA
                             </span>
@@ -44,9 +44,9 @@
 
         <div class="navigation-sidebar bg-light-grey">
             <div class="navbar-sb-head d-flex justify-content-between align-items-center px-4">
-                <a href="/admin-panel">
+                <a href="/admin/admin-panel">
                     <img src="{{ url('phinma-logo.png') }}" style="width: 30px;">
-                    <a class="navbar-brand" href="/admin-panel">
+                    <a class="navbar-brand" href="/admin/admin-panel">
                         <span style="font-weight: 500; font-size: 13px; color: #000;">
                             PHINMA
                         </span>
