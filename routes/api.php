@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ApiStudentController;
 use App\Http\Controllers\Mobile\PostsMobileController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\Mobile\UserMobileController;
+use App\Http\Controllers\Mobile\CommentsMobileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,6 +31,7 @@ Route::post('/post', [PostsMobileController::class, 'storePost']);
 Route::get('/getposts', [PostsMobileController::class, 'getPosts']);
 Route::post('/storecomment', [PostsMobileController::class, 'storeComment']);
 Route::get('/getannouncements', [PostsMobileController::class, 'getAnnouncements']);
+Route::get('/getcomments/{post_id}', [CommentsMobileController::class, 'getComments']);
 
 
 
