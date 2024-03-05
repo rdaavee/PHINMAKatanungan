@@ -79,7 +79,7 @@ class PostsMobileController extends Controller
     
     public function getPosts()
     {
-        $posts = Post::with('user:user_id,first_name,middle_name,last_name,course_id')->get();
+        $posts = Post::with('user:user_id,user_role,first_name,middle_name,last_name,course_id,department_id')->get();
 
         return response()->json(['posts' => $posts], 200);
     }
