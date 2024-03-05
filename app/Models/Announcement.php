@@ -15,4 +15,10 @@ class Announcement extends Model
         'department',
         'status'
     ];
+
+    public function departments() {
+        return $this->belongsToMany(Department::class, 'announcement_department', 'announcement_id', 'department_id');
+    }
+
+    
 }

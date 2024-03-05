@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Comment;
+use App\Models\Department;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -78,7 +79,7 @@ class AdminController extends Controller
     }
 
     public function announcement_page() {
-        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(5);
+        $announcements = Announcement::with('departments')->orderBy('created_at', 'desc')->paginate(5);
         return view('announcement', ['announcements' => $announcements]);
 
     }
@@ -91,6 +92,10 @@ class AdminController extends Controller
         $announcement->status = $request->status ?? 'Active';
         
         $announcement->save();
+
+        if($request->has('departments')) {
+            $announcement->departments()->attach($request->departments);
+        }
 
         return redirect()->back();
     }
@@ -106,6 +111,7 @@ class AdminController extends Controller
         $announcement = Announcement::findOrFail($id);
         $announcement->update($request->all());
 
+        $announcement->departments()->sync($request->departments);
         return redirect()->back()->with('status','Post Updated.');
     }
 

@@ -17,4 +17,8 @@ class Department extends Model
     public function posts() {
         return $this->belongsToMany(Post::class);
     }
+
+    public function announcements() {
+        return $this->belongsToMany(Announcement::class, 'announcement_department', 'department_id', 'announcement_id');
+    }
 }

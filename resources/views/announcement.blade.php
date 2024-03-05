@@ -166,6 +166,7 @@
                 <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
+                        <th scope="col">Departments</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                 </tr>
@@ -175,6 +176,13 @@
                 <tr>
                         <td class="align-middle">{{ $item->title }}</td>
                         <td class="align-middle">{{ $item->content }}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                @foreach ($item->departments as $department)
+                                    <span class="m-1">{{ $department->department_id }}</span>
+                                @endforeach
+                            </div>
+                        </td>
                         <td class="align-middle">{{ $item->status }}</td>
                         <td>
                             <div class="d-flex justify-content-center">
@@ -211,6 +219,14 @@
                                                 <div class="form-group custom-textarea">
                                                     <label for="" class="form-label">Enter an announcement body</label>
                                                     <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label for="departments" class="form-label">Select department/s</label>
+                                                    <select class="form-select" id="departments" name="departments[]" multiple aria-label="multiple select example">
+                                                        @foreach (App\Models\Department::all() as $department)
+                                                            <option @selected($item->departments->contains($department->department_id))>{{ $department->department_id }}</option>
+                                                        @endforeach
+                                                      </select>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
