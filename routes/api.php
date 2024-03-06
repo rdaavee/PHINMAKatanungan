@@ -36,7 +36,7 @@ Route::get('/getcomments/{post_id}', [CommentsMobileController::class, 'getComme
 
 
 Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMiddleware('auth:sanctum');
-
+Route::post('/verifyToken', [UserMobileController::class, 'verifyToken']);
 Route::apiResource('/students', StudentController::class);
 Route::apiResource('/teachers', TeacherController::class);
 

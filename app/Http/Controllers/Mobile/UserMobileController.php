@@ -154,4 +154,21 @@ class UserMobileController extends Controller
         }
         return response()->json(['message' => 'Invalid Credentials'], 401);
     }
+
+    public function verifyToken(Request $request)
+    {
+        $token = $request->bearerToken(); // Get the token from the request
+
+        if (!$token) {
+            return response()->json(['error' => 'Token not provided'], 401);
+        }
+
+        $user = User::where('api_token', $token)->first(); // Check if the token exists in the database
+
+        if ($user) {
+            return response()->json(['message' => 'Token is valid'], 200);
+        } else {
+            return response()->json(['error' => 'Invalid token'], 401);
+        }
+    }
 }
