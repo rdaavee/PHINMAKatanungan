@@ -38,6 +38,10 @@ class DepartmentSeeder extends Seeder
                 'department_id' => 'CMA',
                 'name' => 'College of Management and Accountancy',
             ],
+            [
+                'department_id' => 'SHS',
+                'name' => 'Senior High School',
+            ],
         ];
 
         foreach ($departments as $departmentData) {

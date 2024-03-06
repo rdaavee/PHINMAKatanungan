@@ -156,6 +156,23 @@
             </div>
         </div>
 
+        <form action="{{ url('/announcement') }}" method="GET">
+            <div class="row mt-4 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label">Filter by Department</label>
+                    <select name="filterDepartments[]" class="form-select" id="filter" multiple>
+                        @foreach($departments as $department)
+                            <option value="{{ $department }}" {{ in_array($department, request()->filterDepartments ?? []) ? 'selected' : '' }}>{{ $department }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-2 mt-md-0 mt-2">
+                    <button type="submit" class="btn btn-proceed w-100">Filter</button>
+                </div>
+            </div>
+        </form>
+        
+        
         
         <section id="table-box" class="m-4 table-responsive-sm">
             {{-- <div id="status-alert-container">
@@ -258,6 +275,17 @@
 
         <script>
             new MultiSelectTag('departments', {
+                tagColor: {
+                    textColor: '#327b2c',
+                    borderColor: 'rgba(26, 139, 147, .9)',
+                    bgColor: 'rgba(26, 139, 147, .2)',
+                }
+            })
+        </script>
+
+        <script>
+            new MultiSelectTag('filter', {
+                placeholder: 'Search Department',
                 tagColor: {
                     textColor: '#327b2c',
                     borderColor: 'rgba(26, 139, 147, .9)',

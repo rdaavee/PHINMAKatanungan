@@ -78,11 +78,21 @@ class AdminController extends Controller
         }
     }
 
-    public function announcement_page() {
-        $announcements = Announcement::with('departments')->orderBy('created_at', 'desc')->paginate(5);
-        return view('announcement', ['announcements' => $announcements]);
-
+    public function announcement_page(Request $request) {
+        $filterQuery = Announcement::with('departments')->orderBy('created_at', 'desc');
+    
+        if ($request->has('filterDepartments') && !empty($request->filterDepartments)) {
+            $filterQuery->whereHas('departments', function ($q) use ($request) {
+                $q->whereIn('departments.department_id', $request->filterDepartments);
+            });
+        }
+    
+        $announcements = $filterQuery->paginate(5);
+        $departments = Department::pluck('department_id', 'department_id');
+    
+        return view('announcement', ['announcements' => $announcements, 'departments' => $departments]);
     }
+    
 
     public function add_announcement(Request $request) {
         $announcement = new Announcement;
