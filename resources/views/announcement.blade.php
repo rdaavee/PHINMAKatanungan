@@ -8,6 +8,8 @@
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    {{-- multiselect --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin.css')}}">
     <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
 
@@ -205,7 +207,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="form-group col-md-9">
-                                                    <label for="" class="form-label">Title</label>
+                                                    <label for="title" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="title" name="title" value="{{ $item->title }}"required>
                                                 </div>
                                                 <div class="col-md-3">
@@ -217,7 +219,7 @@
                                                     {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
                                                 </div>
                                                 <div class="form-group custom-textarea">
-                                                    <label for="" class="form-label">Enter an announcement body</label>
+                                                    <label for="content" class="form-label">Enter an announcement body</label>
                                                     <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
                                                 </div>
                                                 <div class="form-group mb-2">
@@ -250,6 +252,19 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+
+        
+
+        <script>
+            new MultiSelectTag('departments', {
+                tagColor: {
+                    textColor: '#327b2c',
+                    borderColor: 'rgba(26, 139, 147, .9)',
+                    bgColor: 'rgba(26, 139, 147, .2)',
+                }
+            })
+        </script>
 
 
 </body>
