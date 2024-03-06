@@ -13,7 +13,7 @@ class CommentsMobileController extends Controller
 {
     public function getComments($post_id)
     {
-        $comments = Comment::where('post_id', $post_id)->with('user:user_id,course_id')->get();
+        $comments = Comment::where('post_id', $post_id)->with('user:user_id,account_status,user_role,department_id,course_id,first_name,middle_name,last_name')->get();
 
         return response()->json(['comments' => $comments], 200);
     }
