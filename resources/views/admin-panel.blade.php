@@ -158,7 +158,6 @@
 
         <div class="dashboard-main">
 
-                <!-- Modal -->
                 <div class="modal fade" id="announcementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -167,7 +166,6 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <!-- Your announcement form goes here -->
                                 <form action="{{url('add_announcement')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-2">
@@ -184,9 +182,8 @@
                                             @foreach (App\Models\Department::all() as $department)
                                                 <option>{{ $department->department_id }}</option>
                                             @endforeach
-                                          </select>
+                                        </select>
                                     </div>
-                                    
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-proceed">Create</button>

@@ -156,25 +156,26 @@
             </div>
         </div>
 
-        <form action="{{ url('/announcement') }}" method="GET">
-            <div class="row mt-4 align-items-end">
-                <div class="col-md-4">
-                    <label class="form-label">Filter by Department</label>
-                    <select name="filterDepartments[]" class="form-select" id="filter" multiple>
-                        @foreach($departments as $department)
-                            <option value="{{ $department }}" {{ in_array($department, request()->filterDepartments ?? []) ? 'selected' : '' }}>{{ $department }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-2 mt-md-0 mt-2">
-                    <button type="submit" class="btn btn-proceed w-100">Filter</button>
-                </div>
-            </div>
-        </form>
+
         
         
         
         <section id="table-box" class="m-4 table-responsive-sm">
+            <form action="{{ url('/announcement') }}" method="GET">
+                <div class="row align-items-end mb-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Filter by Department</label>
+                        <select name="filterDepartments[]" class="form-select" id="filter" multiple aria-label="multiple select example">
+                            @foreach($departments as $department)
+                                <option value="{{ $department }}" class="w-100" {{ in_array($department, request()->filterDepartments ?? []) ? 'selected' : '' }}>{{ $department }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2 mt-md-0 mt-2">
+                        <button type="submit" class="btn btn-proceed w-100">Filter</button>
+                    </div>
+                </div>
+            </form>
             {{-- <div id="status-alert-container">
                 @if (session('status'))
                 <div class="alert alert-success">{{ session('status')}} </div>
@@ -212,51 +213,51 @@
                         </td>
                 </tr>
                 <div class="modal fade" id="editModal{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal{{ $item->student_id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Announcement</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row g-3">
-                                            <form action="{{ url('announcements/'.$item->id.'/edit') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="form-group col-md-9">
-                                                    <label for="title" class="form-label">Title</label>
-                                                    <input type="text" class="form-control" id="title" name="title" value="{{ $item->title }}"required>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label class="form-label"> Status </label>
-                                                    <select name="status" class="form-control">
-                                                        <option value="Active" {{ $item->status == 'Active' ? 'selected' : '' }}>Active</option>
-                                                        <option value="Inactive" {{ $item->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
-                                                    </select>
-                                                    {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
-                                                </div>
-                                                <div class="form-group custom-textarea">
-                                                    <label for="content" class="form-label">Enter an announcement body</label>
-                                                    <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
-                                                </div>
-                                                <div class="form-group mb-2">
-                                                    <label for="departments" class="form-label">Select department/s</label>
-                                                    <select class="form-select" id="departments" name="departments[]" multiple aria-label="multiple select example">
-                                                        @foreach (App\Models\Department::all() as $department)
-                                                            <option @selected($item->departments->contains($department->department_id))>{{ $department->department_id }}</option>
-                                                        @endforeach
-                                                      </select>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-proceed">Save Changes</button>
-                                                </div>
-                                            </form>
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Edit Announcement</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row g-3">
+                                    <form action="{{ url('announcements/'.$item->id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group col-md-9">
+                                            <label for="title" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title" value="{{ $item->title }}"required>
                                         </div>
-                                    </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label"> Status </label>
+                                            <select name="status" class="form-control">
+                                                <option value="Active" {{ $item->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                                <option value="Inactive" {{ $item->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                            {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                                        </div>
+                                        <div class="form-group custom-textarea">
+                                            <label for="content" class="form-label">Enter an announcement body</label>
+                                            <textarea class="form-control" id="content" name="content" rows="3" required>{{ $item->content }}</textarea>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="departments" class="form-label">Select department/s</label>
+                                            <select class="form-select dropdown-select" id="departments" name="departments[]" multiple aria-label="multiple select example">
+                                                @foreach (App\Models\Department::all() as $department)
+                                                    <option @if($item->departments->contains($department->department_id)) selected @endif>{{ $department->department_id }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-proceed">Save Changes</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
                 @endforeach
                 </tbody>
             </table>
@@ -274,24 +275,27 @@
         
 
         <script>
-            new MultiSelectTag('departments', {
-                tagColor: {
-                    textColor: '#327b2c',
-                    borderColor: 'rgba(26, 139, 147, .9)',
-                    bgColor: 'rgba(26, 139, 147, .2)',
-                }
-            })
+            document.addEventListener("DOMContentLoaded", function() {
+                var multiSelect = new MultiSelectTag('departments', {
+                    tagColor: {
+                        textColor: '#327b2c',
+                        borderColor: 'rgba(26, 139, 147, .9)',
+                        bgColor: 'rgba(26, 139, 147, .2)',
+                    }
+                });
+                    new MultiSelectTag('filter', {
+                    placeholder: 'Search Department',
+                    tagColor: {
+                        textColor: '#327b2c',
+                        borderColor: 'rgba(26, 139, 147, .9)',
+                        bgColor: 'rgba(26, 139, 147, .2)',
+                    }
+                });
+            });
         </script>
 
         <script>
-            new MultiSelectTag('filter', {
-                placeholder: 'Search Department',
-                tagColor: {
-                    textColor: '#327b2c',
-                    borderColor: 'rgba(26, 139, 147, .9)',
-                    bgColor: 'rgba(26, 139, 147, .2)',
-                }
-            })
+
         </script>
 
 
