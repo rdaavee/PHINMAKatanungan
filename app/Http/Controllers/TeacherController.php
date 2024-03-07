@@ -16,6 +16,7 @@ class TeacherController extends Controller
     {
         $teachers = User::where('user_role', 'Teacher')
                     ->where('account_status', 'Active')
+                    ->orderBy('created_at', 'desc')
                     ->paginate(5);
 
 

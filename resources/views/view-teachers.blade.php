@@ -192,7 +192,7 @@
                     <td>
                         <div class="d-flex justify-content-center">
                             <a href="{{ url('teachers/'.$item->user_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item->user_id }}" data-bs-toggle="modal">
-                                <i class="fa fa-pencil action-icon"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="{{ url('teachers/'.$item->user_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#staticBackdrop" data-bs-toggle="modal">
                                 <i class="fa fa-ban action-icon"></i>
@@ -203,12 +203,13 @@
                         <div class="modal-dialog modal-style">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Do you want ban this account?</h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Do you want to ban this account?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-proceed" data-teacher-id="{{ $item->user_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                    <button type="button" class="btn btn-proceed" onclick="confirmBan(this)" data-teacher-id="{{ $item->user_id }}">Confirm</button>
+
                                 </div>
                             </div>
                         </div>
@@ -218,7 +219,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Edit Teacher</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">View Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -258,11 +259,11 @@
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="" class="form-label">Department</label>
-                                            <input type="text" class="form-control" name="department_id" value="{{ $item->department_id }}" id="" autocomplete="off">
+                                            <input type="text" class="form-control" name="department_id" value="{{ $item->department_id }}" id="" autocomplete="off" disabled>
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="" class="form-label">School</label>
-                                            <input type="text" class="form-control" name="school_id" value="{{ $item->school_id }}" id="" autocomplete="off">
+                                            <input type="text" class="form-control" name="school_id" value="{{ $item->school_id }}" id="" autocomplete="off" disabled>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -282,11 +283,23 @@
         </div>
     </section>
 
-    <script>
-            function confirmDeletion(button) {
+        <script>
+            function confirmBan(button) {
                 var teacherId = button.getAttribute('data-teacher-id');
-                window.location.href = "{{ url('teachers') }}/" + teacherId + "/delete";
+                $.ajax({
+                    url: '/teachers/' + teacherId + '/ban',
+                    type: 'POST',
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('Error banning account.');
+                    }
+                });
             }
+
 
             function submitEditForm(button) {
                 var teacherId = button.getAttribute('data-teacher-id');

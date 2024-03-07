@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -54,22 +55,23 @@ Route::get('/view-students', function () {
     return view('view-students');
 });
 
-//BAN
-Route::get('users/{user_id}/ban', [StudentController::class, 'banUser']);
-Route::get('/view-banned-users', [StudentController::class, 'indexBannedUsers']);
+//BAN and UNBAN
+Route::get('/view-banned-users', [UserController::class, 'indexBannedUsers']);
+Route::post('bannedUsers/{user_id}/unban',[UserController::class, 'unban']);
 
 // STUDENTS
 Route::get('/view-students', [StudentController::class, 'index']);
 Route::get('students/{user_id}/edit', [StudentController::class, 'edit']);
 Route::put('students/{user_id}/edit', [StudentController::class, 'update']);
-Route::post('students/create', [StudentController::class, 'store']);
-Route::get('students/{user_id}/delete',[StudentController::class, 'destroy']);
+Route::post('students/{user_id}/ban',[UserController::class, 'ban']);
+
 
 //TEACHERS
 Route::get('/view-teachers', [TeacherController::class, 'index']);
 Route::get('teachers/{user_id}/edit', [TeacherController::class, 'edit']);
 Route::put('teachers/{user_id}/edit', [TeacherController::class, 'update']);
-Route::get('teachers/{user_id}/delete',[TeacherController::class, 'destroy']);
+Route::post('teachers/{user_id}/ban',[UserController::class, 'ban']);
+
 
 //ANNOUNCEMENTS
 Route::get('announcements/{id}/edit', [AdminController::class, 'viewEditAnnouncement']);

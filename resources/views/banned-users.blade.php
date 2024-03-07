@@ -186,9 +186,6 @@
                         <th scope="col">Course</th>
                         <th scope="col">Department</th>
                         <th scope="col">School</th>
-                        <th scope="col">Posts</th>
-                        <th scope="col">Following</th>
-                        <th scope="col">Followers</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -205,16 +202,13 @@
                             <td class="align-middle">{{ $item->course_id }}</td>
                             <td class="align-middle">{{ $item->department_id }}</td>
                             <td class="align-middle">{{ $item->school_id }}</td>
-                            <td class="align-middle">{{ $item->post_count }}</td>
-                            <td class="align-middle">{{ $item->following_count }}</td>
-                            <td class="align-middle">{{ $item->followers_count }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="{{ url('students/'.$item->user_id.'/edit') }}" class="btn alert-success btn-sm me-2" data-bs-target="#editModal{{ $item->user_id}}" data-bs-toggle="modal">
-                                        <i class="fa fa-pencil action-icon"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     </a>
                                     <a href="{{ url('students/'.$item->user_id.'/delete') }}" class="btn alert-danger btn-sm"  data-bs-target="#deleteModal{{ $item->user_id}}" data-bs-toggle="modal">
-                                        <i class="fa fa-ban action-icon"></i>
+                                        <i class="fa-solid fa-lock-open"></i>
                                     </a>
                                 </div>
                             </td>
@@ -227,7 +221,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-proceed" data-student-id="{{ $item->user_id }}" onclick="confirmDeletion(this)">Confirm</button>
+                                            <button type="button" class="btn btn-proceed" onclick="confirmUnban(this)" data-user-id="{{ $item->user_id }}">Confirm</button>
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +257,7 @@
                                                 </div>
                                                 <div class="col-md-2 mb-2"> 
                                                     <label for="account_status" class="form-label">Status</label>
-                                                    <select name="account_status" id="account_status" class="form-select">
+                                                    <select name="account_status" id="account_status" class="form-select" >
                                                         <option value="Active" {{ $item->account_status == 'Active' ? 'selected' : '' }}>Active</option>
                                                         <option value="Banned" {{ $item->account_status == 'Banned' ? 'selected' : '' }}>Banned</option>
                                                     </select>
@@ -277,19 +271,19 @@
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Year Level</label>
-                                                    <input type="text" class="form-control" name="year_level" value="{{ $item->year_level }}" />
+                                                    <input type="text" class="form-control" name="year_level" value="{{ $item->year_level }}" disabled/>
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Course</label>
-                                                    <input type="text" class="form-control" name="course_id" value="{{ $item->course_id }}" />
+                                                    <input type="text" class="form-control" name="course_id" value="{{ $item->course_id }}" disabled/>
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">Department</label>
-                                                    <input type="text" class="form-control" name="department_id" value="{{ $item->department_id }}" />
+                                                    <input type="text" class="form-control" name="department_id" value="{{ $item->department_id }}" disabled />
                                                 </div>
                                                 <div class="col-md-6 mb-2">
                                                     <label for="" class="form-label">School</label>
-                                                    <input type="text" class="form-control" name="school_id" value="{{ $item->school_id }}" />
+                                                    <input type="text" class="form-control" name="school_id" value="{{ $item->school_id }}" disabled/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -310,6 +304,23 @@
         </section>
 
         <script>
+
+            function confirmUnban(button) {
+                var userId = button.getAttribute('data-user-id');
+                $.ajax({
+                    url: '/bannedUsers/' + userId + '/unban',
+                    type: 'POST',
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('Error unbanning account.');
+                    }
+                });
+            }
+
             function confirmDeletion(button) {
                 var studentId = button.getAttribute('data-student-id');
                 window.location.href = "{{ url('students') }}/" + studentId + "/delete";

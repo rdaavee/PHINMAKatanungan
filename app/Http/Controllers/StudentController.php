@@ -16,6 +16,7 @@ class StudentController extends Controller
     {
         $students = User::where('user_role', 'Student')
                     ->where('account_status', 'Active')
+                    ->orderBy('created_at', 'desc')
                     ->paginate(5);
 
 
@@ -24,19 +25,6 @@ class StudentController extends Controller
         }
 
         return view('view-students', compact('students'));
-
-    }
-
-    public function indexBannedUsers()
-    {
-        $bannedUsers = User::where('account_status', 'Banned')->paginate(4);
-
-
-        if (request()->expectsJson()) {
-            return response()->json(['bannedUsers' => $bannedUsers]);
-        }
-
-        return view('banned-users', compact('bannedUsers'));
 
     }
 
@@ -127,15 +115,6 @@ class StudentController extends Controller
             return redirect()->back()->with('status','Student Updated.');
         }
 
-    }
-
-    public function banUser($user_id)
-    {
-        $user = User::findOrFail($user_id);
-        $user->account_status = 'Banned';
-        $user->save();
-
-        return redirect()->back()->with('success', 'Student has been banned successfully.');
     }
 
     /**
