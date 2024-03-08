@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $faker = Faker::create(); // Add this line
 
         $this->call([
             AdminSeeder::class,
@@ -28,7 +29,6 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class
         ]);
 
-        $faker = Faker::create(); // Add this line
 
         \App\Models\User::factory(60)->create();
         \App\Models\Announcement::factory(15)->create();
