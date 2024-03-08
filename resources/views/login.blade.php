@@ -56,14 +56,14 @@
                         @enderror
 
                         <div class="d-flex justify-content-between align-items-center rememberforget">
-                            <div class="remember">
+                            {{-- <div class="remember">
                                 <input type="checkbox" class="form-check-input" id="remember">
                                 <label class="form-check-label" for="remember">Remember Me</label>
                             </div>
                             <div class="forget">
                                 {{-- <a href="{{route('forget_password')}}">Forget Password</a> --}}
-                                <a href="#" style="font-size: 10px;">Forget Password</a>
-                            </div>
+                                {{-- <a href="#" style="font-size: 10px;">Forget Password</a> --}}
+                            {{-- </div> --}}
                         </div>
 
                         <div class="input-field">

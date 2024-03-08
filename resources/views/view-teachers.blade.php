@@ -135,7 +135,11 @@
                                     <span class="navbar-sb-icon me-3">
                                         <i class="fa fa-sign-out"></i>
                                     </span>
-                                    <span class="navbar-sb-text fs-14 fw-5 text-capitalize">logout</span>
+                                    <a class="navbar-sb-text fs-14 fw-5 text-capitalize text-decoration-none" href="{{ route('admin.logout_handler') }}" onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit();">
+                                        logout
+                                    </a>
+
+                                    <form action="{{ route('admin.logout_handler') }}" id="adminLogoutForm" method="POST">@csrf</form>
                                 </div>
                             </a>
                         </li>
@@ -291,6 +295,7 @@
                     type: 'POST',
                     data: {_token: '{{ csrf_token() }}'},
                     success: function(response) {
+                        alert(response.message);
                         window.location.reload();
                     },
                     error: function(xhr, status, error) {

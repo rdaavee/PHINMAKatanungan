@@ -216,7 +216,7 @@
                                 <div class="modal-dialog modal-style">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Do you want unban this account?</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">Do you want to unban this account?</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-footer">
@@ -312,6 +312,7 @@
                     type: 'POST',
                     data: {_token: '{{ csrf_token() }}'},
                     success: function(response) {
+                        alert(response.message);
                         window.location.reload();
                     },
                     error: function(xhr, status, error) {
