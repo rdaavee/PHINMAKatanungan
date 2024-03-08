@@ -78,7 +78,6 @@ Route::post('teachers/{user_id}/ban',[UserController::class, 'ban']);
 Route::get('announcements/{id}/edit', [AdminController::class, 'viewEditAnnouncement']);
 Route::put('announcements/{id}/edit', [AdminController::class, 'updateAnnouncement']);
 Route::get('/announcement', [AdminController::class, 'announcement_page']);
-Route::post('/add_announcement', [AdminController::class, 'add_announcement']);
 
 // Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin-panel');
 // Route::get('/admin-panel', [AdminController::class, 'analytics']) -> name('admin.analytics');
