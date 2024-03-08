@@ -107,7 +107,7 @@ class AdminController extends Controller
             $announcement->departments()->attach($request->departments);
         }
 
-        return view('admin-panel');
+        return redirect()->route('admin.admin-panel');
     }
 
     public function viewEditAnnouncement($id)

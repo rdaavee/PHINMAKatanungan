@@ -39,6 +39,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
         Route::get('/admin-panel', [AdminController::class, 'numericData'])->name('admin-panel');
+        Route::post('/add_announcement', [AdminController::class, 'add_announcement'])->name('add_announcement');
         Route::post('/logout_handler', [AdminController::class, 'logoutHandler'])->name('logout_handler');
     });
 });
