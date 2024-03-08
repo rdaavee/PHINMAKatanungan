@@ -9,72 +9,47 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class PostsMobileController extends Controller
 {
     public function storePost(Request $request)
     {
+        // Validate request data
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|max:255|string|unique:users,user_id',
             'title' => 'required|max:255|string',
             'content' => 'required|max:255|string',
             'privacy' => 'required|max:255|string',
-        ], [
-
         ]);
 
-        $requestData = [
-            'user_id'=> $request->user_id,
-            'first_name' => $request->first_name,
-            'title' => $request->title,
-            'content'=> $request->content,
-            'privacy'=> $request->privacy,
-        ];
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
-        $posts = Post::with('user:user_id,first_name')->get();
+        // Authenticate user based on auth token
+        $user = User::where('api_token', $request->header('Authorization'))->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
         try {
-            $user = Post::create($requestData);
+            // Create the post associated with the authenticated user
+            $post = $user->posts()->create([
+                'title' => $request->title,
+                'content' => $request->content,
+                'privacy' => $request->privacy,
+            ]);
+
             Log::info('Post Created Successfully');
-            return response()->json(['message' => 'Post successfully created.', 'posts' => $posts], 200);
+            return response()->json(['message' => 'Post successfully created.', 'post' => $post], 201);
         } catch (\Exception $e) {
             Log::error('Error creating post record: ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-    public function storeComment(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required|max:255|string|',
-            'content' => 'required|string',
-            'post_id' => 'required|max:255|string|',
-        ]);
-        
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
-
-        $requestData = [
-            'user_id' => $request->user_id,
-            'content' => $request->content,
-            'post_id'=> $request->post_id,
-
-        ];
-
-        try {
-            $comment = Comment::create($requestData);
-            Log::info('Comment Created Successfully');
-
-            $post = Post::find($request->post_id);
-            $post->comments_count++;
-            $post->save();
-            return response()->json(['message' => 'Comment successfully created.'], 200);
-        } catch (\Exception $e) {
-            Log::error('Error creating comment record: ' . $e->getMessage());
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
+    
 
     
     public function getPosts()

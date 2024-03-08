@@ -87,6 +87,7 @@ class UserMobileController extends Controller
             'gender' => 'required|max:255|string',
             'email' => 'required|email|max:255|string|regex:/^[A-Za-z0-9._%+-]+@phinmaed\.com$/i|unique:users,email',
             'password' => 'required|min:6|max:255|string',
+            'course_id' => 'required|max:255|string',
             'department_id' => 'required|max:255|string',
             'school_id' => 'required|max:255|string',
         ], [
@@ -114,6 +115,7 @@ class UserMobileController extends Controller
             'gender'=> $request->gender,
             'email'=> $request->email,
             'password'=> $request->password,
+            'course_id'=> $request->course_id,
             'department_id'=> $request->department_id,
             'school_id'=> $request->school_id,
         ];
