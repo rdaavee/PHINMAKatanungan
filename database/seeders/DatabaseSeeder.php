@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class
         ]);
 
+        $faker = Faker::create(); // Add this line
+
         \App\Models\User::factory(60)->create();
         \App\Models\Announcement::factory(15)->create();
         \App\Models\Post::factory(36)->create();
