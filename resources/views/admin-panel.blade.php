@@ -8,11 +8,11 @@
     <link rel="icon" type="images/icon" href="{{ url('storage/images/phinma-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/admin.css')}}">
     {{-- multiselect --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('js/admin.js') }}"></script>
 
     <title>Admin Dashboard | PHINMAKatanungan</title>
 </head>
@@ -348,7 +348,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
+        <script type="text/javascript" src="{{ secure_asset('js/admin.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
 
         
