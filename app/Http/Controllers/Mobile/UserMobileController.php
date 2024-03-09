@@ -16,7 +16,8 @@ class UserMobileController extends Controller
 
     public function profile(Request $request)
     {
-        $user = $request->user();
+        $token = $request->header('Authorization');
+        $user = User::where('api_token', $token)->first();
 
         if ($user) {
             return response()->json($user);
