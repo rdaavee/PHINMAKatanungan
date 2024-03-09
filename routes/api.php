@@ -23,9 +23,11 @@ use App\Http\Controllers\Mobile\CommentsMobileController;
 
 Route::post('/userlogin', [UserMobileController::class, 'userLogin']);
 
-Route::middleware('auth:api')->get('/profile', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/profile', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/profile', [PostsMobileController::class, 'profile']);
 Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/storeteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
