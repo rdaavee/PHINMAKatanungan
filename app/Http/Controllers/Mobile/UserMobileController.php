@@ -15,17 +15,33 @@ class UserMobileController extends Controller
 {
 
     public function profile(Request $request)
-{
-    // Authenticate the user using Sanctum
-    if (Auth::guard('api')->check()) {
-        // User is authenticated, retrieve the authenticated user
-        $user = Auth::guard('api')->user();
-        return response()->json($user);
-    } else {
-        // User is not authenticated
+    {
+        // Retrieve the token from the Authorization header
+        $token = $request->bearerToken();
+        
+        // Log the token to check its value
+        Log::info('Token from request: ' . $token);
+
+        // Authenticate the user using Sanctum
+        if ($token) {
+            // Find the user by case-insensitive token comparison
+            $user = User::where('api_token', 'ILIKE', $token)->first();
+
+            if ($user) {
+                // User is authenticated, return the user data
+                return response()->json($user);
+            } else {
+                // Log an error if the user is not found
+                Log::error('User not found for token: ' . $token);
+            }
+        } else {
+            // Log an error if the token is missing
+            Log::error('Token not found in request');
+        }
+
+        // If token is not found or user is not authenticated, return an error response
         return response()->json(['error' => 'Unauthenticated'], 401);
     }
-}
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
