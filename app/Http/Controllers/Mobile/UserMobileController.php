@@ -150,7 +150,7 @@ class UserMobileController extends Controller
                 $accessToken = $tokenResult->plainTextToken;
                 $user->update(['api_token' => $accessToken]);
                 $user = $request->user();
-                return response()->json(['message' => 'User Login Successful', 'accessToken' => $accessToken], 200, $user);
+                return response()->json(['message' => 'User Login Successful', 'accessToken' => $accessToken], 200 );
             }
         }
         return response()->json(['message' => 'Invalid Credentials'], 401);
