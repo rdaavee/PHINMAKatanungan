@@ -27,7 +27,7 @@ Route::post('/userlogin', [UserMobileController::class, 'userLogin']);
 //     return $request->user();
 // });
 
-Route::get('/profile', [UserMobileController::class, 'profile']);
+Route::middleware('auth:sanctum')->get('/profile', [UserMobileController::class, 'profile']);
 Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/storeteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
