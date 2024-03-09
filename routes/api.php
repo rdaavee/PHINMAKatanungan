@@ -21,21 +21,23 @@ use App\Http\Controllers\Mobile\CommentsMobileController;
 |
 */
 
-Route::middleware('auth:api')->get('/profile', function (Request $request) {
-    return $request->user();
+Route::post('/userlogin', [UserMobileController::class, 'userLogin']);
+
+Route::middleware('auth:api')->get('/profile1', function (Request $request) {
+    return response()->json($request);
 });
+
+Route::middleware('auth:sanctum')->get('/profile', [UserMobileController::class, 'profile']);
+// Route::get('/profile2', [UserMobileController::class, 'profile2']);
 Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/storeteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
-Route::post('/post', [PostsMobileController::class, 'storePost'])->withoutMiddleware('auth:sanctum');
+Route::post('/post', [PostsMobileController::class, 'storePost']);
 Route::get('/getposts', [PostsMobileController::class, 'getPosts']);
 Route::post('/storecomment', [CommentsMobileController::class, 'storeComment']);
 Route::get('/getannouncements', [PostsMobileController::class, 'getAnnouncements']);
 Route::get('/getcomments/{post_id}', [CommentsMobileController::class, 'getComments']);
 
-
-
-Route::post('/userlogin', [UserMobileController::class, 'userLogin'])->withoutMiddleware('auth:sanctum');
 Route::post('/verifyToken', [UserMobileController::class, 'verifyToken']);
 Route::apiResource('/students', StudentController::class);
 Route::apiResource('/teachers', TeacherController::class);

@@ -16,9 +16,28 @@ class UserMobileController extends Controller
 
     public function profile(Request $request)
     {
-        $user = $request->user();
-        return response()->json($user);
+        // Authenticate the user using Sanctum
+        if (Auth::guard('api')->check()) {
+            // User is authenticated, retrieve the authenticated user
+            $user = Auth::guard('api')->user();
+            return response()->json($user);
+        } else {
+            // User is not authenticated
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
     }
+    // public function profile2(Request $request)
+    // {
+    //     User:latest()->first();
+    //     if (Auth::guard('api')->check()) {
+    //         // User is authenticated, retrieve the authenticated user
+    //         $user = Auth::guard('api')->user();
+    //         return response()->json($user);
+    //     } else {
+    //         // User is not authenticated
+    //         return response()->json(['error' => 'Unauthenticated'], 401);
+    //     }
+    // }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -148,10 +167,9 @@ class UserMobileController extends Controller
             if (Auth::attempt($credentials)) {
                 $tokenResult = $user->createToken('Personal Access Token');
                 $accessToken = $tokenResult->plainTextToken;
-
                 $user->update(['api_token' => $accessToken]);
-
-                return response()->json(['message' => 'User Login Successful', 'accessToken' => $accessToken], 200);
+                $user = $request->user();
+                return response()->json(['message' => 'User Login Successful', 'accessToken' => $accessToken], 200  );
             }
         }
         return response()->json(['message' => 'Invalid Credentials'], 401);
