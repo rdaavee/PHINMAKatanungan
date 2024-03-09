@@ -16,7 +16,7 @@ class UserMobileController extends Controller
 
     public function profile(Request $request)
     {
-        $user = $request->user();
+        $user = $request->user()->get();
         return response()->json($user);
     }
     public function store(Request $request)
