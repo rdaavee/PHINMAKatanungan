@@ -15,16 +15,17 @@ class UserMobileController extends Controller
 {
 
     public function profile(Request $request)
-    {
-        $token = $request->header('Authorization');
-        $user = User::where('api_token', $token)->first();
-
-        if ($user) {
-            return response()->json($user);
-        } else {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+{
+    // Authenticate the user using Sanctum
+    if (Auth::guard('api')->check()) {
+        // User is authenticated, retrieve the authenticated user
+        $user = Auth::guard('api')->user();
+        return response()->json($user);
+    } else {
+        // User is not authenticated
+        return response()->json(['error' => 'Unauthenticated'], 401);
     }
+}
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
