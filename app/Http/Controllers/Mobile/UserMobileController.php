@@ -17,7 +17,12 @@ class UserMobileController extends Controller
     public function profile(Request $request)
     {
         $user = $request->user();
-        return response()->json($user);
+
+        if ($user) {
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
     }
     public function store(Request $request)
     {
