@@ -26,6 +26,18 @@ class UserMobileController extends Controller
             return response()->json(['error' => 'Unauthenticated'], 401);
         }
     }
+    // public function profile2(Request $request)
+    // {
+    //     User:latest()->first();
+    //     if (Auth::guard('api')->check()) {
+    //         // User is authenticated, retrieve the authenticated user
+    //         $user = Auth::guard('api')->user();
+    //         return response()->json($user);
+    //     } else {
+    //         // User is not authenticated
+    //         return response()->json(['error' => 'Unauthenticated'], 401);
+    //     }
+    // }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

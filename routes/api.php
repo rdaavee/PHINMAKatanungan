@@ -28,6 +28,7 @@ Route::middleware('auth:api')->get('/profile1', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/profile', [UserMobileController::class, 'profile']);
+// Route::get('/profile2', [UserMobileController::class, 'profile2']);
 Route::put('/users/{user_id}', 'UserController@update');
 Route::post('/store', [UserMobileController::class, 'store'])->withoutMiddleware('auth:sanctum');
 Route::post('/storeteacher', [UserMobileController::class, 'storeTeacher'])->withoutMiddleware('auth:sanctum');
